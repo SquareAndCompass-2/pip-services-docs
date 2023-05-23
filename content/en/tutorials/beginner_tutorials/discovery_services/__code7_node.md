@@ -7,10 +7,10 @@ import { ConnectionParams, MemoryDiscovery } from "pip-services3-components-node
 export async function main() {
     // Defining the component 
     let config = ConfigParams.fromTuples(
-        "connections.key1.host", "10.1.1.100",
-        "connections.key1.port", "8080",
-        "connections.key2.host", "10.1.1.100",
-        "connections.key2.port", "8082"
+        "key1.host", "10.1.1.100",
+        "key1.port", "8080",
+        "key2.host", "10.1.1.100",
+        "key2.port", "8082"
     );
 
     let discovery = new MemoryDiscovery();
