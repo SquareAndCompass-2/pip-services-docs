@@ -8,5 +8,5 @@ weight: 1
 
 <script>
   // redirect to current toolkit version
-  window.location.href += '/v3';
+  window.location.href += window.location.href.endsWith('/') ? 'v3' : '/v3';
 </script>

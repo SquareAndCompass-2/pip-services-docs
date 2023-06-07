@@ -39,7 +39,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/nodejs-icon.png" alt="Node.js icon">
-          <a href="./v4/toolkit_api/node" class="stretched-link"></a>
+          <a href="./toolkit_api/node" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>Node.js</b>
@@ -48,7 +48,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/dotnet-icon.png" alt="Dotnet icon">
-          <a href="./v4/toolkit_api/net" class="stretched-link"></a>
+          <a href="./toolkit_api/net" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>.NET</b>
@@ -57,7 +57,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/golang-icon.png" alt="Golang icon">
-          <a href="./v4/toolkit_api/golang" class="stretched-link"></a>
+          <a href="./toolkit_api/golang" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>Golang</b>
@@ -71,7 +71,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/dart-icon.png" alt="Dart icon">
-          <a href="./v4/toolkit_api/dart" class="stretched-link"></a>
+          <a href="./toolkit_api/dart" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>Dart</b>
@@ -80,7 +80,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/python-icon.png" alt="Python icon">
-          <a href="./v4/toolkit_api/python" class="stretched-link"></a>
+          <a href="./toolkit_api/python" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>Python</b>
@@ -89,7 +89,7 @@ This guide will help you to learn Pip.Services and to develop your own microserv
       <div class="card">
         <div class="card-body text-center">
           <img class="card-img-top" src="/images/icons/java-icon.png" alt="Java icon">
-          <a href="./v4/toolkit_api/java" class="stretched-link"></a>
+          <a href="./toolkit_api/java" class="stretched-link"></a>
         </div>
         <div class="card-footer text-center">
             <b>Java</b>
