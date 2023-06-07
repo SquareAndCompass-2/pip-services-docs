@@ -99,14 +99,19 @@ $shouldDelayActive) (eq $s.Parent $p)) (not $p.Site.Params.ui.sidebar_menu_compa
 <!-- check active path of links -->
 {{ $isChildActive := false }}
 {{ $parent := $currentSection }}
-{{ range (seq $ulNr) }}
-{{with $parent}}
-{{$parent = .Parent }}
-{{ if $s.IsAncestor . }}
-{{ $isChildActive = true }}
+{{ if (eq $s.LinkTitle "Home") }} 
+  {{ $isChildActive = false }}
+{{ else }}
+  {{ range (seq $ulNr) }}
+    {{with $parent}}
+      {{$parent = .Parent }}
+      {{ if $s.IsAncestor . }}
+        {{ $isChildActive = true }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
 {{ end }}
-{{ end }}
-{{ end }}
+
 
 <!-- reduce the paddings for sidebar tree -->
 {{ $reducer := 2 }}
@@ -127,11 +132,19 @@ $shouldDelayActive) (eq $s.Parent $p)) (not $p.Site.Params.ui.sidebar_menu_compa
   {{ end }}
 {{end}}
 
+{{ $isMainPage := eq $s.LinkTitle "Main" }}
+
+<!-- Check Home page version -->
+<!-- TODO: if versions format will be changed from 'vX' need to update this part -->
+{{ $versionPos := 1 }}
+{{ $currentVersion := (index (split $s.URL "/") $versionPos) }}
+
 {{ $isHomePageOrHardcodeSection := and
   (or (and (eq $currentSection.LinkTitle "Home") (not (eq $s.LinkTitle "Home"))) $isChildOfHome (eq $s.LinkTitle "Home"))}}
+
 {{ $isMatchRootSections := eq (index (split .CurrentSection.URL "/") 1) (index (split $s.URL "/") 1) }}
 
-{{ if or (and (not (eq .ulNr 1)) (not $treeRoot ) $isMatchRootSections $isNotIncludeSection) $isHomePageOrHardcodeSection }}
+{{ if and (strings.Contains $currentSection.URL $currentVersion) (not $isMainPage) (or (and (not (eq .ulNr 1)) (not $treeRoot ) $isMatchRootSections $isNotIncludeSection) $isHomePageOrHardcodeSection) }}
 <li
   class="td-sidebar-nav__section-title td-sidebar-nav__section p-0 {{ if $withChild }} with-child{{ else }} without-child{{ end }}{{ if $activePath }} active-path{{ end }}{{ if not $show}} collapse{{ end }}"
   id="{{ $mid }}-li">

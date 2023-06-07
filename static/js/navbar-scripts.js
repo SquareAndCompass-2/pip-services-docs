@@ -55,14 +55,6 @@ function loadNavbar(event) {
     }
 }
 
-function fadeBg(event) {
-    let shadowEl = document.getElementById('shadow');
-    if (event.target.classList.contains('nav-link'))
-        shadowEl.style.display = 'block';
-    else
-        shadowEl.style.display = 'none';
-}
-
 function hideAlgoliaPopUp(event) {
     if (document.getElementsByClassName('algolia-autocomplete').length > 0) {
         if (!event.target.classList.contains('algolia-autocomplete') && event.target.getAttribute('type') !== 'search') {
@@ -170,11 +162,3 @@ if (getViewport(true) < 768) {
 
 // algolia search animation
 document.body.addEventListener("click", hideAlgoliaPopUp);
-
-// fade background event
-Array.from(document.getElementsByClassName('mobile-dropdown-btn')).forEach(navEl => {
-    for (let btn of navEl.getElementsByTagName('a')){
-        btn.addEventListener('click', fadeBg);
-    }
-});
-document.body.addEventListener('click', fadeBg);
