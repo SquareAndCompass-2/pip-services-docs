@@ -33,6 +33,14 @@
 						{{ if in .URL "github.io" }}
 							{{ $langPos := 2 }}
 						{{ end }}
+
+						<!-- Extract version path -->
+						<!-- TODO: if versions format will be changed from 'vX' need to update this part -->
+						{{ $versionPos := 1 }}
+						{{ $currentVersion := (index (split $.CurrentSection.URL "/") $versionPos) }}
+						
+						{{ $pathWithVersion := "" }}
+						{{ with .Page }}{{ $pathWithVersion = printf "%s/%s" $currentVersion .RelPermalink }}{{ else }}{{ $pathWithVersion = (printf "%s/%s" $currentVersion .URL) | relLangURL }}{{ end }}
 						
 						{{ $active := eq (index (split $.CurrentSection.URL "/") (add $langPos 1)) (index (split .URL "/") $langPos) }}
 						{{ with .Page }}
@@ -42,7 +50,7 @@
 						{{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
 						{{ if $active }} {{ $activeLinkName = .Name }} {{ end }}
 						<a class="nav-link{{if $active }} active{{end}} dropdown-item"
-							href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}" {{ if ne $url.Host
+							href="{{ $pathWithVersion }}" {{ if ne $url.Host
 							$baseurl.Host }}target="_blank" {{ end }}>
 							<span{{if $active }} class="active" {{end}}>
 								{{ .Name }}

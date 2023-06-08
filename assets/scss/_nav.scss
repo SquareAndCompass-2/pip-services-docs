@@ -86,6 +86,8 @@ $button-background: linear-gradient(0deg, #ffffff 10%, #fed955 0%, #fed955 40%, 
             &.active,
             &:active {
                 background-color: white;
+                color: $blue;
+                font-weight: $font-weight-medium;
             }
 
             &:hover,
