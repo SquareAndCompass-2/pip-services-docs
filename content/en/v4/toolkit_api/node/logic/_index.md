@@ -25,5 +25,5 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services4-config-logic --save
+npm install pip-services4-logic-node --save
 ```

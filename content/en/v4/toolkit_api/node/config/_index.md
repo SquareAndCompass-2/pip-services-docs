@@ -26,5 +26,5 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services4-config-nodex --save
+npm install pip-services4-config-node --save
 ```

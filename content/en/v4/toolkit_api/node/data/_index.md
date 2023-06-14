@@ -28,5 +28,5 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services4-data-nodex --save
+npm install pip-services4-data-node --save
 ```
