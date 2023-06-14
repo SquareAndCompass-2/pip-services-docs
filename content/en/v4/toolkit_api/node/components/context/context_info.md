@@ -2,7 +2,7 @@
 type: docs
 title: "ContextInfo"
 linkTitle: "ContextInfo"
-gitUrl: "https://github.com/pip-services3-nodex/pip-services3-components-nodex"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-components-node"
 description: >
     Context information component that provides detailed information
     about an execution context.
