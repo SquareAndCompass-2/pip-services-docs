@@ -59,7 +59,7 @@ Container's references
 
 #### _logger
 Logger.
-> `protected` **_logger**: [ILogger](../../../components/log/ilogger)
+> `protected` **_logger**: [ILogger](../../../obesrvability/log/ilogger)
 
 #### _info
 Container's information.
