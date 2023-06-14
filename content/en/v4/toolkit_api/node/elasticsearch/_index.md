@@ -21,7 +21,7 @@ The module contains the following packages:
 
 Install the Node.js package as
 ```bash
-npm install pip-services-elasticsearch-nodex --save
+npm install pip-services4-elasticsearch-node --save
 ```
 
 Microservice components shall perform logging usual way using CompositeLogger component.
