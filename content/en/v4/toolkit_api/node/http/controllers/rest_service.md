@@ -79,9 +79,9 @@ Tracer.
 Service's configuration paramters.
 > `protected` **_config**: [ConfigParams](../../../commons/config/config_params)
 
-#### _swaggerService
+#### _SwaggerController
 Swagger service.
-> `protected` **_swaggerService**: [ISwaggerController](../iswagger_controller)
+> `protected` **_SwaggerController**: [ISwaggerController](../iswagger_controller)
 
 #### _swaggerEnable
 Boolean that defines if the Swagger sevice is enabled or not.
