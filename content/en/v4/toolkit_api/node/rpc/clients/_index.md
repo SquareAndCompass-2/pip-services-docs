@@ -3,7 +3,7 @@ type: docs
 title: "Clients"
 linkTitle: "Clients"
 no_list: true
-gitUrl: "https://github.com/pip-services3-nodex/pip-services3-rpc-nodex"
+gitUrl: acure
 description: >
     This package contains classes used to create different types of clients.
 ---

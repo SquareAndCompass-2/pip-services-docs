@@ -23,7 +23,7 @@ The module contains the following packages:
 
 Install the package by using NPM as
 ```bash
-npm install pip-services3-expressions-node --save
+npm install pip-services4-expressions-node --save
 ```
 
 The example below shows how to use the expression calculator to dynamically

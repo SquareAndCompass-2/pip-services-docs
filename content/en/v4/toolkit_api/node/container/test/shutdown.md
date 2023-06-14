@@ -2,7 +2,7 @@
 type: docs
 title: "Shutdown"
 linkTitle: "Shutdown"
-gitUrl: "https://github.com/pip-services3-nodex/pip-services3-components-nodex"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-container-node"
 description: >
     Random shutdown component that crashes a process
     using various methods.

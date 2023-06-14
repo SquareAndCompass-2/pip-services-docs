@@ -23,5 +23,5 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services3-grpc-node --save
+npm install pip-services4-grpc-node --save
 ```

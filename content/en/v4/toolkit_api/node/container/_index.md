@@ -32,7 +32,7 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services3-container-node --save
+npm install pip-services4-container-node --save
 ```
 
 Create a factory to create components based on their locators (descriptors).

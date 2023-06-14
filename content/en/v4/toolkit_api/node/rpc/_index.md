@@ -22,5 +22,5 @@ The module contains the following packages:
 
 Install the NPM package as
 ```bash
-npm install pip-services3-rpc-node --save
+npm install pip-services4-rpc-node --save
 ```
