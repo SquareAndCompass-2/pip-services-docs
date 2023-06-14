@@ -67,11 +67,6 @@ Helper class that retrieves parameters from HTTP requests.
 #### [HttpResponseSender](http_response_sender)
 Helper class that handles HTTP-based responses.
 
-
-#### [InstrumentTiming](instrument_timing)
-Creates logs, counters and timings for methods that call instrument.
-
-
 #### [RestOperations](rest_operations)
 Handles REST services operations.
 

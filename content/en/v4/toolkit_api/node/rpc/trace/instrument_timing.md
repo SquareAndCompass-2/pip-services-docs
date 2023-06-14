@@ -2,7 +2,7 @@
 type: docs
 title: "InstrumentTiming"
 linkTitle: "InstrumentTiming"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-rpc-node"
 description: >
     Creates logs, counters and timings for methods that call  instrument.
 ---

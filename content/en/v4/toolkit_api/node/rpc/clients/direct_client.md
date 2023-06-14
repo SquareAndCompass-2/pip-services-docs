@@ -2,7 +2,7 @@
 type: docs
 title: "DirectClient<T>"
 linkTitle: "DirectClient"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-rpc-node"
 description: >
     Abstract client that calls a controller directly in the same memory space.
    
