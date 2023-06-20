@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable),
-[IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable),
+[IOpenable](../../../components/run/iopenable)
 
 ### Description
 The CouchbaseConnection class allows you to create connections to a Couchbase database using the default Couchbase driver.
@@ -89,9 +89,9 @@ Couchbase bucket's object.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: Context): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: string - (optional) Basic implementation of an execution context.
 
 
 #### configure
@@ -133,9 +133,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: Context): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: Context - (optional) Basic implementation of an execution context.
 
 
 #### setReferences
