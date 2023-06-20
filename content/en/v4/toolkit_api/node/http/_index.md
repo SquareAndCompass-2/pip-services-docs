@@ -1,6 +1,6 @@
 ---
 type: docs
-title: "Logic module"
+title: "HTTP module"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
 no_list: true
 weight: 30
