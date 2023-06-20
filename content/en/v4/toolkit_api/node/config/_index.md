@@ -16,8 +16,8 @@ description: >
 The module contains the following packages:
 
 * [**Auth**](auth) - data patterns
-- [**Build**](build) - object key (id) generators
-- [**Config**](config) - data processing components
+* [**Build**](build) - object key (id) generators
+* [**Config**](config) - data processing components
 * [**Connect**](connect) - data query objects
 
 
