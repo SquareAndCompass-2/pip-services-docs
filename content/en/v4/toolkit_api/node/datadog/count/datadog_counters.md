@@ -9,9 +9,9 @@ description: >
 
 ---
 
-**Extends:** [CachedCounters](../../../components/count/cached_counters/)
+**Extends:** [CachedCounters](../../../observability/count/cached_counters/)
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IReferenceable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 The DataDogCounters class allows you to create performance counters that send their metrics to a DataDog service.
@@ -36,9 +36,9 @@ The DataDogCounters class allows you to create performance counters that send th
 
 #### References
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection
 
 ### Constructors
 Creates a new instance of the class.
@@ -51,17 +51,17 @@ Creates a new instance of the class.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: string): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: string - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - (optional) transaction id used to trace execution through the call chain.
+- **config**: [ConfigParams](../../../components/config/config_params) - (optional) Basic implementation of an execution context..
 
 #### isOpen
 Checks if the component is open.
@@ -74,25 +74,25 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### save
 Saves the current counters' measurements.
 
-> `protected` save(counters: [Counter[]](../../../components/count/counter)): void
+> `protected` save(counters: [Counter[]](../../../observability/count/counter)): void
 
-- **counters**: [Counter[]](../../../components/count/counter) - current counters' measurements to be saved.
+- **counters**: [Counter[]](../../../observability/count/counter) - current counters' measurements to be saved.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 ### Examples
@@ -118,5 +118,5 @@ counters.dump();
 
 
 ### See also
-- #### [RestService](../../../rpc/services/rest_service)
-- #### [CommandableHttpService](../../../rpc/services/commandable_http_service)
+- #### [RestController](../../../http/controllers/rest_controller)
+- #### [CommandableHttpController](../../../http/controllers/commandable_http_controller)
