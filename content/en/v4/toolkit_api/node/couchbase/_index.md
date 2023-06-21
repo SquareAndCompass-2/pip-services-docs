@@ -34,17 +34,17 @@ The persistence component shall implement the following interface with a basic s
 
 ```typescript
 export interface IMyPersistence {
-    getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyObject>>;
+    getPageByFilter(context: Context, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyObject>>;
     
-    getOneById(correlationId: string, id: string): Promise<MyObject>;
+    getOneById(context: Context, id: string): Promise<MyObject>;
     
-    getOneByKey(correlationId: string, key: string): Promise<MyObject>;
+    getOneByKey(context: Context, key: string): Promise<MyObject>;
     
-    create(correlationId: string, item: MyObject): Promise<MyObject>;
+    create(context: Context, item: MyObject): Promise<MyObject>;
     
-    update(correlationId: string, item: MyObject): Promise<MyObject>;
+    update(context: Context, item: MyObject): Promise<MyObject>;
     
-    deleteById(correlationId: string, id: string): Promise<MyObject>;
+    deleteById(context: Context, id: string): Promise<MyObject>;
 }
 ```
 
@@ -82,11 +82,11 @@ export class MyCouchbasePersistence extends IdentifiableCouchbasePersistence<MyO
     return criteria.length > 0 ? criteria.join(" AND ") : null;
   }
   
-  public async getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams):  Promise<DataPage<MyObject>> {
-    return await super.getPageByFilter(correlationId, this.composeFilter(filter), paging, "id", null);
+  public async getPageByFilter(context: Context, filter: FilterParams, paging: PagingParams):  Promise<DataPage<MyObject>> {
+    return await super.getPageByFilter(context, this.composeFilter(filter), paging, "id", null);
   }  
   
-  public async getOneByKey(correlationId: string, key: string): Promise<MyObject> {
+  public async getOneByKey(context: Context, key: string): Promise<MyObject> {
     
     let statement = "SELECT * FROM `" + this._bucketName + "` WHERE _c='" + this._collectionName + "' AND key='" + key + "'";
     let query = this._query.fromString(statement);
@@ -99,9 +99,9 @@ export class MyCouchbasePersistence extends IdentifiableCouchbasePersistence<MyO
           let item = item != null ? item[0] : null;
 
           if (item == null)
-            this._logger.trace(correlationId, "Nothing found from %s with key = %s", this._collectionName, key);
+            this._logger.trace(context, "Nothing found from %s with key = %s", this._collectionName, key);
           else
-            this._logger.trace(correlationId, "Retrieved from %s with key = %s", this._collectionName, key);
+            this._logger.trace(context, "Retrieved from %s with key = %s", this._collectionName, key);
 
           if (err != null) reject(err);
             
