@@ -39,8 +39,8 @@ The CouchbaseConnection class allows you to create connections to a Couchbase da
     - **ram_quota**: (optional) RAM quota in MB (default: 100)
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** (optional) credential stores to resolve credentials
 
 
@@ -67,11 +67,11 @@ Connection resolver.
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _options
 Configuration options.
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params)
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params)
 
 #### _bucketName
 Couchbase bucket's name.
@@ -91,15 +91,15 @@ Closes the component and frees used resources.
 
 > `public` close(context: [Context](../../../components/context/context): Promise\<void\>
 
-- **context**: string - (optional) Basic implementation of an execution context.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### getBucket
@@ -135,12 +135,12 @@ Opens the component.
 
 > `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: Context - (optional) Basic implementation of an execution context.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
