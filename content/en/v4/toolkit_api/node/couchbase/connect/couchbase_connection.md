@@ -89,7 +89,7 @@ Couchbase bucket's object.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(context: Context): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context): Promise\<void\>
 
 - **context**: string - (optional) Basic implementation of an execution context.
 
@@ -133,7 +133,7 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: Context): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
 - **context**: Context - (optional) Basic implementation of an execution context.
 
