@@ -9,7 +9,7 @@ description: >
 
 ---
 
-**Extends:** [RestClient](../../../rpc/clients/rest_client)
+**Extends:** [RestClient](../../../http/clients/rest_client)
 
 ### Description
 
@@ -22,7 +22,7 @@ Creates a new instance of this class.
 
 > `public` constructor(config?: [ConfigParams](../../../commons/config/config_params))
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters.
 
 
 ### Instance methods
@@ -30,28 +30,28 @@ Creates a new instance of this class.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: string): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### sendLogs
 Sends log messages.
 
-> `public` sendLogs(correlationId: string, messages: [DataDogLogMessage[]](../datadog_log_message)): Promise\<void\>
+> `public` sendLogs(context: [Context](../../../components/context/context), messages: [DataDogLogMessage[]](../datadog_log_message)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **messages**: [DataDogLogMessage[]](../datadog_log_message) - messages to send.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
