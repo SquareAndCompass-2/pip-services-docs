@@ -8,9 +8,9 @@ description: >
 
 ---
 
-**Extends:** [CachedCounters](../../../components/count/cached_counters/)
+**Extends:** [CachedCounters](../../../observability/count/cached_counters/)
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IReferenceable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 The DataDogLogger class allows you to create loggers that dump execution logs to a DataDog service.
@@ -21,7 +21,7 @@ The DataDogLogger class allows you to create loggers that dump execution logs to
 - **level**: maximum log level to capture
 - **source**: source (context) name
 - **connection**:
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: (optional) connection protocol: http or https (default: https)
     - **host**: (optional) host name or IP address (default: http-intake.logs.datadoghq.com)
     - **port**: (optional) port number (default: 443)
@@ -39,9 +39,9 @@ The DataDogLogger class allows you to create loggers that dump execution logs to
 
 #### References
 
-- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/info/context_info) to detect the context id and specify counters source
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve a connection
+- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/context/context_info) to detect the context id and specify counters source
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve a connection
 
 ### Constructors
 Creates a new instance of the logger.
@@ -54,17 +54,17 @@ Creates a new instance of the logger.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - (optional) transaction id used to trace execution through the call chain.
+- **config**: [ConfigParams](../../../components/config/config_params) - (optional) transaction id used to trace execution through the call chain.
 
 #### isOpen
 Checks if the component is open.
@@ -77,25 +77,25 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### save
 Saves log messages from the cache.
 
-> `protected` save(counters: [LogMessage[]](../../../components/log/log_message)): void
+> `protected` save(counters: [LogMessage[]](../../../observability/log/log_message)): void
 
-- **counters**: [LogMessage[]](../../../components/log/log_message) - current counters measurements to be saved.
+- **counters**: [LogMessage[]](../../../observability/log/log_message) - current counters measurements to be saved.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 ### Examples
