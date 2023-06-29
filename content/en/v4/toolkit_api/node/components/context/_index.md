@@ -46,6 +46,8 @@ about execution context: container or/and process.
 Most often ContextInfo is used by logging and performance counters
 to identify source of the collected logs and metrics.
 
+#### [ContextResolver](context_resolver)
+Context resolver that processes context and extracts values from there.
 
 #### [DefaultInfoFactory](default_info_factory)
 Creates information components by their descriptors.
