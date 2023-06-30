@@ -37,7 +37,7 @@ Configures the component by passing its configuration parameters.
 #### open
 Opens the component.
 
-> `public` open(context: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
 - **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
