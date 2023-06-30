@@ -20,7 +20,7 @@ The DataDogLogClient class allows you to create a REST client for DataDog logs.
 ### Constructors
 Creates a new instance of this class.
 
-> `public` constructor(config?: [ConfigParams](../../../commons/config/config_params))
+> `public` constructor(config?: [ConfigParams](../../../components/config/config_params))
 
 - **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters.
 
