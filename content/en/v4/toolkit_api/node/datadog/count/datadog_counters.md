@@ -20,7 +20,7 @@ The DataDogCounters class allows you to create performance counters that send th
 #### Configuration parameters
 
 - **connection(s)**:           
-  - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+  - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: (optional) connection protocol: http or https (default: https)
     - **host**: (optional) host name or IP address (default: api.datadoghq.com)
     - **port**: (optional) port number (default: 443)
