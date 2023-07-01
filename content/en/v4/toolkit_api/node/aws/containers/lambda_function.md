@@ -21,18 +21,18 @@ The LambdaFunction class allows you to create an abstract AWS Lambda function th
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:service:lambda:\*:1.0**: (optional) [ILambdaController](../../services/ilambda_controller) services to handle action requests
-- **\*:service:commandable-lambda:\*:1.0**: (optional) [ILambdaController](../../services/ilambda_controller) services to handle action requests
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:service:lambda:\*:1.0**: (optional) [ILambdaController](../../controllers/ilambda_controller) services to handle action requests
+- **\*:service:commandable-lambda:\*:1.0**: (optional) [ILambdaController](../../controllers/ilambda_controller) services to handle action requests
 
 ### Constructors
 Creates a new instance of this lambda function.
 
 > `public` constructor(name: string, description?: string)
 
-- **name**: string - (optional) a container name (accessible via [ContextInfo](../../../components/info/context_info)).
-- **description**: string - (optional) container description (accessible via [ContextInfo](../../../components/info/context_info)).
+- **name**: string - (optional) a container name (accessible via [ContextInfo](../../../components/context/context_info)).
+- **description**: string - (optional) container description (accessible via [ContextInfo](../../../components/context/context_info)).
 
 ### Fields
 
@@ -48,19 +48,19 @@ Default path to config file.
 
 #### _counters
 Performance counters.
-> `protected` **_counters** = new [CompositeCounters()](../../../components/count/composite_counters)
+> `protected` **_counters** = new [CompositeCounters()](../../../observability/count/composite_counters)
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver** = new [DependencyResolver()](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver** = new [DependencyResolver()](../../../components/refer/dependency_resolver)
 
 #### _schemas
 Map of registred validation schemas.
-> `protected` **_schemas**: { [id: string]: [Schema](../../../commons/validate/schema) }
+> `protected` **_schemas**: { [id: string]: [Schema](../../../data/validate/schema) }
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer) = new [CompositeTracer()](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = new [CompositeTracer()](../../../components/trace/composite_tracer)
 
 
 </span>
@@ -100,23 +100,23 @@ Gets an entry point into this lambda function.
 #### instrument
 Gets entry point into this lambda function.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### register
 Registers all actions in this lambda function.
 
-- Note: Overloading of this method has been deprecated. Use [LambdaController](../../services/lambda_controller) instead.
+- Note: Overloading of this method has been deprecated. Use [LambdaController](../../controllers/lambda_controller) instead.
 
 > `protected` register(): void 
 
@@ -124,12 +124,12 @@ Registers all actions in this lambda function.
 #### registerAction
 Registers an action in this lambda function.
  
-- Note: This method has been deprecated. Use [LambdaController](../../services/lambda_controller) instead.
+- Note: This method has been deprecated. Use [LambdaController](../../controllers/lambda_controller) instead.
 
-> `protected` registerAction(cmd: string, schema: [Schema](../../../commons/validate/schema), action: (params: any) => Promise\<any\>): void
+> `protected` registerAction(cmd: string, schema: [Schema](../../../data/validate/schema), action: (params: any) => Promise\<any\>): void
 
 - **cmd**: string - action/command name.
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **action**: (params: any) => Promise\<any\> - action function that is called when the action is invoked.
 
 
@@ -150,9 +150,9 @@ Makes this function ready to access action calls.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
