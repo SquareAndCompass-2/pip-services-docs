@@ -50,7 +50,7 @@ to the action parameters.
 > `public` callCommand(cmd: string, context: [Context](../../../components/context/context), params: any): Promise\<any\>
 
 - **cmd**: string - action name
-- **context**: [Context](../../../components/context/context) - (optional) transaction id to trace execution through call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - command parameters.
 - **returns**: Promise\<any\> - action result.
 
