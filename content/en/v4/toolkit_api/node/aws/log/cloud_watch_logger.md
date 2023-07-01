@@ -47,9 +47,9 @@ Creates a new instance of this logger.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### configure
 Configures a component by passing configuration parameters.
@@ -69,9 +69,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### save
 Saves the current counters' measurements.
@@ -90,10 +90,10 @@ Sets references to dependent components.
 #### write
 Writes a log message to the logger destination.
 
-> `protected` write(level: [LogLevel](../../../components/log/log_level), correlationId: string, ex: Error, message: string): void
+> `protected` write(level: [LogLevel](../../../components/log/log_level), context: [Context](../../../components/context/context), ex: Error, message: string): void
 
 - **level**: [LogLevel](../../../components/log/log_level) - log level.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **ex**: Error - error object associated with this message.
 - **message**: string - human-readable message to log.
 
