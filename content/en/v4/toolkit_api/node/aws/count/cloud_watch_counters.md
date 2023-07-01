@@ -7,9 +7,9 @@ description: >
     Performance counters that periodically dump counters to AWS Cloud Watch Metrics.
 ---
 
-**Implements**: [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements**: [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
-**Extends:** [CachedCounters](../../../components/count/cached_counters)
+**Extends:** [CachedCounters](../../../observability/count/cached_counters)
 
 ### Description
 
@@ -18,10 +18,10 @@ The CloudWatchCounters class allows you to create performance counters that peri
 #### Configuration parameters
  
 - **connections**:                   
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **region**: (optional) AWS region
 - **credentials**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **access_id**: AWS access/client id
     - **access_key**: AWS access/client key
 - **options**:
@@ -30,8 +30,8 @@ The CloudWatchCounters class allows you to create performance counters that peri
 
 
 #### References
-- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/info/context_info) to detect the context id and specify the counters' source
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections
+- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/context/context_info) to detect the context id and specify the counters' source
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials requests
 
 ### Constructors
@@ -45,16 +45,16 @@ Creates a new instance of this counters.
 #### close
 Closes component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -67,23 +67,23 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### save
 Saves the current counters' measurements.
 
-> `protected` save(counters: [Counter[]](../../../components/count/counter)): Promise\<void\>
+> `protected` save(counters: [Counter[]](../../../observability/count/counter)): Promise\<void\>
 
-- **counters**: [Counter[]](../../../components/count/counter) - current counters' measurements to be saved.
+- **counters**: [Counter[]](../../../observability/count/counter) - current counters' measurements to be saved.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
