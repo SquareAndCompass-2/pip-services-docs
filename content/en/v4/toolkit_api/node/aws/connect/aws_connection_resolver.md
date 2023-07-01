@@ -64,7 +64,7 @@ AWSConnectionParams value.
 
 > `public` resolve(context: [Context](../../../components/context/context)): Promise<[AwsConnectionParams](../aws_connection_params)>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain. 
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context. 
 - **returns**: Promise<[AwsConnectionParams](../aws_connection_params)> - receives an AWSConnectionParams value or error.
 
 #### setReferences
