@@ -4,13 +4,13 @@ title: "CommandableLambdaController"
 linkTitle: "CommandableLambdaController"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-aws-node"
 description: >
-    Abstract service that receives commands via the AWS Lambda protocol to operations automatically generated for commands defined in [ICommandable components](../../../commons/commands/icommandable). Each command is exposed as an invoke method that receives a command's name and parameters.
+    Abstract service that receives commands via the AWS Lambda protocol to operations automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable) components. Each command is exposed as an invoke method that receives a command's name and parameters.
 ---
 
 **Extends:** [LambdaController](../lambda_controller)
 
 ### Description
-The CommandableLambdaController allows you to create abstract services that receive commands via the AWS Lambda protocol to operations automatically generated for commands defined in [ICommandable components](../../../commons/commands/icommandable). Each command is exposed as an invoke method that receives a command's name and parameters.
+The CommandableLambdaController allows you to create abstract services that receive commands via the AWS Lambda protocol to operations automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable) components. Each command is exposed as an invoke method that receives a command's name and parameters.
 
 **Important points**
 
@@ -23,8 +23,8 @@ The CommandableLambdaController allows you to create abstract services that rece
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
 Creates a new instance of the service.
