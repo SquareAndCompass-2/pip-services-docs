@@ -9,7 +9,7 @@ description: >
  
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
@@ -19,7 +19,7 @@ The AwsConnectionResolver class allows you to retrieve AWS connection and creden
 #### Configuration parameters
 
 - **connections**:                   
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **region**: (optional) AWS region
     - **partition**: (optional) AWS partition
     - **service**: (optional) AWS service
@@ -27,12 +27,12 @@ The AwsConnectionResolver class allows you to retrieve AWS connection and creden
     - **resource**: (optional) AWS resource id
     - **arn**: (optional) AWS resource ARN
 - **credentials**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **access_id**: AWS access/client id
     - **access_key**: AWS access/client key
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection.
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials.
 
 ### Fields
@@ -41,11 +41,11 @@ The AwsConnectionResolver class allows you to retrieve AWS connection and creden
 
 #### _connectionResolver
 Connection resolver.
-> `protected` **_connectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver)
+> `protected` **_connectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver)
 
 #### _credentialResolver
 Credential resolver.
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver)
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver)
 
 </span>
 
@@ -54,25 +54,25 @@ Credential resolver.
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### resolve
 Resolves a connection and credential parameters and generates a single
 AWSConnectionParams value.
 
-> `public` resolve(correlationId: string): Promise<[AwsConnectionParams](../aws_connection_params)>
+> `public` resolve(context: [Context](../../../components/context/context)): Promise<[AwsConnectionParams](../aws_connection_params)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain. 
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain. 
 - **returns**: Promise<[AwsConnectionParams](../aws_connection_params)> - receives an AWSConnectionParams value or error.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
