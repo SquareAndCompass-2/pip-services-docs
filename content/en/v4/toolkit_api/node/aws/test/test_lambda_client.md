@@ -24,19 +24,19 @@ Calls a remote action in AWS Lambda function.
 The name of the action is added as "cmd" parameter
 to the action parameters. 
 
-> `public` call(cmd: string, correlationId: string, params: any = {}): Promise\<any\>
+> `public` call(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - action name to be called.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
 #### callOneWay
 Calls an AWS Lambda Function action asynchronously without waiting for the response.
 
-> `public` callOneWay(cmd: string, correlationId: string, params: any = {}): Promise\<any\>
+> `public` callOneWay(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - action name to be called.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
