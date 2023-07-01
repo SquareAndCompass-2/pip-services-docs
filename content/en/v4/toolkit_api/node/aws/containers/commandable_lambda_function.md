@@ -16,26 +16,26 @@ The CommandableLambdaFunction class allows you to create AWS Lambda function tha
 
 **Important points**
 
-- All actions are automatically generated for commands defined in [ICommandable components](../../../commons/commands/icommandable). Each command is exposed as an action defined by the "cmd" parameter.
+- All actions are automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable) components. Each command is exposed as an action defined by the "cmd" parameter.
   
 - Container configuration for this Lambda function is stored in *"./config/config.yml"* file. But this path can be overriden by *CONFIG_PATH* environment variable.
  
-- **Note**: This component has been deprecated. Use [LambdaController](../../services/lambda_controller) instead.
+- **Note**: This component has been deprecated. Use [LambdaController](../../controllers/lambda_controller) instead.
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:service:lambda:\*:1.0**: (optional) [ILambdaController](../../services/ilambda_controller) services to handle action requests
-- **\*:service:commandable-lambda:\*:1.0**: (optional) [ILambdaController](../../services/ilambda_controller) services to handle action requests
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:service:lambda:\*:1.0**: (optional) [ILambdaController](../../controllers/ilambda_controller) services to handle action requests
+- **\*:service:commandable-lambda:\*:1.0**: (optional) [ILambdaController](../../controllers/ilambda_controller) services to handle action requests
 
 ### Constructors
 Creates a new instance of this lambda function.
 
 > `public` constructor(name: string, description?: string)
 
-- **name**: string - (optional) container name (accessible via [ContextInfo](../../../components/info/context_info)).
-- **description**: string - (optional) container description (accessible via [ContextInfo](../../../components/info/context_info)).
+- **name**: string - (optional) container name (accessible via [ContextInfo](../../../components/context/context_info)).
+- **description**: string - (optional) container description (accessible via [ContextInfo](../../../components/context/context_info)).
 
 ### Instance methods
 
