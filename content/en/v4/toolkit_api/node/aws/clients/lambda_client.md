@@ -7,7 +7,7 @@ description: >
     Abstract client that calls AWS Lambda Functions.
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
@@ -18,19 +18,19 @@ other parameters are passed to the action itself.
 #### Configuration parameters
 
 - **connections**:                   
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **region**: (optional) AWS region
 - **credentials**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **access_id**: AWS access/client id
     - **access_key**: AWS access/client key
 - **options**:
     - **connect_timeout**: (optional) connection timeout in milliseconds (default: 10 sec)
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections.
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections.
 - **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials.
 
 ### Constructors
@@ -55,12 +55,12 @@ The connection resolver.
 
 ### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 
 ### _dependencyResolver
 Dependencies resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 ### _lambda
 Reference to AWS Lambda Function.
@@ -68,7 +68,7 @@ Reference to AWS Lambda Function.
 
 ### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 ### _opened
 Opened flag.
@@ -76,7 +76,7 @@ Opened flag.
 
 ### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 </span>
 
@@ -85,10 +85,10 @@ Tracer.
 #### call
 Calls an AWS Lambda Function action.
 
-> `protected` call(cmd: string, correlationId: string, params: any = {}): Promise\<any\>
+> `protected` call(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - action name to be called.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
@@ -96,45 +96,45 @@ Calls an AWS Lambda Function action.
 #### callOneWay
 Calls a AWS Lambda Function action asynchronously without waiting for response.
 
-> `protected` callOneWay(cmd: string, correlationId: string, params: any = {}): Promise\<any\>
+> `protected` callOneWay(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - an action name to be called.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
 #### close
 Closes component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### instrument
 Adds instrumentation to log calls and measures call time.
 It returns a InstrumentTiming object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing) 
+> `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **name**: string - a method name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
 #### invoke
 Performs AWS Lambda Function invocation.
 
-> `protected` invoke(invocationType: string, cmd: string, correlationId: string, args: any): Promise\<any\>
+> `protected` invoke(invocationType: string, cmd: string, context: [Context](../../../components/context/context), args: any): Promise\<any\>
 
 - **invocationType**: string - invocation type: "RequestResponse" or "Event"
 - **cmd**: string - action name to be called.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **args**: any - action arguments
 - **returns**: Promise\<any\> - action result.
 
@@ -148,16 +148,16 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 ### Examples
@@ -166,9 +166,9 @@ Sets references to dependent components.
 class MyLambdaClient extends LambdaClient implements IMyClient {
     ...
  
-    public async getData(correlationId: string, id: string): Promise<MyData> {
-        let timing = this.instrument(correlationId, 'myclient.get_data');
-        const result = await this.call("get_data" correlationId, { id: id });
+    public async getData(context: Context, id: string): Promise<MyData> {
+        let timing = this.instrument(context, 'myclient.get_data');
+        const result = await this.call("get_data" context, { id: id });
         timing.endTiming();
         return result;
     }
