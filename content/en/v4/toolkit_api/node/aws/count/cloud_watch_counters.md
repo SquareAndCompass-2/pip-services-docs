@@ -47,7 +47,7 @@ Closes component and frees used resources.
 
 > `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### configure
 Configures a component by passing its configuration parameters.
@@ -69,7 +69,7 @@ Opens the component.
 
 > `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### save
 Saves the current counters' measurements.
