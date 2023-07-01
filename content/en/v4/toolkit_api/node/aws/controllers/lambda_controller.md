@@ -7,7 +7,7 @@ description: >
     Abstract service that receives remove calls via the AWS Lambda protocol.
 ---
 
-**Implements**: [ILambdaController](../ilambda_controller), [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements**: [ILambdaController](../ilambda_controller), [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 The LambdaController class allows you to create abstract services that receive remove calls via the AWS Lambda protocol.
@@ -24,8 +24,8 @@ This service is intended to work inside LambdaFunction container that exploses r
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 
 ### Constructors
@@ -41,19 +41,19 @@ Creates an instance of this service.
 
 #### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 Dependency resolver.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 </span>
 
@@ -85,24 +85,24 @@ Applies a validation according to a given schema.
 
 > `protected` applyValidation(schema: [Schema](../../../commons/validate/schema), action: (params: any) => Promise\<any\>): (params: any) => Promise\<any\>
 
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema
+- **schema**: [Schema](../../../data/validate/schema) - validation schema
 - **action**: (params: any) => Promise\<any\> - action
 - **returns**: (params: any) => Promise\<any\> - results
 
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 
 #### configure
 Configures a component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### generateActionCmd
@@ -124,11 +124,11 @@ Gets all the actions supported by the service.
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing) 
+> `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 - **name**: string -  method name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing)  - InstrumentTiming object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing)  - InstrumentTiming object to end the time measurement.
 
 #### isOpen
 Checks if the component is open.
@@ -141,26 +141,26 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 #### registerAction
 Registers an action in AWS Lambda function.
 
-> `protected` registerAction(name: string, schema: [Schema](../../../commons/validate/schema), action: (params: any) => Promise\<any\>): void
+> `protected` registerAction(name: string, schema: [Schema](../../../data/validate/schema), action: (params: any) => Promise\<any\>): void
 
 - **name**: string - action name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **action**: (params: any) => Promise\<any\> - action function that is called when an operation is invoked.
 
 #### registerActionWithAuth
 Registers an action with authorization.
 
-> `protected` registerActionWithAuth(name: string, schema: [Schema](../../../commons/validate/schema), authorize: (call: any, next: (call: any) => Promise\<any\>) => Promise\<any\>, action: (call: any) => Promise\<any\>): void
+> `protected` registerActionWithAuth(name: string, schema: [Schema](../../../data/validate/schema), authorize: (call: any, next: (call: any) => Promise\<any\>) => Promise\<any\>, action: (call: any) => Promise\<any\>): void
 
 - **name**: string - action's name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **authorize**: (call: any, next: (call: any) => Promise\<any\> - authorization interceptor
 - **action**: (call: any) => Promise\<any\> - action function that is called when an operation is invoked.
 
@@ -176,9 +176,9 @@ Registers a middleware for actions in AWS Lambda service.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references used to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references used to locate the component dependencies.
 
 ### Abstract methods
 
@@ -211,9 +211,9 @@ class MyLambdaController extends LambdaController {
    }
    public register(): void {
        registerAction("get_mydata", null, async (params) => {
-           let correlationId = params.correlation_id;
+           let context = params.correlation_id;
            let id = params.id;
-           return await this._controller.getMyData(correlationId, id);
+           return await this._controller.getMyData(context, id);
        });
        ...
    }
