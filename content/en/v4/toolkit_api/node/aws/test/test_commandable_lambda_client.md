@@ -30,7 +30,7 @@ to the action parameters.
 > `public` callCommand\<T\>(name: string, context: [Context](../../../components/context/context), params: any): Promise\<T\>
 
 - **name**: string - an action name
-- **correlation**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **correlation**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - command parameters.
 - **returns**: Promise\<T\> - action result.
 
