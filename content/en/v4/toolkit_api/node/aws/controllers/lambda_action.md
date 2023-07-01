@@ -21,7 +21,7 @@ Command to call the action
 
 #### schema
 Schema to validate action parameters
-> `public` **schema**: [Schema](../../../commons/validate/schema)
+> `public` **schema**: [Schema](../../../data/validate/schema)
 
 #### action
 Action to be executed
