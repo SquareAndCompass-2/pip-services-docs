@@ -39,14 +39,14 @@ Opens the component.
 
 > `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### sendLogs
 Sends log messages.
 
 > `public` sendLogs(context: [Context](../../../components/context/context), messages: [DataDogLogMessage[]](../datadog_log_message)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **messages**: [DataDogLogMessage[]](../datadog_log_message) - messages to send.
 
 #### setReferences
