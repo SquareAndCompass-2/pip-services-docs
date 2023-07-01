@@ -88,7 +88,7 @@ Calls an AWS Lambda Function action.
 > `protected` call(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
@@ -99,7 +99,7 @@ Calls a AWS Lambda Function action asynchronously without waiting for response.
 > `protected` callOneWay(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
 
 - **cmd**: string - an action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
@@ -108,7 +108,7 @@ Closes component and frees used resources.
 
 > `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### configure
 Configures a component by passing its configuration parameters.
@@ -123,7 +123,7 @@ It returns a InstrumentTiming object that is used to end the time measurement.
 
 > `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **name**: string - a method name.
 - **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
@@ -134,7 +134,7 @@ Performs AWS Lambda Function invocation.
 
 - **invocationType**: string - invocation type: "RequestResponse" or "Event"
 - **cmd**: string - action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **args**: any - action arguments
 - **returns**: Promise\<any\> - action result.
 
@@ -150,7 +150,7 @@ Opens the component.
 
 > `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### setReferences
 Sets references to dependent components.
