@@ -9,7 +9,7 @@ description: >
  
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 The AwsConnectionParams class contains connection parameters used to authenticate against Amazon Web Services (AWS) and connect to specific AWS resources.
@@ -27,7 +27,7 @@ The AwsConnectionParams class contains connection parameters used to authenticat
 - **client_key**: alternative to access_key
 - **secret_key**: alternative to access_key
 
-In addition to standard parameters, [CredentialParams](../../../components/auth/credential_params) may contain any number of custom parameters
+In addition to standard parameters, [CredentialParams](../../../config/auth/credential_params) may contain any number of custom parameters
 
 ### Constructors
 Creates an new instance of the connection parameters.
@@ -173,9 +173,9 @@ Sets the AWS service name.
 #### validate
 Validates this connection parameters 
 
-> `public` validate(correlationId: string)
+> `public` validate(context: [Context](../../../components/context/context))
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
 
 ### Static methods
 
@@ -185,9 +185,9 @@ The values are retrieved from "connection" and "credential" sections.
 
 See [mergeConfigs](#mergeconfigs)
 
-> `public static` fromConfig(config: [ConfigParams](../../../commons/config/config_params)): [AwsConnectionParams]()
+> `public static` fromConfig(config: [ConfigParams](../../../components/config/config_params)): [AwsConnectionParams]()
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters
 - **returns**: [AwsConnectionParams]() - generated AwsConnectionParams object.
 
 
@@ -205,9 +205,9 @@ Example: *"Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"*
 Retrieves AwsConnectionParams from multiple configuration parameters.
 The values are retrieved from "connection" and "credential" sections.
 
-> `public static` mergeConfigs(...configs: [ConfigParams[]](../../../commons/config/config_params)): [AwsConnectionParams]()
+> `public static` mergeConfigs(...configs: [ConfigParams[]](../../../components/config/config_params)): [AwsConnectionParams]()
 
-- **configs**: [ConfigParams[]](../../../commons/config/config_params) - list with configuration parameters.
+- **configs**: [ConfigParams[]](../../../components/config/config_params) - list with configuration parameters.
 - **returns**: [AwsConnectionParams]() - generated AwsConnectionParams object.
 
 
