@@ -94,7 +94,7 @@ Closes a component and frees used resources.
 
 > `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
@@ -126,7 +126,7 @@ It returns a Timing object that is used to end the time measurement.
 
 > `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 - **name**: string -  method name.
 - **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing)  - InstrumentTiming object to end the time measurement.
 
@@ -143,7 +143,7 @@ Opens the component.
 
 > `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 #### registerAction
 Registers an action in AWS Lambda function.
