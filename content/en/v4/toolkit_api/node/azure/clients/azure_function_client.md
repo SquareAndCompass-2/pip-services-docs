@@ -7,7 +7,7 @@ description: >
     Abstract client that calls Azure Functions.
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 When making calls "cmd" parameter determines which what action shall be called, while
@@ -29,9 +29,9 @@ other parameters are passed to the action itself.
     - **auth_code**: Azure Function auth code if use custom authorization provide empty string
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections.
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections.
 - **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials.
 
 ### Fields
@@ -56,11 +56,11 @@ The connection resolver.
 
 ### _counters
 Performance counters.
-> **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 ### _dependencyResolver
 Dependencies resolver.
-> **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 ### _headers
 The default headers to be added to every request.
@@ -68,7 +68,7 @@ The default headers to be added to every request.
 
 ### _logger
 Logger.
-> **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 ### _timeout
 The invocation timeout in milliseconds.
@@ -76,7 +76,7 @@ The invocation timeout in milliseconds.
 
 ### _tracer
 The tracer.
-> **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 ### _uri
 The remote service uri which is calculated on open.
@@ -109,20 +109,20 @@ Closes component and frees used resources.
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### instrument
 Adds instrumentation to log calls and measure call time.
 It returns a CounterTiming object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **correlationId**: string - (optional) transaction id to trace execution through call chain.
 - **name**: string - a method name.
-- **return**: [InstrumentTiming](../../../rpc/services/instrument_timing) - object to end the time measurement.
+- **return**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
 
 #### invoke
