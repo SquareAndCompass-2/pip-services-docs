@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable),
-[IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable),
+[IOpenable](../../../components/run/iopenable)
 
 ### Description
 The CassandraConnection class allows you to create Cassandra connections using the default driver.
@@ -21,12 +21,12 @@ The CassandraConnection class allows you to create Cassandra connections using t
 #### Configuration parameters
 
 - **connection(s)**:    
-    - **discovery_key**: (optional) key used to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key used to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number (default: 9042)
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:    
-    - **store_key**: (optional) key used to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store/)
+    - **store_key**: (optional) key used to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store/)
     - **username**: username
     - **password**: user's password
 - **options**:
@@ -35,8 +35,8 @@ The CassandraConnection class allows you to create Cassandra connections using t
     - **max_pool_size**: (optional) maximum number of clients the pool should contain (default: 10)
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** (optional) credential stores to resolve credentials
 
 
@@ -55,11 +55,11 @@ Connection resolver.
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _options
 Configuration options.
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params)
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params)
 
 #### _datacenter
 Cassandra datacenter's name.
@@ -82,17 +82,17 @@ Creates a new instance of the connection component.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Configures the component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### getConnection
@@ -126,14 +126,14 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context..
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
