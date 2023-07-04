@@ -6,9 +6,9 @@ gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-servi
 description: > 
     Logger that dumps execution logs to a Fluentd service.
 ---
-**Extends:** [CachedLogger](../../../components/log/cached_logger)
+**Extends:** [CachedLogger](../../../observability/log/cached_logger)
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 The FluentdLogger class allows you to create loggers that dump execution logs to a Fluentd service.
@@ -35,8 +35,8 @@ The FluentdLogger class allows you to create loggers that dump execution logs to
 
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/info/context_info) to detect the context id and specify the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/context/context_info) to detect the context id and specify the counter's source.
 
 ### Constructors
 
@@ -50,17 +50,17 @@ Creates a new instance of the logger.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -74,25 +74,25 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### save
 Saves log messages from the cache.
 
-> `protected` save(messages: [LogMessage](../../../components/log/log_message)[]): Promise\<void\>
+> `protected` save(messages: [LogMessage](../../../observability/log/log_message)[]): Promise\<void\>
 
-- **messages**: [LogMessage](../../../components/log/log_message)[] - list with log messages
+- **messages**: [LogMessage](../../../observability/log/log_message)[] - list with log messages
 
 
 #### setReferences
 Sets references to dependent components.
 
-> setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **messages**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **messages**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 ### Examples
 
@@ -106,6 +106,6 @@ logger.configure(ConfigParams.fromTuples(
   
 await logger.open("123");
    
-logger.error("123", ex, "Error occured: %s", ex.message);
-logger.debug("123", "Everything is OK.");
+logger.error("123_component", ex, "Error occured: %s", ex.message);
+logger.debug("123_component", "Everything is OK.");
 ```
