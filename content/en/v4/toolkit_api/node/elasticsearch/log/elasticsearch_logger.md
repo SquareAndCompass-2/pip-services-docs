@@ -8,9 +8,9 @@ description: >
 
 ---
 
-**Extends:** [CachedLogger](../../../components/log/cached_logger)
+**Extends:** [CachedLogger](../../../observability/log/cached_logger)
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -27,7 +27,7 @@ Important points
 - **source**: source (context) name
 
 **connection(s)**:
-- **discovery_key**: (optional) a key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) a key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **protocol**: connection protocol: http or https
 - **host**: host name or IP address
 - **port**: port number
@@ -46,8 +46,8 @@ Important points
 - **include_type_name**: will create using a "typed" index compatible with ElasticSearch 6.x (default: false)
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/info/context_info) to detect the context id and specify the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/context/context_info) to detect the context id and specify the counter's source.
 
 ### Constructors
 
@@ -61,17 +61,17 @@ Creates a new instance of the logger.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### configure
 Closes the component and frees used resources.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### getLogItem
@@ -92,25 +92,25 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
 
 
 #### save
 Saves log messages from the cache.
 
-> `protected` save(messages: [LogMessage](../../../components/log/log_message)[]): Promise\<void\>
+> `protected` save(messages: [LogMessage](../../../observability/log/log_message)[]): Promise\<void\>
 
-- **messages**: [LogMessage](../../../components/log/log_message)[] - list with log messages
+- **messages**: [LogMessage](../../../observability/log/log_message)[] - list with log messages
 
 
 #### setReferences
 Sets references to dependent components.
 
-> setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **messages**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **messages**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 ### Examples
 
@@ -122,7 +122,7 @@ logger.configure(ConfigParams.fromTuples(
     "connection.port", 9200
 ));
     
-await logger.open("123");
+await logger.open("123_component");
     
 logger.error("123", ex, "Error occured: %s", ex.message);
 logger.debug("123", "Everything is OK.");
