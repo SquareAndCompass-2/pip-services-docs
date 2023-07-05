@@ -7,7 +7,7 @@ description: >
     Abstract client that calls Google Functions.
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 When making calls "cmd" parameter determines which what action shall be called, while
@@ -30,9 +30,9 @@ other parameters are passed to the action itself.
     - **auth_token**:    Google-generated ID token, if use custom authorization provide empty string
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections.
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections.
 - **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials.
 
 ### Fields
@@ -57,11 +57,11 @@ The connection resolver.
 
 ### _counters
 Performance counters.
-> **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 ### _dependencyResolver
 Dependencies resolver.
-> **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> **_dependencyResolver**: [DependencyResolver](../../../gcp/clients/cloud_function_client)
 
 ### _headers
 The default headers to be added to every request.
@@ -69,7 +69,7 @@ The default headers to be added to every request.
 
 ### _logger
 Logger.
-> **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 ### _timeout
 The invocation timeout in milliseconds.
@@ -77,7 +77,7 @@ The invocation timeout in milliseconds.
 
 ### _tracer
 The tracer.
-> **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 ### _uri
 The remote service uri which is calculated on open.
@@ -92,47 +92,47 @@ The remote service uri which is calculated on open.
 #### call
 Calls a Google Function action.
 
-> `protected` call\<T\>(cmd: string, correlationId: string, params: any = {}): Promise\<T\>
+> `protected` call\<T\>(cmd: string, context: [IContext](../../../components/context/icontext), params: any = {}): Promise\<T\>
 
 - **cmd**: string - an action name to be called.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<T\> - action result.
 
 #### close
 Closes component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### instrument
 Adds instrumentation to log calls and measure call time.
 It returns a CounterTiming object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - a method name.
-- **return**: [InstrumentTiming](../../../rpc/services/instrument_timing) - object to end the time measurement.
+- **return**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
 
 #### invoke
 Performs Google Function invocation.
 
-> `protected` invoke\<T\>(cmd: string, correlationId: string, args: any): Promise\<T\>
+> `protected` invoke\<T\>(cmd: string, context: [IContext](../../../components/context/icontext), args: any): Promise\<T\>
 
 - **cmd**: string - an action name to be called.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **args**: any - action arguments
 - **returns**: Promise\<T\> - action result.
 
@@ -148,16 +148,16 @@ Checks if the component is opened.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies. 
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies. 
 
 
 
@@ -167,9 +167,9 @@ Sets references to dependent components.
 class MyCloudFunctionClient extends CloudFunctionClient implements IMyClient {
     ...
  
-    public async getData(correlationId: string, id: string): Promise<MyData> {
-        let timing = this.instrument(correlationId, 'myclient.get_data');
-        const result = await this.call("get_data" correlationId, { id: id });
+    public async getData(context: IContext, id: string): Promise<MyData> {
+        let timing = this.instrument(context, 'myclient.get_data');
+        const result = await this.call("get_data" context, { id: id });
         timing.endTiming();
         return result;
     }
