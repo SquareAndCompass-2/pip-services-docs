@@ -88,9 +88,9 @@ let connectionResolver = new GcpConnectionResolver();
 connectionResolver.configure(config);
 connectionResolver.setReferences(references);
     
-const connectionParams = await connectionResolver.resolve("123");
+const connectionParams = await connectionResolver.resolve("123_connectionParams");
 ```
 
 ### See also
-- #### [ConnectionParams](../../../components/connect/connection_params)
-- #### [IDiscovery](../../../components/connect/idiscovery)
+- #### [ConnectionParams](../../../config/connect/connection_params)
+- #### [IDiscovery](../../../config/connect/idiscovery)
