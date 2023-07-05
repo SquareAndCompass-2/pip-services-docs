@@ -8,7 +8,7 @@ description: >
     and connect to specific Google resources.
 ---
 
-**Extends:** [ConfigParams](../../../commons/config/config_params)
+**Extends:** [ConfigParams](../../../components/config/config_params)
 
 ### Description
 Contains connection parameters to authenticate against Google Functions
@@ -16,7 +16,7 @@ and connect to specific Google Function.
 
 The class is able to compose and parse Google Function connection parameters.
 
-In addition to standard parameters [CredentialParams](../../../components/auth/credential_params) may contain any number of custom parameters
+In addition to standard parameters [CredentialParams](../../../config/auth/credential_params) may contain any number of custom parameters
 
 
 #### Configuration parameters
@@ -130,9 +130,9 @@ Sets the region where your function is deployed.
 #### validate
 Validates this connection parameters 
 
-> `public` validate(correlationId: string)
+> `public` validate(context: [IContext](../../../components/context/icontext))
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 ### Static methods
 
@@ -149,9 +149,9 @@ Example: "Key1=123;Key2=ABC;Key3=2016-09-16T00:00:00.00Z"
 #### fromConfig
 Validates this connection parameters 
 
-> `public static` fromConfig(config: [ConfigParams](../../../commons/config/config_params)): [GcpConnectionParams]()
+> `public static` fromConfig(config: [ConfigParams](../../../components/config/config_params)): [GcpConnectionParams]()
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters
 - **returns**: [GcpConnectionParams]() - the generated GcpConnectionParams object.
 
 #### mergeConfigs
