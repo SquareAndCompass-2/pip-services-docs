@@ -14,13 +14,13 @@ The CloudFunctionRequestHelper class contains methods used to get correlationIds
 
 ### Static methods
 
-#### getCorrelationId
-Returns a correlationId from the Google Function request.
+#### getTraceId
+Returns a traceId from the Google Function request.
 
-> `public static` getCorrelationId(req: any): string
+> `public static` getTraceId(req: any): string
 
 - **req**: any - Google Function request.
-- **returns**: string - returned correlationId from request.
+- **returns**: string - returned traceId from request.
 
 #### getCommand
 Returns a command from the Google Function request.
@@ -33,7 +33,7 @@ Returns a command from the Google Function request.
 #### getParametrs
 Returns a body from the Google Function http request.
 
-> `public static` getParametrs(req: any): [Parameters](../../../commons/run/parameters)
+> `public static` getParametrs(req: any): [Parameters](../../../components/exec/parameters)
 
 - **req**: any - Google Function request.
-- **returns**: [Parameters](../../../commons/run/parameters) - returned body from request.
+- **returns**: [Parameters](../../../components/exec/parameters) - returned body from request.
