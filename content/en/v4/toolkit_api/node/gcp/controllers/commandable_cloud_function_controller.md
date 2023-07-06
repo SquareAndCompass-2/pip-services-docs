@@ -10,7 +10,7 @@ description: >
 **Extends**: [CloudFunctionController](../cloud_function_controller)
 
 ### Description
-The CommandableCloudFunctionController class allows you to create abstract services that receive commands via the Google Function protocols to operations automatically generated for commnads defined in [ICommandable components](../../../commons/commands/icommandable).
+The CommandableCloudFunctionController class allows you to create abstract services that receive commands via the Google Function protocols to operations automatically generated for commnads defined in [ICommandable](../../../rpc/commands/icommandable) components.
 
 **Important points** 
 
@@ -27,8 +27,8 @@ The CommandableCloudFunctionController class allows you to create abstract servi
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
 
@@ -43,10 +43,10 @@ The CommandableCloudFunctionController class allows you to create abstract servi
 Returns body from Google Function request.
 This method can be overloaded in child classes
 
-> `protected` getParametrs(req: any): [Parameters](../../../commons/run/parameters)
+> `protected` getParametrs(req: any): [Parameters](../../../components/exec/parameters)
 
 - **req**: any - Google Function request.
-- **returns**: [Parameters](../../../commons/run/parameters) - Returns Parameters from request
+- **returns**: [Parameters](../../../components/exec/parameters) - Returns Parameters from request
 
 #### register
 Registers all actions in Google Function.
