@@ -91,14 +91,14 @@ This method can be overloaded in child classes
 - **req**: [Request](https://expressjs.com/ru/api.html#req) - Google Function request
 - **returns**: string - Returns command from req
 
-#### getContext
-Returns a context from a Google Function request.
+#### getTraceID
+Returns a trace id from a Google Function request.
 This method can be overloaded in child classes
 
-> `protected` getContext(req: [Request](https://expressjs.com/ru/api.html#req)): string
+> `protected` getTraceID(req: [Request](https://expressjs.com/ru/api.html#req)): string
 
 - **req**: [Request](https://expressjs.com/ru/api.html#req) - Google Function request
-- **returns**: string - Returns a context object from req
+- **returns**: string - Returns a TraceId from req
 
 #### getHandler
 Return plugin function
