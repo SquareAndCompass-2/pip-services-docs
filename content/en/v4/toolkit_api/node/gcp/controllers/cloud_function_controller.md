@@ -7,7 +7,7 @@ description: >
     Abstract service that receives remove calls via the Google Function protocol.
 ---
 
-**Implements**: [ICloudFunctionController](../icloud_function_controller), [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements**: [ICloudFunctionController](../icloud_function_controller), [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 The CloudFunctionController class allows you to create a service that receives remove calls via the Google Function protocol.
@@ -23,8 +23,8 @@ The CloudFunctionController class allows you to create a service that receives r
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
 Creates an instance of this service.
@@ -39,19 +39,19 @@ Creates an instance of this service.
 
 #### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observabilitys/trace/composite_tracer)
 
 </span>
 
@@ -68,9 +68,9 @@ Applies interceptors to the action.
 #### applyValidation
 Performs a validation.
 
-> `protected` applyValidation(schema: [Schema](../../../commons/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>
+> `protected` applyValidation(schema: [Schema](../../../data/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>
 
-- **schema**: [Schema](../../../commons/validate/schema) - schema used in the validation
+- **schema**: [Schema](../../../data/validate/schema) - schema used in the validation
 - **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action
 - **returns**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - returned result
 
@@ -86,9 +86,9 @@ Closes a component and frees used resources.
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../..//components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../..//components/config/config_params) - configuration parameters to be set.
 
 #### generateActionCmd
 Adds '.cmd' to a command name
@@ -130,11 +130,11 @@ This method can be overloaded in child classes
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 - **name**: string - method's name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - Timing object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - Timing object to end the time measurement.
 
 #### isOpen
 Checks if the component is open.
@@ -154,10 +154,10 @@ Opens the component.
 #### registerAction
 Registers an action in Google Function function.
 
-> `protected` registerAction(name: string, schema: [Schema](../../../commons/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): void
+> `protected` registerAction(name: string, schema: [Schema](../../../data/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): void
 
 - **name**: string - action name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action function that is called when the operation is invoked.
 
 #### registerActionWithAuth
@@ -166,7 +166,7 @@ Registers an action with authorization.
 > `protected` registerActionWithAuth(name: string, schema: Schema, authorize: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\>, action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): void
 
 - **name**: string - action's name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **authorize**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\> - authorization interceptor
 - **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action function that is called when the operation is invoked.
 
@@ -182,9 +182,9 @@ Registers a middleware for actions in Google Function service.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
@@ -222,9 +222,9 @@ class MyCloudFunctionController extends CloudFunctionController {
    public register(): void {
        registerAction("get_mydata", null, async (req, res) => {
            let params = req.body;
-           let correlationId = params.correlation_id;
+           let traceId = params.trace_id;
            let id = params.id;
-           const result = await this._controller.getMyData(correlationId, id);
+           const result = await this._controller.getMyData(traceId, id);
            
            res.send(result);
        });
@@ -244,5 +244,5 @@ service.setReferences(References.fromTuples(
    new Descriptor("mygroup","controller","default","default","1.0"), controller
 ));
 
-service.open("123");
+service.open("123_service");
 ```
