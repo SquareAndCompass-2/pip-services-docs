@@ -72,6 +72,6 @@ service.setReferences(References.fromTuples(
    new Descriptor("mygroup","controller","default","default","1.0"), controller
 ));
 
-await service.open("123");
+await service.open("123_service");
 console.log("The Google Function service is running");
 ```
