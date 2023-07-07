@@ -96,9 +96,9 @@ The default headers to be added to every request.
 The connection timeout in milliseconds.
 > `protected` **_connectTimeout**: number = 1000
 
-#### _correlationIdLocation
+#### _contextIdLocation
 Defines where to add the correlation id.
-> `protected` **_correlationIdLocation**: string = "query"
+> `protected` **_contextLocation**: string = "query"
 
 </span>
 
@@ -106,13 +106,13 @@ Defines where to add the correlation id.
 
 ### Instance methods
 
-#### addCorrelationId
-Adds a correlation id (correlationId) to the invocation parameter map.
+#### addTraceId
+Adds a trace id (trace_id) to invocation parameter map.
 
-> `protected` addCorrelationId(params: any, correlationId: string): any
+> `protected` addTraceId(params: any, context: [IContext](../../../components/context/icontext)): any
 
 - **params**: any - invocation parameters.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: any - invocation parameters with added correlation id.
 
 
@@ -141,10 +141,10 @@ Adds paging parameters (skip, take, total) to invocation parameter map.
 #### call
 Calls a remote method via HTTP/REST protocol.
 
-> `protected` call\<T\>(method: string, route: string, correlationId?: string, params: any = {}, data?: any): Promise\<T\>
+> `protected` call\<T\>(method: string, route: string, context?: string, params: any = {}, data?: any): Promise\<T\>
 - **method**: string - HTTP method: "get", "head", "post", "put", "delete"
 - **route**: string - a command route. Base route will be added to this route
-- **correlationId**: string - (optional) transaction id used to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - (optional) query parameters.
 - **data**: any - (optional) body object.
 - **returns**: Promise\<T\> - result object
@@ -153,9 +153,9 @@ Calls a remote method via HTTP/REST protocol.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
@@ -170,9 +170,9 @@ Configures a component by passing configuration parameters.
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method name.
 - **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - InstrumentTiming object used to end the time measurement.
 
@@ -188,9 +188,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### setReferences
