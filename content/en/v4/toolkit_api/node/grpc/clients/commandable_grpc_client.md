@@ -16,12 +16,12 @@ The CommandableGrpcClient class allows you to create clients that call a command
 
 Important points
 
-- Commandable services are generated automatically for [ICommandable](../../../commons/commands/icommandable). Each command is exposed as an Invoke method that receives all parameters as args.
+- Commandable services are generated automatically for [ICommandable](../../../rpc/commands/icommandable). Each command is exposed as an Invoke method that receives all parameters as args.
 
 #### Configuration parameters
 
 - **connection(s)**:   
-    - **discovery_key**: (optional) a key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)   
+    - **discovery_key**: (optional) a key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)   
     - **protocol**: connection protocol: http or https   
     - **host**: host name or IP address   
     - **port**: port number   
@@ -32,9 +32,9 @@ Important points
     - **timeout**: invocation timeout in milliseconds (default: 10 sec)   
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements and specify the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements and specify the counter's source.
 
 ### Constructors
 
