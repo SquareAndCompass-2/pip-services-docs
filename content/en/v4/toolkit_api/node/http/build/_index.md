@@ -15,7 +15,7 @@ description: >
 
 ### Classes
 
-#### [DefaultLogicFactory](../default_logic_factory)
+#### [DefaultLogicFactory](default_http_factory)
 Creates business logic components by their descriptors.
 
 </div>
