@@ -26,14 +26,14 @@ The RestClient class allows you to create clients that call remote endpoints usi
     - **retries**: number of retries (default: 3)
     - **connect_timeout**: connection timeout in milliseconds (default: 10 sec)
     - **timeout**: invocation timeout in milliseconds (default: 10 sec)
-    - **correlationId**: place for adding correalationId, query - in query string, headers - in headers, both - in query and headers (default: query)
+    - **context**: a context to trace execution through a call chain.
 
 
 #### References
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../obesrvability/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../obesrvability/count/icounters) components to pass collected measurements
-- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../obesrvability/trace/itracer) components to record traces
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../observability/trace/itracer) components to record traces
 - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve a connection
 
 
@@ -46,7 +46,7 @@ The RestClient class allows you to create clients that call remote endpoints usi
 
 #### _counters
 A list of counters.
-> `protected` **_counters**: [ICounters](../../../obesrvability/count/icounters)[] = []
+> `protected` **_counters**: [ICounters](../../../observability/count/icounters)[] = []
 
 #### _client
 The HTTP client.
@@ -66,19 +66,19 @@ The connection resolver.
 
 #### _logger
 The logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger) = CompositeLogger()
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = CompositeLogger()
 
 #### _counters
 The performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters) = CompositeCounters()
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters) = CompositeCounters()
 
 #### _tracer
 The tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer) = CompositeTracer()
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = CompositeTracer()
 
 #### _options
 The configuration options.
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params) = ConfigParams()
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params) = ConfigParams()
 
 #### _baseRoute
 The base route.
@@ -161,20 +161,20 @@ Closes a component and frees used resources.
 #### configure
 Configures a component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### instrument
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../services/instrument_timing)
+> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **correlationId**: string - (optional) transaction id used to trace execution through a call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../../services/instrument_timing) - InstrumentTiming object used to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - InstrumentTiming object used to end the time measurement.
 
 
 #### isOpen
@@ -196,19 +196,19 @@ Opens the component.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references used to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references used to locate the component dependencies.
 
 ### Examples
 
 ```typescript
 class MyRestClient extends RestClient implements IMyClient {
    ...
-   public async getData(correlationId: string, id: string): Promise<MyData> {
-        let timing = this.instrument(correlationId, 'myclient.get_data');
+   public async getData(context: IContext, id: string): Promise<MyData> {
+        let timing = this.instrument(context, 'myclient.get_data');
         try {
-            return await this.call("get", "/get_data" correlationId, { id: id }, null);
+            return await this.call("get", "/get_data" context, { id: id }, null);
         } catch (ex) {
             timing.endFailure(ex);
         } finally {
