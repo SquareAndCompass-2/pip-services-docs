@@ -23,5 +23,5 @@ Creates a new instance of the factory.
 
 ### See also
 - #### [Factory](../../../components/build/factory) 
-- #### [GrpcEndpoint](../../services/grpc_endpoint)
+- #### [GrpcEndpoint](../../controllers/grpc_endpoint)
 
