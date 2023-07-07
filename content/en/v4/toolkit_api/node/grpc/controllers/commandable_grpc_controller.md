@@ -8,15 +8,15 @@ description: >
 
 ---
 
-**Extends:** [GrpcController](../../services/grpc_service)
+**Extends:** [GrpcController](../../controllers/grpc_controller)
 
 See also [CommandableGrpcClient](../../clients/commandable_grpc_client), 
-[GrpcController](../grpc_service)
+[GrpcController](../grpc_controller)
 
 ### Description
 
 Abstract service that receives commands via GRPC protocol
-to operations automatically generated for commands defined in [ICommandable](../../../commons/commands/icommandable).
+to operations automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable).
 
 Important points
 
@@ -30,16 +30,16 @@ GRPC-based remote interface.
     - **endpoint**: override for HTTP Endpoint dependency    
     - **controller**: override for Controller dependency    
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)    
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)    
     - **protocol**: connection protocol: http or https    
     - **host**: host name or IP address    
     - **port**: port number    
     - **uri**: resource URI or connection string with all parameters in it    
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements as specified by the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements as specified by the counter's source.
 - **\*:endpoint:grpc:*:1.0** - (optional) [GrpcEndpoint](../grpc_endpoint) reference
 
 ### Constructors
@@ -61,11 +61,11 @@ Registers all service routes in a gRPC endpoint.
 #### registerCommandableMethod
 Registers a commandable method in this objects GRPC server (service) by the given name.,
 
-> `protected` registerCommandableMethod(method: string, schema: [Schema](../../../commons/validate/schema), action: (correlationId: string, data: any) => Promise\<any\>): void
+> `protected` registerCommandableMethod(method: string, schema: [Schema](../../../data/validate/schema), action: (context: [IContext](../../../components/context/icontext), data: any) => Promise\<any\>): void
 
 - **method**: string - the GRPC method name.
-- **schema**: [Schema](../../../commons/validate/schema) - the schema to use for parameter validation.
-- **action**: (correlationId: string, data: any) => Promise\<any\> - the action to perform at the given route.
+- **schema**: [Schema](../../../data/validate/schema) - the schema to use for parameter validation.
+- **action**: (context: [IContext](../../../components/context/icontext), data: any) => Promise\<any\> - the action to perform at the given route.
 
 
 ### Examples
