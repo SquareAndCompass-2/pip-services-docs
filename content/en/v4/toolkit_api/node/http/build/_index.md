@@ -1,4 +1,4 @@
----
+![image](https://github.com/pip-services/pip-services-docs/assets/68734409/551fd72b-9232-4271-af45-a010f582b5e7)---
 type: docs
 title: "Build"
 linkTitle: "Build"
@@ -15,7 +15,7 @@ description: >
 
 ### Classes
 
-#### [DefaultLogicFactory](default_logic_factory)
+#### [DefaultLogicFactory](../default_logic_factory)
 Creates business logic components by their descriptors.
 
 </div>
