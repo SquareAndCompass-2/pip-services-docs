@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IReferenceable](../../../commons/refer/ireferenceable),
-[IConfigurable](../../../commons/config/iconfigurable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IReferenceable](../../../component/refer/ireferenceable),
+[IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -18,7 +18,7 @@ The GrpcClient class allows you to create clients that call remote endpoints usi
 #### Configuration parameters
 
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)    
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)    
     - **protocol**: connection protocol: http or https    
     - **host**: host name or IP address    
     - **port**: port number     
@@ -54,15 +54,15 @@ The connection resolver.
 
 #### _logger
 The logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)()
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)()
 
 #### _counters
 The performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)()
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)()
 
 #### _options
 The configuration options.
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params)()
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params)()
 
 #### _connectTimeout
 The connection timeout in milliseconds.
@@ -78,7 +78,7 @@ The remote service uri which is calculated on openning.
 
 #### _tracer
 The tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer) = CompositeTracer()
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = CompositeTracer()
 
 </span>
 
@@ -88,10 +88,10 @@ The tracer.
 #### call
 Calls a remote method via GRPC protocol.
 
-> `protected` call(method: string, correlationId?: string, request: any = {}): Promise\<any\>
+> `protected` call(method: string, context?: [IContext](../../../components/context/icontext), request: any = {}): Promise\<any\>
 
 - **method**: string - name of the calling method
-- **correlationId**: any - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **request**: any - (optional) request object.
 - **returns**: Promise\<any\> - (optional) feature that receives the result object or error.
 
@@ -99,28 +99,28 @@ Calls a remote method via GRPC protocol.
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### instrument
 Adds instrumentation to log calls and measures call time.
 It returns a CounterTiming object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - CounterTiming object used to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - CounterTiming object used to end the time measurement.
 
 
 #### isOpen
@@ -134,17 +134,17 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 ### Examples
@@ -152,11 +152,11 @@ Sets references to dependent components.
 ```typescript
 class MyGrpcClient extends GrpcClient implements IMyClient {
     ...
-    public getData(correlationId: string, id: string): Promise<MyData> {
+    public getData(context: IContext, id: string): Promise<MyData> {
    
-        let timing = this.instrument(correlationId, 'myclient.get_data');
+        let timing = this.instrument(context, 'myclient.get_data');
         try {
-           return await this.call("get_data", correlationId, { id: id });
+           return await this.call("get_data", context, { id: id });
         } catch (err) {
             timing.endFailure(err);
             throw err;
