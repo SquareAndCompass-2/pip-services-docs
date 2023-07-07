@@ -8,7 +8,7 @@ description: >
 
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IRegisterable](../iregisterable), [IUnreferenceable](../../../commons/refer/iunreferenceable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IRegisterable](../iregisterable), [IUnreferenceable](../../../components/refer/iunreferenceable)
 
 
 ### Description
@@ -20,7 +20,7 @@ The GrpcController class allows you to create services that receive remote calls
     - **endpoint**: override for GRPC Endpoint dependency    
     - **controller**: override for Controller dependency    
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)    
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)    
     - **protocol**: connection protocol: http or https    
     - **host**: host name or IP address    
     - **port**: port number   
@@ -32,9 +32,9 @@ The GrpcController class allows you to create services that receive remote calls
  
 #### References
 
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurementsand as specified by the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurementsand as specified by the counter's source.
  
 
 
@@ -59,19 +59,19 @@ The GRPC endpoint that exposes this service.
 
 #### _dependencyResolver
 The dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../observability/refer/dependency_resolver)
 
 #### _logger
 The logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _counters
 The performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 #### _tracer
 The tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 </span>
 
@@ -90,9 +90,9 @@ This method is called by the service and must be overriden in child classes.
 #### applyValidation
 Performs a validation.
 
-> `protected` applyValidation(schema: [Schema](../../../commons/validate/schema), action: (call: any) => Promise\<any\>): (call: any) => Promise\<any\>
+> `protected` applyValidation(schema: [Schema](../../../data/validate/schema), action: (call: any) => Promise\<any\>): (call: any) => Promise\<any\>
 
-- **schema**: [Schema](../../../commons/validate/schema) - TODO: add description
+- **schema**: [Schema](../../../data/validate/schema) - TODO: add description
 - **action**: (call: any) => Promise\<any\> - TODO: add description
 - **returns**: (call: any) => Promise\<any\> - TODO: add description
 
@@ -108,17 +108,17 @@ Applies given action to the interseptors
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -133,19 +133,19 @@ Checks if the component is open.
 Adds instrumentation to log calls and measures call time. 
 It returns a CounterTiming object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) -Timing object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) -Timing object to end the time measurement.
 
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### registerInterceptor
@@ -160,28 +160,28 @@ Registers a middleware for methods in GRPC endpoint.
 
 Registers a middleware for methods in GRPC endpoint.
 
-> `protected` registerMethod(name: string, schema: [Schema](../../../commons/validate/schema), action: (call: any) => Promise\<any\>): void
+> `protected` registerMethod(name: string, schema: [Schema](../../../data/validate/schema), action: (call: any) => Promise\<any\>): void
 
 - **name**: string - method name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema to validate received parameters.
 - **action**: (call: any) => Promise\<any\> - action function that is called when operation is invoked.
 
 #### registerMethodWithAuth
 Registers a method with authorization.
 
-> `protected` registerMethodWithAuth(name: string, schema: [Schema](../../../commons/validate/schema), authorize: (call: any, next: (call: any) => Promise\<any\>) => Promise\<any\>, action: (call: any) => Promise\<any\>): void
+> `protected` registerMethodWithAuth(name: string, schema: [Schema](../../../data/validate/schema), authorize: (call: any, next: (call: any) => Promise\<any\>) => Promise\<any\>, action: (call: any) => Promise\<any\>): void
 
 - **name**: string - a method name
-- **schema**: [Schema](../../../commons/validate/schema) - a validation schema to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - a validation schema to validate received parameters.
 - **authorize**: (call: any, next: (call: any) => Promise\<any\>) => Promise\<any\> - an authorization interceptor
 - **action**: (call: any) => Promise\<any\> - an action function that is called when operation is invoked.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### unsetReferences
@@ -209,7 +209,7 @@ class MyGrpcController extends GrpcController {
    }
    public register(): void {
        registerMethod("get_mydata", null, async (call) => {
-           let correlationId = call.request.correlationId;
+           let context = call.request.correlationId;
            let id = call.request.id;
            return await this._controller.getMyData(correlationId, id);
        });
