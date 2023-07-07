@@ -128,7 +128,7 @@ public async MyMethod(config: ConfigParams, references: IReferences): Promise<vo
     if (this._references)
         endpoint.setReferences(this._references);
     ...
-    await this._endpoint.open(correlationId);
+    await this._endpoint.open(context);
 }
 ```
 
