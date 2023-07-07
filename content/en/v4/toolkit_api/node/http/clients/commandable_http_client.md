@@ -4,7 +4,7 @@ title: "CommandableHttpClient"
 linkTitle: "CommandableHttpClient"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
 description: >
-    Commandable services are generated automatically for [ICommandable](../../commands/icommandable)
+    Commandable services are generated automatically for [ICommandable](../../,,/rpc/commands/icommandable)
    
 ---
 
@@ -12,7 +12,7 @@ description: >
 
 ### Description
 
-The CommandableHttpClient class allows you to create commandable services. Commandable services are generated automatically for [ICommandable](../../commands/icommandable) objects.
+The CommandableHttpClient class allows you to create commandable services. Commandable services are generated automatically for [ICommandable](../../../rpc/commands/icommandable) objects.
 
 Important points
 
@@ -22,7 +22,7 @@ Important points
 
 - **base_route**: base route for a remote URI
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: connection protocol (http or https)
     - **host**: host name or IP address
     - **port**: port number
@@ -35,10 +35,10 @@ Important points
 
 #### References
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../obesrvability/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../obesrvability/count/icounters) components to pass collected measurements
-- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../obesrvability/trace/itracer) components to record traces
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve a connection
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observabilityy/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../observability/trace/itracer) components to record traces
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve a connection
 
 
 
