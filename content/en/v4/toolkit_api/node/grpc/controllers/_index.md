@@ -1,7 +1,7 @@
 ---
 type: docs
-title: "Services"
-linkTitle: "Services"
+title: "Controllers"
+linkTitle: "controllers"
 no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-grpc-node"
 description: >
