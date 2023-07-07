@@ -209,9 +209,9 @@ class MyGrpcController extends GrpcController {
    }
    public register(): void {
        registerMethod("get_mydata", null, async (call) => {
-           let context = call.request.correlationId;
+           let context = call.request.context;
            let id = call.request.id;
-           return await this._controller.getMyData(correlationId, id);
+           return await this._controller.getMyData(context, id);
        });
        ...
    }
