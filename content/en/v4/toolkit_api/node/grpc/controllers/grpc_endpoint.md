@@ -8,7 +8,7 @@ description: >
 
 ---
 
-**Implements:** [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 
 ### Description
@@ -30,11 +30,11 @@ Parameters to pass to the :func:`configure` method for component configuration:
 
 #### References
 A logger, counters, and a connection resolver can be referenced by passing the
-following references to the object's [set_references](#set_references)
+following references to the object's [set_references](#setreferences)
 
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurementsand as specified by the counter's source.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurementsand as specified by the counter's source.
 
 
 ### Instance methods
@@ -51,9 +51,9 @@ Closes this endpoint and the GRPC server (service) that was opened earlier.
 #### configure
 Configures this HttpEndpoint using the given configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters, containing a "connection(s)" section.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters, containing a "connection(s)" section.
 
 
 #### isOpen
@@ -90,10 +90,10 @@ Registers a service with related implementation
 #### registerCommandableMethod
 Registers a commandable method in the object's GRPC server (service) by the given name.
 
-> `public` registerCommandableMethod(method: string, schema: [Schema](../../../commons/validate/schema), action: (call: any) => Promise\<any\>): void
+> `public` registerCommandableMethod(method: string, schema: [Schema](../../../data/validate/schema), action: (call: any) => Promise\<any\>): void
 
 - **method**: string - GRPC method name.
-- **schema**: [Schema](../../../commons/validate/schema) - schema to use for parameter validation.
+- **schema**: [Schema](../../../data/validate/schema) - schema to use for parameter validation.
 - **action**: (call: any) => Promise\<any\> - action to perform at the given route.
 
 #### registerService
@@ -107,8 +107,8 @@ Registers a service with related implementation
 #### setReferences
 Sets references to this endpoint's logger, counters, and connection resolver.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void 
-- **references**: [IReferences](../../../commons/refer/ireferences) - an IReferences object, containing references to a logger, counters, and a connection resolver.
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void 
+- **references**: [IReferences](../../../components/refer/ireferences) - an IReferences object, containing references to a logger, counters, and a connection resolver.
 
 #### unregister
 Unregisters a registerable object, so that it is no longer used in dynamic 
