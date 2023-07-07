@@ -19,7 +19,7 @@ The module contains the following packages:
 - [**Build**](build) - HTTP service factory
 - [**Clients**](clients) - mechanisms for retrieving connection settings from the microservice’s configuration and providing clients and services with these settings
 - [**Connect**](connect) - helper module to retrieve connections for HTTP-based services and clients
-- [**Services**](services) - basic implementation of services for connecting via the HTTP/REST protocol and using the Commandable pattern over HTTP
+- [**Services**](controllers) - basic implementation of services for connecting via the HTTP/REST protocol and using the Commandable pattern over HTTP
 
 
 
