@@ -63,10 +63,10 @@ Calls a remote method via the GRPC commadable protocol.
 The call is made via Invoke method and all parameters are sent in args object.
 The complete route to remote method is defined as serviceName + '.' + name.
 
-> `protected` callCommand(name: string, correlationId: string, params: any): Promise\<any\>
+> `protected` callCommand(name: string, context: [IContext](../../../components/context/icontext), params: any): Promise\<any\>
 
 - **name**: string - name of the command to call.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - command parameters.
 - **returns**: any - feature that receives the result
 
@@ -77,11 +77,11 @@ The complete route to remote method is defined as serviceName + '.' + name.
 ```typescript
 class MyCommandableGrpcClient extends CommandableGrpcClient implements IMyClient {
    ...
-    public async getData(correlationId: string, id: string): Promise<MyData> {
+    public async getData(context: IContext, id: string): Promise<MyData> {
    
        return await this.callCommand(
            "get_data",
-           correlationId,
+           context,
            { id: id }
        );
     }
