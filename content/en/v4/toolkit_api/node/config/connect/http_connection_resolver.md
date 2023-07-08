@@ -64,27 +64,27 @@ Configures component by passing configuration parameters.
 #### register
 Registers the given connection in all referenced discovery services. This method can be used for dynamic service discovery.
 
-> `public` register(correlationId: string): void
+> `public` register(context: [IContext](../../../components/context/icontext)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### resolve
 Resolves a single component connection. If the connections are configured to be retrieved from Discovery service,
 it finds a IDiscovery and resolves the connection there.
 
-> `public` resolve(correlationId: string): Promise<[ConfigParams](../../../commons/config/config_params)>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../commons/config/config_params)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[ConfigParams](../../../commons/config/config_params)> - resolved connection.
 
 
 #### resolveAll
 Resolves all component connections. If connections are configured to be retrieved from Discovery service it finds a IDiscovery and resolves the connection there.
 
-> resolveAll(correlationId: string): Promise<[ConfigParams](../../../commons/config/config_params)>
+> resolveAll(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../commons/config/config_params)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[ConfigParams](../../../commons/config/config_params)> - resolved connections.
 
 
