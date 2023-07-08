@@ -8,7 +8,7 @@ description: >
 
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -21,7 +21,7 @@ Important points
 #### Configuration parameters
 
 - **connection**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **...** : other connection parameters
 - **connections**: alternative to connection
     - **[connection params 1]**: first connection parameters
@@ -32,7 +32,7 @@ Important points
 
 #### References
 
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve a connection
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve a connection
 
 
 
@@ -42,11 +42,11 @@ Important points
 
 #### _connectionResolver
 Creates a connection resolver.
-> `protected` **_credentialResolver**: [ConnectionResolver](../../../components/connect/connection_resolver) = ConnectionResolver()
+> `protected` **_credentialResolver**: [ConnectionResolver](../connection_resolver) = ConnectionResolver()
 
 #### _credentialResolver
 The base credential resolver.
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver) = CredentialResolver()
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver) = CredentialResolver()
 
 </span>
 
@@ -56,9 +56,9 @@ The base credential resolver.
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### register
@@ -73,27 +73,27 @@ Registers the given connection in all referenced discovery services. This method
 Resolves a single component connection. If the connections are configured to be retrieved from Discovery service,
 it finds a IDiscovery and resolves the connection there.
 
-> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../commons/config/config_params)>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../components/config/config_params)>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
-- **returns**: Promise<[ConfigParams](../../../commons/config/config_params)> - resolved connection.
+- **returns**: Promise<[ConfigParams](../../../components/config/config_params)> - resolved connection.
 
 
 #### resolveAll
 Resolves all component connections. If connections are configured to be retrieved from Discovery service it finds a IDiscovery and resolves the connection there.
 
-> resolveAll(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../commons/config/config_params)>
+> resolveAll(context: [IContext](../../../components/context/icontext)): Promise<[ConfigParams](../../../components/config/config_params)>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
-- **returns**: Promise<[ConfigParams](../../../commons/config/config_params)> - resolved connections.
+- **returns**: Promise<[ConfigParams](../../../components/config/config_params)> - resolved connections.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 ### Examples
 
@@ -114,5 +114,5 @@ let connection = await connectionResolver.resolve("123");
 
 
 ### See also
-- #### [ConnectionParams](../../../components/connect/connection_params)
-- #### [ConnectionResolver](../../../components/connect/connection_resolver)
+- #### [ConnectionParams](../../../config/connect/connection_params)
+- #### [ConnectionResolver](../../../config/connect/connection_resolver)
