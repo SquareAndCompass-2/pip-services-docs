@@ -35,6 +35,6 @@ Gets the service's information.
 #### setReferences
 Sets the references of the service.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - service's references.
+- **references**: [IReferences](../../../components/refer/ireferences) - service's references.
