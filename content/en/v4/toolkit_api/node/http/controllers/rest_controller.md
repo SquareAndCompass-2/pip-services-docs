@@ -295,10 +295,10 @@ class MyRestController extends RestController {
    }
    public register(): void {
        registerRoute("get", "get_mydata", null, async (req, res) => {
-           let correlationId = req.param("correlation_id");
+           let correlationId = req.param("trace_id");
            let id = req.param("id");
-           let result = await this._controller.getMyData(correlationId, id);
-           this.sendResult(req, res, result);
+           let promise = this._controller.getMyData(Context.fromTraceId(traceId), id);
+           this.sendResult(req, res, promise);
        });
        ...
    }
