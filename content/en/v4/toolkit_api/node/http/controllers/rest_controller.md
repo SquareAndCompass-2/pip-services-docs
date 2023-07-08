@@ -7,7 +7,7 @@ description: >
     Abstract service that receives remove calls via HTTP/REST protocol.
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable), [IUnreferenceable](../../../commons/refer/iunreferenceable), [IRegisterable](../iregisterable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable), [IUnreferenceable](../../../components/refer/iunreferenceable), [IRegisterable](../iregisterable)
 
 
 ### Description
@@ -22,7 +22,7 @@ The RestController class allows you to create REST services that receive remote 
     - **endpoint**: override for HTTP Endpoint dependency
     - **controller**: override for Controller dependency
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: connection protocol (http or https)
     - **host**: host name or IP address
     - **port**: port number
@@ -35,10 +35,10 @@ The RestController class allows you to create REST services that receive remote 
 
 #### References
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../components/trace/itracer) components to record traces
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../observability/trace/itracer) components to record traces
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection
 - **\*:endpoint:http:\*:1.0** - (optional) [HttpEndpoint](../http_endpoint) reference
 
 
@@ -49,15 +49,15 @@ The RestController class allows you to create REST services that receive remote 
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger) = CompositeLogger()
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = CompositeLogger()
 
 #### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters) = CompositeCounters()
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters) = CompositeCounters()
 
 #### _debug
 Boolean that set debugging to True or False.
@@ -73,11 +73,11 @@ HTTP endpoint that exposes this service.
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer) = CompositeTracer()
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = CompositeTracer()
 
 #### _config
 Service's configuration paramters.
-> `protected` **_config**: [ConfigParams](../../../commons/config/config_params)
+> `protected` **_config**: [ConfigParams](../../../components/config/config_params)
 
 #### _SwaggerController
 Swagger service.
@@ -107,9 +107,9 @@ Closes a component and frees used resources.
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters, containing a "connection(s)" section.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters, containing a "connection(s)" section.
 
 
 #### getCorrelationId
@@ -125,11 +125,11 @@ Returns correlationId from a request
 Adds instrumentation to log calls and measure call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../instrument_timing)
+> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../instrument_timing) - InstrumentTiming object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - InstrumentTiming object to end the time measurement.
 
 
 #### isOpen
@@ -177,22 +177,22 @@ Registers the open api spec from a file.
 #### registerRoute
 Registers a route in HTTP endpoint.
 
-> `protected` registerRoute(method: string, route: string, schema: [Schema](../../../commons/validate/schema), action: (req: any, res: any) => void): void
+> `protected` registerRoute(method: string, route: string, schema: [Schema](../../../data/validate/schema), action: (req: any, res: any) => void): void
 
 - **method**: string - HTTP method: "get", "head", "post", "put", "delete"
 - **route**: string - command route. The base route will be added to this route
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema to validate received parameters.
 - **action**: (req: any, res: any) => void - action function that is called when an operation is invoked.
 
 
 #### registerRouteWithAuth
 Registers a route with authorization in HTTP endpoint.
 
-> `protected` registerRouteWithAuth(method: string, route: string, schema: [Schema](../../../commons/validate/schema), authorize: (req: any, res: any, next: () => void) => void, action: (req: any, res: any) => void): void
+> `protected` registerRouteWithAuth(method: string, route: string, schema: [Schema](../../../data/validate/schema), authorize: (req: any, res: any, next: () => void) => void, action: (req: any, res: any) => void): void
 
 - **method**: string - HTTP method: "get", "head", "post", "put", "delete"
 - **route**: string - command route. The base route will be added to this route
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema to validate received parameters.
 - **authorize**: (req: any, res: any, next: () => void) => void - authorization interceptor
 - **action**: (req: any, res: any) => void - action function that is called when an operation is invoked.
 
@@ -256,9 +256,9 @@ If the object is not null it returns 200 status code. For null results, it retur
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### unsetReferences
