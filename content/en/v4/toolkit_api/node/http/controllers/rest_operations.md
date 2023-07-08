@@ -42,13 +42,13 @@ Configures a component by passing its configuration parameters.
 - **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
-#### getCorrelationId
-Returns a correlationId from a request
+#### getTraceId
+Returns a traceId from a request
 
-> `protected` getCorrelationId(req: any): any
+> `protected` getTraceId(req: any): any
 
 - **req**: any - an HTTP request
-- **returns**: any - correlationId from a request
+- **returns**: any - traceId from a request
 
 
 #### getFilterParams
