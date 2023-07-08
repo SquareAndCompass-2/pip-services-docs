@@ -7,7 +7,7 @@ description: >
     Handles REST services' operations.
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
@@ -19,15 +19,15 @@ The RestOperations class allows you to handle REST services' operations.
 
 #### _logger
 Composite logger component
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger) = CompositeLogger()
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = CompositeLogger()
 
 #### _counters
 Counter component
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters) = CompositeCounters()
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters) = CompositeCounters()
 
 #### _dependencyResolver
 Dependency resolver component
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver) = DependencyResolver()
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver) = DependencyResolver()
 
 </span>
 
@@ -37,9 +37,9 @@ Dependency resolver component
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### getCorrelationId
@@ -54,18 +54,18 @@ Returns a correlationId from a request
 #### getFilterParams
 Gets the filter parameters.
 
->  `protected` getFilterParams(req: any): [FilterParams](../../../commons/data/filter_params)
+>  `protected` getFilterParams(req: any): [FilterParams](../../../data/query/filter_params)
 
 - **req**: any - an HTTP request
-- **returns**: [FilterParams](../../../commons/data/filter_params) - filter paramters
+- **returns**: [FilterParams](../../../data/query/filter_params) - filter paramters
 
 #### getPagingParams
 Gets the paging parameters.
 
->  `protected` getPagingParams(req: any): [PagingParams](../../../commons/data/paging_params)
+>  `protected` getPagingParams(req: any): [PagingParams](../../../data/query/paging_params)
 
 - **req**: any - an HTTP request
-- **returns**: [PagingParams](../../../commons/data/paging_params) - paging paramters
+- **returns**: [PagingParams](../../../data/query/paging_params) - paging paramters
 
 
 #### invoke
@@ -198,6 +198,6 @@ Sends an unauthorized error message.
 #### setReferences
 Sets the specified references.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
 - **references**: [IReferences](../../../commons/refer/ireferences) - specified references
