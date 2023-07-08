@@ -14,11 +14,11 @@ The CommandableSwaggerDocument class allows you to generate Swagger code that de
 ### Constructors
 Creates a new instance of the service.
 
-> `public` constructor(baseRoute: string, config: [ConfigParams](../../../commons/config/config_params), commands: [ICommand](../../../commons/commands/icommand)[])
+> `public` constructor(baseRoute: string, config: [ConfigParams](../../../components/config/config_params), commands: [ICommand](../../../rpc/commands/icommand)[])
 
 - **baseRoute**: string - base route of the service
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters 
-- **commands**: [ICommand](../../../commons/commands/icommand)[] - list of commmands.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters 
+- **commands**: [ICommand](../../../rpc/commands/icommand)[] - list of commmands.
 
 ### Fields
 
@@ -26,7 +26,7 @@ Creates a new instance of the service.
 
 #### commands
 List of commmands.
-> **commands**: [ICommand](../../../commons/commands/icommand)[]
+> **commands**: [ICommand](../../../rpc/commands/icommand)[]
 
 #### version
 Version number.
