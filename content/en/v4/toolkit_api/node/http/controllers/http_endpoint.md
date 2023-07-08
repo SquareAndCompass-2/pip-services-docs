@@ -7,7 +7,7 @@ description: >
     Used for creating HTTP endpoints. 
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -34,11 +34,11 @@ Parameters to pass to the [configure](#configure) method for component configura
 
 #### References
 A logger, counters, and a connection resolver can be referenced by passing the 
-following references to the object's [set_references](#set_references) method:
+following references to the object's [set_references](#setreferences) method:
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections
 
 
 ### Instance methods
@@ -46,23 +46,23 @@ following references to the object's [set_references](#set_references) method:
 #### close
 Closes this endpoint and the REST server (service) that was opened earlier.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures this HttpEndpoint using the given configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters, containing a "connection(s)" section.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters, containing a "connection(s)" section.
 
 
-#### getCorrelationId
-Returns correlationId from request
+#### getTraceId
+Returns traceId from request
 
-> `public` getCorrelationId(): string
+> `public` getTraceId(): string
 
 - **returns**: string - http response to the request.
 
@@ -95,11 +95,11 @@ Registers a middleware action for the given route.
 #### registerRoute
 Registers an action in this objects REST server (service) by the given method and route.
 
-> `public` registerRoute(method: string, route: string, schema: [Schema](../../../commons/validate/schema), action: (req: any, res: any) => void): void
+> `public` registerRoute(method: string, route: string, schema: [Schema](../../../data/validate/schema), action: (req: any, res: any) => void): void
 
 - **method**: string - HTTP method of the route.
 - **route**: string - route to register in this object's REST server (service).
-- **schema**: [Schema](../../../commons/validate/schema) - schema to use for parameter validation.
+- **schema**: [Schema](../../../data/validate/schema) - schema to use for parameter validation.
 - **action**: (req: any, res: any) => void - action to perform at the given route.
 
 
@@ -107,11 +107,11 @@ Registers an action in this objects REST server (service) by the given method an
 Registers an action with authorization in this objects REST server (service)
 by the given method and route.
 
-> `public` registerRouteWithAuth(method: string, route: string, schema: [Schema](../../../commons/validate/schema), authorize: (req: any, res: any, next: () => void) => void, action: (req: any, res: any) => void): void
+> `public` registerRouteWithAuth(method: string, route: string, schema: [Schema](../../../data/validate/schema), authorize: (req: any, res: any, next: () => void) => void, action: (req: any, res: any) => void): void
 
 - **method**: string - HTTP method of the route.
 - **route**: string - route to register in this object's REST server (service).
-- **schema**: [Schema](../../../commons/validate/schema) - schema to use for parameter validation.
+- **schema**: [Schema](../../../data/validate/schema) - schema to use for parameter validation.
 - **authorize**: (req: any, res: any, next: () => void) => void - authorization interceptor
 - **action**: (req: any, res: any) => void - action to perform at the given route.
 
@@ -119,15 +119,15 @@ by the given method and route.
 #### setReferences
 Sets references to this endpoint's logger, counters, and connection resolver.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - IReferences object, containing references to a logger, counters, and a connection resolver.
+- **references**: [IReferences](../../../components/refer/ireferences) - IReferences object, containing references to a logger, counters, and a connection resolver.
 
 
 #### unregister
 Unregisters a registerable object, so that it is no longer used in dynamic endpoint discovery.
 
-> `public` unregister(registration: [IReferences](../../../commons/refer/ireferences)): void
+> `public` unregister(registration: [IReferences](../../../components/refer/ireferences)): void
 
 - **registration**: [IRegisterable](../iregisterable) - registration to remove.
 
@@ -141,7 +141,7 @@ public async MyMethod(config: ConfigParams, references: IReferences): Promise<vo
     if (this._references)
         endpoint.setReferences(this._references);
     ...
-    await this._endpoint.open(correlationId);
+    await this._endpoint.open(context);
     this._opened = true;
     ...
 }
