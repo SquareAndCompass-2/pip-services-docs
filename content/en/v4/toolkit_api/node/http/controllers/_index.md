@@ -46,7 +46,7 @@ Generates Swagger code that describes created REST API methods and their paramet
 Handles the operations of a heartbeat service.
 
 
-#### [HeartbeatRestController](heartbeat_rest_controller)
+#### [HeartbeatRestController](heartbeat_rest_service)
 Service returns heartbeat via HTTP/REST protocol.
 
 The service responds on /heartbeat route (can be changed)
