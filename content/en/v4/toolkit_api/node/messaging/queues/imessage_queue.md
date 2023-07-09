@@ -9,7 +9,7 @@ description: >
      
 ---
 
-**Extends:** [IOpenable](../../../commons/run/iopenable), [IClosable](../../../commons/run/iclosable)
+**Extends:** [IOpenable](../../../components/run/iopenable), [IClosable](../../../components/run/iclosable)
 
 ### Description
 
@@ -34,9 +34,9 @@ Returns a message into the queue and makes it available for all subscribers to r
 Listens for incoming messages without blocking the current thread.  
 See also [IMessageReceiver](../imessage_receiver), [listen](#listen)
 
-> beginListen(correlationId: string, receiver: [IMessageReceiver](../imessage_receiver)): void
+> beginListen(context: [IContext](../../../components/context/icontext), receiver: [IMessageReceiver](../imessage_receiver)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through a the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../imessage_receiver) - receiver used to receive incoming messages.
 
 #### complete
@@ -49,9 +49,9 @@ Permanently removes a message from the queue. This method is usually used to rem
 #### endListen
 Ends listening for incoming messages. When this method is called, [listen](#listen) unblocks the thread and execution continues.
 
-> endListen(correlationId: string): void
+> endListen(context: [IContext](../../../components/context/icontext)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### getCapabilities
 Gets the queue capabilities
@@ -71,9 +71,9 @@ Gets the queue name
 Listens for incoming messages and blocks the current thread until queue is closed.  
 See also [IMessageReceiver](../imessage_receiver), [receive](#receive)
 
-> listen(correlationId: string, receiver: [IMessageReceiver](../imessage_receiver)): void
+> listen(context: [IContext](../../../components/context/icontext), receiver: [IMessageReceiver](../imessage_receiver)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../imessage_receiver) - receiver used to receive incoming messages.
 
 
@@ -87,9 +87,9 @@ Permanently removes a message from the queue and sends it to the dead letter que
 #### peek
 Peeks a single incoming message from the queue without removing it. If there are no messages available in the queue, it returns null.
 
-> peek(correlationId: string): Promise<[MessageEnvelope](../message_envelope)>
+> peek(context: [IContext](../../../components/context/icontext)): Promise<[MessageEnvelope](../message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[MessageEnvelope](../message_envelope)> - peeked message or *null*.
 
 #### peekBatch
@@ -111,9 +111,9 @@ Reads the current number of messages in the queue to be delivered.
 #### receive
 Receives an incoming message and removes it from the queue.
 
-> receive(correlationId: string, waitTimeout: number): Promise<[MessageEnvelope](../message_envelope)>
+> receive(context: [IContext](../../../components/context/icontext), waitTimeout: number): Promise<[MessageEnvelope](../message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **waitTimeout**: number - timeout in milliseconds to wait for a message to come.
 - **returns**: [MessageEnvelope](../message_envelope) - received message or *null*.
 
@@ -128,17 +128,17 @@ Renews a lock on a message that makes it invisible from other receivers in the q
 #### send
 Sends a message into the queue.
 
-> send(correlationId: string, envelope: [MessageEnvelope](../message_envelope)): Promise\<void\>
+> send(context: [IContext](../../../components/context/icontext), envelope: [MessageEnvelope](../message_envelope)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **envelope**: [MessageEnvelope](../message_envelope) - message envelop to be sent.
 
 #### sendAsObject
 Sends an object into the queue. Before being sent, the object is converted into JSON string and wrapped in a [MessageEnvelope](../message_envelope).
 
-> sendAsObject(correlationId: string, messageType: string, value: any)
+> sendAsObject(context: [IContext](../../../components/context/icontext), messageType: string, value: any)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageType**: string - message type
 - **value**: any - object value to be sent
 
