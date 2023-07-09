@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IMessageQueueConnection](../../../messaging/connect/imessage_queue_connection), [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable),
-[IOpenable](../../../commons/run/iopenable)
+**Implements:** [IMessageQueueConnection](../../../messaging/connect/imessage_queue_connection), [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable),
+[IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -20,12 +20,12 @@ you can reduce the number of used database connections.
 
 - **client_id**: (optional) name of the client id
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number (default: 27017)
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**: username
     - **password**: user's password
 - **options**:
@@ -37,8 +37,8 @@ you can reduce the number of used database connections.
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** (optional) credential stores to resolve credentials
 
 
@@ -83,7 +83,7 @@ Log level
 
 #### _logger
 Logger
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger) = new [CompositeLogger()](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = new [CompositeLogger()](../../../observability/log/composite_logger)
 
 #### _maxRetries
 Maximum number of entries.
@@ -91,7 +91,7 @@ Maximum number of entries.
 
 #### _options
 Connection options
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params) = new [ConfigParams()](../../../commons/config/config_params)
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params) = new [ConfigParams()](../../../components/config/config_params)
 
 
 #### _producer
@@ -125,9 +125,9 @@ Raises an error is the connection is closed.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### commit
 Commit a message offset.
@@ -144,9 +144,9 @@ Commit a message offset.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### connectToAdmin
@@ -199,9 +199,9 @@ Checks if the component is opened.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### publish
@@ -237,9 +237,9 @@ Seeks a message offset.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### subscribe
