@@ -13,16 +13,16 @@ The MessageEnvelope class allows you to add additional information to messages.
 
 Important points
 
-- A correlation id, message id, and a message type are added to the data being sent/received. Additionally, a MessageEnvelope can reference a lock token.
+- A context object added to the data being sent/received. Additionally, a MessageEnvelope can reference a lock token.
 - A MessageEnvelope's message is stored as a buffer, so strings are converted using utf8 conversions.
 
 ### Constructors
 
 Creates a new [MessageEnvelope](), which adds a correlation id, message id, and a type to the data being sent/received.
 
-> `public` constructor(correlationId: string, messageType: string, message: any)
+> `public` constructor(context: [IContext](../../../components/context/icontext), messageType: string, message: any)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: string - (optional) a context to trace execution through a call chain.
 - **messageType**: string - a string value that defines the message's type.
 - **message**: any - the data being sent/received.
 
@@ -30,10 +30,10 @@ Creates a new [MessageEnvelope](), which adds a correlation id, message id, and 
 
 <span class="hide-title-link">
 
-#### correlationId
+#### traceId
 The unique business transaction id that is used to trace calls across components.
 
-> `public` **correlationId**: string
+> `public` **traceId**: string
 
 #### message
 The stored message.
@@ -112,7 +112,7 @@ Converts this [MessageEnvelope]() to a JSON string. The message payload is passe
 
 #### toString
 Converts this [MessageEnvelope]() to a string, using the following format:  
-*"[<correlationId>,<message_type>,<message.toString>]"*.
+*"[<context>,<message_type>,<message.toString>]"*.
 
 If any of the values are *null*, they will be replaced with \-\-\-.
 
