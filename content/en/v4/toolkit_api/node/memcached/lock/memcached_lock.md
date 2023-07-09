@@ -8,9 +8,9 @@ description: >
  
 ---
 
-**Extends:** [Lock](../../../components/lock/lock) 
+**Extends:** [Lock](../../../logic/lock/lock) 
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 The MemcachedLock class allows you to create a lock that is implemented based on the Memcached's caching service.
@@ -21,7 +21,7 @@ Important points
 #### Configuration parameters
 
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number
     - **uri**: resource URI or connection string with all parameters in it
@@ -40,7 +40,7 @@ Important points
 
 #### References
 
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection
 
 
 
@@ -49,16 +49,16 @@ Important points
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### isOpen
 Checks if the component is open.
@@ -71,34 +71,34 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id usd to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### releaseLock
 Releases a prevously acquired lock by its key.
 
-> `public` releaseLock(correlationId: string, key: string): Promise\<void\> 
+> `public` releaseLock(context: [IContext](../../../components/context/icontext), key: string): Promise\<void\> 
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique lock key to release.
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 #### tryAcquireLock
 Makes a single attempt to acquire a lock by its key.
 It returns immediately a positive or negative result.
 
-> `public` tryAcquireLock(correlationId: string, key: string, ttl: number): Promise\<boolean\>
+> `public` tryAcquireLock(context: [IContext](../../../components/context/icontext), key: string, ttl: number): Promise\<boolean\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique lock key to acquire.
 - **ttl**: number - lock timeout (time to live) in milliseconds.
 - **returns**: Promise\<boolean\> - **true** if lock was successfull and **false** otherwise.
