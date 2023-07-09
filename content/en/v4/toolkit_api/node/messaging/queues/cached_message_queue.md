@@ -55,17 +55,17 @@ Message receiver.
 #### subscribe
 Subscribes to the message broker.
 
-> `public abstract` subscribe(correlationId: string): Promise\<void\>
+> `public abstract` subscribe(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### unsubscribe
 Unsubscribes from the message broker.
 
-> `public abstract` unsubscribe(correlationId: string): Promise\<void\>
+> `public abstract` unsubscribe(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 
@@ -74,9 +74,9 @@ Unsubscribes from the message broker.
 #### clear
 Clears component state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
@@ -89,35 +89,35 @@ Configures a component by passing its configuration parameters.
 Ends listening for incoming messages.
 When this method is called, [listen](#listen) unblocks the thread and execution continues.
 
-> `public` endListen(correlationId: string): void
+> `public` endListen(context: [IContext](../../../components/context/icontext)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### listen
 Listens for incoming messages and blocks the current thread until the queue is closed.
 See [IMessageReceiver](../imessage_receiver), [receive](#receive)
 
-> `public` listen(correlationId: string, receiver: [IMessageReceiver](../imessage_receiver)): void
+> `public` listen(context: [IContext](../../../components/context/icontext), receiver: [IMessageReceiver](../imessage_receiver)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../imessage_receiver) - receiver used to receive incoming messages.
 
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### peek
 Peeks a single incoming message from the queue without removing it.
 If there are no messages available in the queue it returns null.
 
-> `public` peek(correlationId: string): Promise<[MessageEnvelope](../message_envelope)>
+> `public` peek(context: [IContext](../../../components/context/icontext)): Promise<[MessageEnvelope](../message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[MessageEnvelope](../message_envelope)> - peeked message or **null**.
 
 
@@ -127,9 +127,9 @@ If there are no messages available in the queue it returns an empty list.
 
 Important: This method is not supported by MQTT.
 
-> `public` peekBatch(correlationId: string, messageCount: number): Promise<[MessageEnvelope](../message_envelope)[]
+> `public` peekBatch(context: [IContext](../../../components/context/icontext), messageCount: number): Promise<[MessageEnvelope](../message_envelope)[]
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageCount**: number - maximum number of messages to peek.
 - **returns**: Promise<[MessageEnvelope](../message_envelope)[]] - list with peeked messages.
 
@@ -143,9 +143,9 @@ Reads the current number of messages in the queue to be delivered.
 #### receive
 Receives an incoming message and removes it from the queue.
 
-> `public` receive(correlationId: string, waitTimeout: number): [MessageEnvelope](../message_envelope)
+> `public` receive(context: [IContext](../../../components/context/icontext), waitTimeout: number): [MessageEnvelope](../message_envelope)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **waitTimeout**: number - timeout in milliseconds to wait for a message to come.
 - **returns**: [MessageEnvelope](../message_envelope) - received message or *null*.
 
