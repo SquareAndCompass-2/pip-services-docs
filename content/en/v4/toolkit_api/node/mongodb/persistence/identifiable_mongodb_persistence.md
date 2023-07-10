@@ -11,7 +11,7 @@ description: >
 
 **Extends:** [MongoDbPersistence<T>](../mongodb_persistence)
 
-**Implements**: [IWriter<T, K>](../../../data/core/iwriter), [IGetter<T, K>](../../../data/core/igetter), [ISetter<T>](../../../data/core/isetter)
+**Implements**: [IWriter<T, K>](../../../persistence/write/iwriter), [IGetter<T, K>](../../../data/core/igetter), [ISetter<T>](../../../persistence/write/isetter)
 
 
 ### Description
@@ -20,20 +20,20 @@ The IdentifiableMongoDbPersistence class allows you to create persistance compon
 
 Important points
 
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface.
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
 - In basic scenarios child classes shall only override [getPageByFilter](../mongodb_persistence/#getpagebyfilter), [getListByFilter](../mongodb_persistence/#getlistbyfilter) or [deleteByFilter](../mongodb_persistence/#deletebyfilter)  operations with specific filter functions. All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing **this._collection** and **this._model** properties.
 
 #### Configuration parameters
 
 **connection(s)**:
-- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**: host name or IP address
 - **port**: port number (default: 27017)
 - **uri**: resource URI or connection string with all parameters in it
 
 **credential(s)**:
-- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**: (optional) username
 - **password**: (optional) user's password
 
@@ -53,8 +53,8 @@ Important points
 - **debug**: (optional) enable debug output (default: false). (not used)
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores used to resolve credentials
 
 
@@ -92,9 +92,9 @@ Converts the given object from the public partial format.
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) transaction id used to trace execution through the call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -102,9 +102,9 @@ Creates a data item.
 #### deleteById
 Deletes a data item by it's unique id.
 
-> `public` deleteById(correlationId: string, id: K): Promise\<T\>
+> `public` deleteById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the item to be deleted
 - **return**: Promise\<T\> - deleted item.
 
@@ -112,18 +112,18 @@ Deletes a data item by it's unique id.
 #### deleteByIds
 Deletes multiple data items by their unique ids.
 
-> `public` deleteByIds(correlationId: string, ids: K[]): Promise\<void\>
+> `public` deleteByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of data items to be deleted.
 
 
 #### getListByIds
 Gets a list of data items retrieved by given unique ids.
 
-> `public` getListByIds(correlationId: string, ids: K[]): Promise<T[]>
+> `public` getListByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise<T[]>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of data items to be retrieved
 - **return**: Promise<T[]> - data list of results by ids.
 
@@ -131,9 +131,9 @@ Gets a list of data items retrieved by given unique ids.
 #### getOneById
 Gets a data item by its unique id.
 
-> `public` getOneById(correlationId: string, id: K): Promise\<T\>
+> `public` getOneById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of data item to be retrieved.
 - **returns**: Promise\<T\> - data item by id.
 
@@ -141,9 +141,9 @@ Gets a data item by its unique id.
 #### set
 Sets a data item. If the data item exists it updates it, otherwise it creates a new data item.
 
-> `public` set(correlationId: string, item: T): Promise\<T\>
+> `public` set(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be set. 
 - **returns**: Promise\<T\> - updated item
 
@@ -151,9 +151,9 @@ Sets a data item. If the data item exists it updates it, otherwise it creates a 
 #### update
 Updates a data item.
 
-> `public` update(correlationId: string, item: T): Promise\<T\>
+> `public` update(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be updated.
 - **returns**: Promise\<T\> - updated item.
 
@@ -161,9 +161,9 @@ Updates a data item.
 #### updatePartially
 Updates only few selected fields in a data item.
 
-> `public` updatePartially(correlationId: string, id: K, data: AnyValueMap): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: AnyValueMap): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **returns**: Promise\<T\> - updated item.
@@ -183,8 +183,8 @@ class MyMongoDbPersistence extends MongoDbPersistence<MyData, string> {
             criteria.push({ name: name });
         return criteria.length > 0 ? { $and: criteria } : null;
     }
-    public getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
-        return super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+    public getPageByFilter(context: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
+        return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
 
