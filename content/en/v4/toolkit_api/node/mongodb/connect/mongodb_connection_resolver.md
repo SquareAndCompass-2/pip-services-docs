@@ -10,7 +10,7 @@ description: >
   
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable)
+**Implements:** [IReferenceable](../../../a context to trace execution through a call chain/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -35,7 +35,7 @@ Important points
 - **password**: user's password
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials
 
 
@@ -45,7 +45,7 @@ Important points
 
 #### _connectionResolver
 MongoDB connection resolver.
-> `protected` **_connectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver) 
+> `protected` **_connectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver) 
 
 #### _credentialResolver
 MongoDB credential resolver.
@@ -59,22 +59,22 @@ MongoDB credential resolver.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../config/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../config/config/config_params) - configuration parameters to be set.
 
 
 #### resolve
 Resolves a MongoDB connection URI from connection and credential parameters.
 
-> `public` resolve(correlationId: string): Promise\<string\>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise\<string\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: string - resolved URI
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
