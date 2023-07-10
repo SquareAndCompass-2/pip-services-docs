@@ -9,7 +9,7 @@ description: >
    
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IUnreferenceable](../../../commons/refer/iunreferenceable), [IConfigurable](../../../commons/config/iconfigurable), [IOpenable](../../../commons/run/iopenable), [ICleanable](../../../commons/run/icleanable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IUnreferenceable](../../../components/refer/iunreferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/run/iopenable), [ICleanable](../../../components/run/icleanable)
 
 ### Description
 
@@ -24,13 +24,13 @@ Important points
 - **collection**: (optional) MongoDB collection name
 
 **connection(s)**:
-- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**: host name or IP address
 - **port**: port number (default: 27017)
 - **uri**: resource URI or connection string with all parameters in it
 
 **credential(s)**:
-- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**: (optional) username
 - **password**: (optional) user's password
 
@@ -48,8 +48,8 @@ Important points
 - **debug**: (optional) enable debug output (default: false).
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials
 
 
@@ -68,11 +68,11 @@ Creates a new instance of the persistence component.
 
 #### _dependencyResolver
 The dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 The logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _connection
 The MongoDB connection component.
@@ -116,9 +116,9 @@ The maximum number of records to return from the database per request.
 #### clear
 Clears a component's state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - object to convert from the public partial format.
+- **context**: [IContext](../../../components/context/icontext) - a context to trace execution through a call chain.
 
 #### clearSchema
 Clears all auto-created objects
@@ -129,9 +129,9 @@ Clears all auto-created objects
 #### close
 Closes the component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - object to convert from the public partial format.
+- **context**: [IContext](../../../components/context/icontext) - a context to trace execution through a call chain.
 
 
 #### configure
@@ -139,7 +139,7 @@ Closes the component and frees used resources.
 
 > `public` configure(config: ConfigParams): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### convertFromPublic
@@ -163,9 +163,9 @@ Converts and object value from internal to public format.
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used  to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -178,11 +178,11 @@ Defines the database schema
 
 #### deleteByFilter
 This method shall be called by a public **deleteByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
 
-> `public` deleteByFilter(correlationId: string, filter: any): Promise\<void\>
+> `public` deleteByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function used to filter items.
 
 
@@ -199,11 +199,11 @@ Adds index definition to create it on opening.
 Gets a number of data items retrieved by a given filter.
 
 This method shall be called by a public **getCountByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
 
-> `protected` getCountByFilter(correlationId: string, filter: any): Promise\<number\>
+> `protected` getCountByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<number\>
 
-- **correlationId**: string - (optional) transaction id usedto trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter JSON object
 - **returns**: Promise\<number\> - number of filtered items.
 
@@ -212,11 +212,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getListByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
 
-> `protected` getListByFilter(correlationId: string, filter: any, sort: any, select: any): Promise<T[]>
+> `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise<T[]>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function used to filter items
 - **sort**: any - (optional) sorting parameters
 - **select**: any - (optional) projection parameters (not used yet)
@@ -227,11 +227,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a random item from items that match to a given filter.
 
 This method shall be called by a public [getOneRandom](#getonerandom) method from the child class
-that receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+that receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
 
-> `protected` getOneRandom(correlationId: string, filter: any): Promise\<T\>
+> `protected` getOneRandom(context: [IContext](../../../components/context/icontext), filter: any): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - fileter JSON object.
 - **returns**: Promise\<T\> - random item.
 
@@ -240,16 +240,16 @@ that receives [FilterParams](../../../commons/data/filter_params) and converts t
 Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getPageByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(correlationId: string, filter: any, paging: [PagingParams](../../../commons/data/paging_params), sort: any, select: any): Promise<[DataPage](../../../commons/data/data_page)\<T\>>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: [PagingParams](../../../commons/data/paging_params), sort: any, select: any): Promise<[DataPage](../../../commons/data/data_page)\<T\>>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter JSON object
-- **paging**: [PagingParams](../../../commons/data/paging_params) - (optional) paging parameters
+- **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting JSON object
 - **select**: any - (optional) projection JSON object
-- **returns**: Promise<[DataPage](../../../commons/data/data_page)\<T\>> - data page obtained by filtering
+- **returns**: Promise<[DataPage](../../../data/query/data_page)\<T\>> - data page obtained by filtering
 
 
 ### Examples
@@ -259,7 +259,7 @@ class MyMongoDbPersistence extends MongoDbPersistence<MyData> {
   public constructor() {
       super("mydata");
   }
-  public async getByName(correlationId: string, name: string) {
+  public async getByName(context: IContext, name: string) {
     let criteria = { name: name };
     return await new Promise((resolve, reject) => {
        this._model.findOne(criteria, (err, item) => {
