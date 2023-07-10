@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable),
-[IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable),
+[IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -21,13 +21,13 @@ Important points
 
 #### Configuration parameters
 **connection(s)**:    
-- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**: host name or IP address
 - **port**: port number (default: 27017)
 - **uri**: resource URI or connection string with all parameters in it
 
 **credential(s)**:    
-- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**: (optional) username
 - **password**: (optional) user's password
 
@@ -45,8 +45,8 @@ Important points
 - **debug**: (optional) enable debug output (default: false).
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials
 
 
@@ -61,7 +61,7 @@ Creates a new instance of the connection component.
 
 #### _logger
 The logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _connectionResolver
 The connection resolver.
@@ -69,7 +69,7 @@ The connection resolver.
 
 #### _options
 The configuration options.
-> `protected` **_options**: [ConfigParams](../../../commons/config/config_params) 
+> `protected` **_options**: [ConfigParams](../../../components/config/config_params) 
 
 #### _connection
 The MongoDB connection object.
@@ -92,17 +92,17 @@ The MongoDB database object.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### getConnection
@@ -132,14 +132,14 @@ Checks if the component is opened.
 #### open
 Opens the component.
 
-> `public` async open(correlationId: string): Promise\<void\>
+> `public` async open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### setReferences
 Sets the references to the dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
