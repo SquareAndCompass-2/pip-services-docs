@@ -19,12 +19,12 @@ The NatsMessageQueue class allows you to create a message queue that sends and r
 - **subject**: name of NATS topic (subject) to subscribe
 - **queue_group**: name of NATS queue group
 - **connection(s)**:
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**: username
     - **password**: user's password
 - **options**:
@@ -36,10 +36,10 @@ The NatsMessageQueue class allows you to create a message queue that sends and r
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 - **\*:connection:nats:\*:1.0** - (optional) shared connection to NATS service
 
 
@@ -81,34 +81,34 @@ Subscrie option
 #### clear
 Clears a component's state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: string): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: string - (optional) a context to trace execution through a call chain.
 
 
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config:**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config:**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### endListen
 Ends listening for incoming messages.
 When this method is call, [listen](#listen) unblocks the thread and execution continues.
 
-> `public` endListen(correlationId: string): void
+> `public` endListen(context: [IContext](../../../components/context/icontext)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### listen
@@ -116,9 +116,9 @@ Listens for incoming messages and blocks the current thread until the queue is c
 
 See [IMessageReceiver](../../../messaging/queues/imessage_receiver)
 
-> `public` listen(correlationId: string, receiver: [IMessageReceiver](../../../messaging/queues/imessage_receiver)): void
+> `public` listen(context: [IContext](../../../components/context/icontext), receiver: [IMessageReceiver](../../../messaging/queues/imessage_receiver)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../../../messaging/queues/imessage_receiver) - receiver used to receive incoming messages.
 
 
@@ -134,18 +134,18 @@ Checks if the message is not null. If this is the case, deserializes and sends i
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### peek
 Peeks a single incoming message from the queue without removing it.
 If there are no messages available in the queue, it returns null.
 
-> `public` peek(correlationId: string): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
+> `public` peek(context: [IContext](../../../components/context/icontext)): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)> - peeked message.
 
 #### peekBatch
@@ -154,9 +154,9 @@ If there are no messages available in the queue, it returns an empty list.
 
 - Important: This method is not supported by NATS.
 
-> `public` peekBatch(correlationId: string, messageCount: number): Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)>
+> `public` peekBatch(context: [IContext](../../../components/context/icontext), messageCount: number): Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageCount**: number - maximum number of messages to peek.
 - **returns**: Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)> - list with peeked messages.
 
@@ -170,18 +170,18 @@ Reads the current number of messages in the queue to be delivered.
 #### receive
 Receives an incoming message and removes it from the queue.
 
-> `public` receive(correlationId: string, waitTimeout: number): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
+> `public` receive(context: [IContext](../../../components/context/icontext), waitTimeout: number): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
 
-- **correlationId**: string - checks if the message comes from the right topic. If this is the case, deserializes and sends it to the receiver if it's set. Otherwise, puts it into the queue.
+- **context**: [IContext](../../../components/context/icontext) - checks if the message comes from the right topic. If this is the case, deserializes and sends it to the receiver if it's set. Otherwise, puts it into the queue.
 - **waitTimeout**: number - timeout (milliseconds) to wait for a message to come.
 - **returns**: Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)> - received message or null if nothing was received.
 
 
 #### subscribe
 Subscribes to a subject.
-> `protected` subscribe(correlationId: string): Promise\<void\> 
+> `protected` subscribe(context: [IContext](../../../components/context/icontext)): Promise\<void\> 
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 ### Examples
