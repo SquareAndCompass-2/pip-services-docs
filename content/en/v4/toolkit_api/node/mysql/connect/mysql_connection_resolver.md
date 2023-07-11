@@ -9,7 +9,7 @@ description: >
 
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -22,19 +22,19 @@ Important points
 #### Configuration parameters
 
 **connection(s)**:
-- **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**:                        host name or IP address
 - **port**:                        port number (default: 27017)
 - **database**:                    database name
 - **uri**:                         resource URI or connection string with all parameters in it
 
 **credential(s)**:
-- **store_key**:                   (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**:                   (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**:                    username
 - **password**:                    user's password
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) stores to resolve credentials
 
 
@@ -44,11 +44,11 @@ Important points
 
 #### _connectionResolver
 The connection resolver
-> `protected` **_connectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver) 
+> `protected` **_connectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver) 
 
 #### _credentialResolver
 The credential resolver
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver) 
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver) 
 
 </span>
 
@@ -59,23 +59,23 @@ The credential resolver
 #### configure
 Configures components by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### resolve
 Resolves a MySQL configuration from connection and credential parameters.
 
-> `public` resolve(correlationId: string): Promise\<string\>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise\<string\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise\<string\> - resolved connection config or raise error
 
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
