@@ -29,13 +29,13 @@ Important points
 - **schema**: (optional) MySQL schema name
 
 **connection(s)**:    
-- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**: host name or IP address
 - **port**: port number (default: 27017)
 - **uri**: resource URI or connection string with all parameters in it
 
 **credential(s)**:    
-- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**: (optional) username
 - **password**: (optional) user's password
 
@@ -46,9 +46,9 @@ Important points
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
 
@@ -93,9 +93,9 @@ Adds DML statement to automatically create a JSON(B) table
 #### updatePartially
 Updates only few selected fields in a data item.
 
-> `public` updatePartially(correlationId: string, id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **return**: Promise\<T\> - updated item
@@ -127,8 +127,8 @@ class MyMySqlPersistence extends IdentifiableMySqlJsonPersistence<MyData, string
         return filterCondition;
     }
 
-    public getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
-        return super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+    public getPageByFilter(context: IContext, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
+        return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
 
