@@ -29,10 +29,10 @@ The RabbitMQMessageQueue class allows you to create message queues that send and
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
 ### Constructors
@@ -41,7 +41,7 @@ Creates a new instance of the message queue.
 > `public` constructor(name?: string, config?: ConfigParams)
 
 - **name**: string - (optional) queue's name.
-- **config**: [ConfigParams](../../../commons/config/config_params) - (optional) configuration parameters.
+- **config**: [ConfigParams](../../../components/config/config_params) - (optional) configuration parameters.
 
 
 ### Instance methods
@@ -60,17 +60,17 @@ or/and send to dead letter queue.
 #### clear
 Clears a component's state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### complete
 Permanently removes a message from the queue.
@@ -85,17 +85,17 @@ This method is usually used to remove the message after successful processing.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### endListen
 Ends listening for incoming messages.
 When this method is call, [listen](#listen) unblocks the thread and execution continues.
 
-> `public` endListen(correlationId: string): void
+> `public` endListen(context: [IContext](../../../components/context/icontext)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### isOpen
 Checks if the component is open.
@@ -110,9 +110,9 @@ Listens for incoming messages and blocks the current thread until the queue is c
 
 See [IMessageReceiver](../../../messaging/queues/imessage_receiver)
 
-> `public` listen(correlationId: string, receiver: [IMessageReceiver](../../../messaging/queues/imessage_receiver)): void
+> `public` listen(context: [IContext](../../../components/context/icontext), receiver: [IMessageReceiver](../../../messaging/queues/imessage_receiver)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../../../messaging/queues/imessage_receiver) - receiver used to receive incoming messages.
 
 #### moveToDeadLetter
@@ -131,18 +131,18 @@ If there are no messages available in the queue, it returns null.
 
 - Important: This method are not supported in this release!
 
-> `public` peek(correlationId: string): Promise\<[MessageEnvelope](../../../messaging/queues/message_envelope)\>
+> `public` peek(context: [IContext](../../../components/context/icontext)): Promise\<[MessageEnvelope](../../../messaging/queues/message_envelope)\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise\<[MessageEnvelope](../../../messaging/queues/message_envelope)\> - peeked message.
 
 #### peekBatch
 Peeks multiple incoming messages from the queue without removing them.
 If there are no messages available in the queue, it returns an empty list.
 
-> `public` peekBatch(correlationId: string, messageCount: number): Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)>
+> `public` peekBatch(context: [IContext](../../../components/context/icontext), messageCount: number): Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageCount**: number - maximum number of messages to peek.
 - **returns**: Promise<[MessageEnvelope[]](../../../messaging/queues/message_envelope)> - list with peeked messages.
 
@@ -156,9 +156,9 @@ Reads the current number of messages in the queue to be delivered.
 #### receive
 Receives an incoming message and removes it from the queue.
 
-> `public` receive(correlationId: string, waitTimeout: number): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
+> `public` receive(context: [IContext](../../../components/context/icontext), waitTimeout: number): Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **waitTimeout**: number - timeout in milliseconds to wait for a message to come.
 - **returns**: Promise<[MessageEnvelope](../../../messaging/queues/message_envelope)> - received message or null if nothing was received.
 
@@ -176,9 +176,9 @@ This method is usually used to extend the message processing time.
 #### send
 Sends a message into the queue.
 
-> `public` send(correlationId: string, message: [MessageEnvelope](../../../messaging/queues/message_envelope)): Promise\<void\>
+> `public` send(context: [IContext](../../../components/context/icontext), message: [MessageEnvelope](../../../messaging/queues/message_envelope)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **message**: [MessageEnvelope](../../../messaging/queues/message_envelope) - message envelop to be sent.
 
 
