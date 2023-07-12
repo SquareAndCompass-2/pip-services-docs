@@ -8,7 +8,7 @@ description: >
     for Prometheus to obtain performance metrics.
 ---
 
-**Extends:** [RestService](../../../rpc/services/rest_service)
+**Extends:** [RestController](../../../http/controllers/rest_controller)
 
 ### Description
 
@@ -29,10 +29,10 @@ The PrometheusMetricsController class allows you to create controllers that expo
 
 
 #### References
- * - **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
- * - **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
- * - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections
- * - **\*:endpoint:http:\*:1.0** - (optional) [HttpEndpoint](../../../rpc/services/http_endpoint) reference to expose REST operations
+ * - **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+ * - **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+ * - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections
+ * - **\*:endpoint:http:\*:1.0** - (optional) [HttpEndpoint](../../../http/controllers/http_endpoint) reference to expose REST operations
  * - **\*:counters:prometheus:\*:1.0** - [PrometheusCounters](../../count/prometheus_counters) reference to retrieve collected metrics
 
 
@@ -47,9 +47,9 @@ Creates a new instance of this service.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void 
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void 
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies. 
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies. 
 
 #### register
 Registers all service routes in a HTTP endpoint.
@@ -71,5 +71,5 @@ console.log("The Prometheus metrics service is accessible at http://+:8080/metri
 ```
 
 ### See also
-- #### [RestService](../../../rpc/services/rest_service)
-- #### [RestClient](../../../rpc/clients/rest_client)
+- #### [RestController](../../../http/controllers/rest_controller)
+- #### [RestClient](../../../http/clients/rest_client)
