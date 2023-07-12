@@ -17,7 +17,7 @@ The IdentifiableJsonPostgresPersistence class allows you to create persistence c
 
 Important points
 
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface.
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
 - In basic scenarios child classes shall only override the [getPageByFilter](../postgres_persistence/#getpagebyfilter), [getListByFilter](../postgres_persistence/#getlistbyfilter) or [deleteByFilter](../postgres_persistence/#deletebyfilter)  operations with a specific filter function.
 - All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing **this._collection** and **this._model** properties.
@@ -28,13 +28,13 @@ Important points
 - **schema**: (optional) PostgreSQL schema name
 
 **connection(s)**:    
-- **discovery_key**: (optional) key used to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+- **discovery_key**: (optional) key used to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 - **host**: host name or IP address
 - **port**: port number (default: 27017)
 - **uri**: resource URI or connection string with all parameters in it
 
 **credential(s)**:    
-- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+- **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
 - **username**: (optional) username
 - **password**: (optional) user's password
 
@@ -44,9 +44,9 @@ Important points
 - **max_pool_size**: (optional) maximum number of clients the pool can contain (default: 10)
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials ([ICredentialStore](../../../components/auth/icredential_store))
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials ([ICredentialStore](../../../config/auth/icredential_store))
 
 
 
@@ -91,9 +91,9 @@ Adds DML statement to automatically create a JSON(B) table
 #### updatePartially
 Updates only few selected fields in a data item.
 
-> `public` update_partially(correlationId: string, id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` update_partially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: any - id of the data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **return**: Promise\<T\> - updated item
@@ -122,9 +122,9 @@ class MyPostgresPersistence extends IdentifiablePostgresJsonPersistence<MyData, 
         return filterCondition;
     }
     
-    public getPageByFilter(correlationId: string, filter: FilterParams,
+    public getPageByFilter(context: string, filter: FilterParams,
         paging: PagingParams): Promise<DataPage<MyData>> {
-        return super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+        return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
 
