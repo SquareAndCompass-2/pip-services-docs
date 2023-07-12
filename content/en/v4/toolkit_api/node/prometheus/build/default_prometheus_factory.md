@@ -23,5 +23,5 @@ Create a new instance of the factory.
 ### See also
 - #### [Factory](../../../components/build/factory)
 - #### [PrometheusCounters](../../count/prometheus_counters)
-- #### [PrometheusMetricsController](../../services/prometheus_metrics_controller)
+- #### [PrometheusMetricsController](../../controllers/prometheus_metrics_controller)
 
