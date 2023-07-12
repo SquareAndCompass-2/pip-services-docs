@@ -4,7 +4,7 @@ title: "PrometheusMetricsController"
 linkTitle: "PrometheusMetricsController"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-prometheus-node"
 description: >
-    Service that exposes the **"/metrics"** and **"/metricsandreset"** routes 
+    Controller that exposes the **"/metrics"** and **"/metricsandreset"** routes 
     for Prometheus to obtain performance metrics.
 ---
 
@@ -12,7 +12,7 @@ description: >
 
 ### Description
 
-The PrometheusMetricsController class allows you to create services that expose the **"/metrics"** and **"/metricsandreset"** routes for Prometheus to obtain performance metrics.
+The PrometheusMetricsController class allows you to create controllers that expose the **"/metrics"** and **"/metricsandreset"** routes for Prometheus to obtain performance metrics.
 
 #### Configuration parameters
 
