@@ -17,9 +17,9 @@ The PrometheusCounterConverter class allows you to convert performance counter v
 #### toString
 Converts the given counters to a string that is returned by Prometheus metrics service.
 
-> `public static` toString(counters: [Counter](../../../components/count/counter)[], source: string, instance: string): string
+> `public static` toString(counters: [Counter](../../../observability/count/counter)[], source: string, instance: string): string
 
-- **counters**: [Counter](../../../components/count/counter)[] - list of counters to convert.
+- **counters**: [Counter](../../../observability/count/counter)[] - list of counters to convert.
 - **source**: string - source (context) name.
 - **instance**: string - unique instance name (usually a host name).
 - **returns**: string - converted counter
