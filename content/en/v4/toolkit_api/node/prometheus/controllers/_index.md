@@ -1,11 +1,11 @@
 ---
 type: docs
-title: "Services"
-linkTitle: "Services"
+title: "Controllers"
+linkTitle: "Controllers"
 no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-prometheus-node"
 description: >
-    This package contains classes used to create Prometheus metric services.
+    This package contains classes used to create Prometheus metric controllers.
 ---
 ---
 <div class="module-body"> 
