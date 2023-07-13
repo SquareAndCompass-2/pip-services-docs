@@ -52,12 +52,12 @@ Gets the name of the event.
 
 #### notify
 Fires this event and notifies all registred listeners.  
-Throws an [InvocationException](../../errors/invocation_exception) if the event fails to be raised.
+Throws an [InvocationException](../../../commons/errors/invocation_exception) if the event fails to be raised.
 
-> `public`notify(correlationId: string, args: [Parameters](../../run/parameters)): void
+> `public`notify(context: [IContext](../../../components/context/icontext), args: [Parameters](../../../components/exec/parameters)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
-- **args**: [Parameters](../../run/parameters) - parameters to raise this event with.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters to raise this event with.
 
 #### removeListener
 Removes a listener, so that it no longer receives notifications for this event.
