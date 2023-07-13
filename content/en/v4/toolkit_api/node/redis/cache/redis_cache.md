@@ -8,7 +8,7 @@ description: >
 
 ---
 
-**Implements:** [ICache](../../../components/cache/icache), [IReferenceable](../../../commons/refer/ireferenceable), [IConfigurable](../../../commons/config/iconfigurable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [ICache](../../../logic/cache/icache), [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -17,12 +17,12 @@ The RedisCache class allows you to create distributed caches that store values i
 #### Configuration parameters
 
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:
-    - **store_key**: key to retrieve parameters from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: key to retrieve parameters from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**: username (currently is not used)
     - **password**: user's password
 - **options**:
@@ -32,8 +32,8 @@ The RedisCache class allows you to create distributed caches that store values i
 
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) stores to resolve credentials
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) stores to resolve credentials
 
 ### Constructors
 Creates a new instance of this cache.
@@ -46,17 +46,17 @@ Creates a new instance of this cache.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -69,16 +69,16 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### remove
 Removes a value from the cache by its key.
 
-> `public` remove(correlationId: string, key: string): Promise\<any\>
+> `public` remove(context: [IContext](../../../components/context/icontext), key: string): Promise\<any\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique value key.
 - **returns**: Promise\<any\> - removed value.
 
@@ -86,26 +86,26 @@ Removes a value from the cache by its key.
 Retrieves a cached value from the cache using its key.
 If the value is missing in the cache or expired, it returns null.
 
-> `public` retrieve(correlationId: string, key: string): Promise\<any\>
+> `public` retrieve(context: [IContext](../../../components/context/icontext), key: string): Promise\<any\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique value key.
 - **returns**: Promise\<any\> - retrieved cached value or *null* if nothing was found.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### store
 Stores a value in the cache with an expiration time.
 
-> `public` store(correlationId: string, key: string, value: any, timeout: number): Promise\<any\>
+> `public` store(context: [IContext](../../../components/context/icontext), key: string, value: any, timeout: number): Promise\<any\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique value key.
 - **value**: any - value to store.
 - **timeout**: number - expiration timeout in milliseconds.
