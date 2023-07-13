@@ -8,7 +8,7 @@ description: >
     
 ---
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IUnreferenceable](../../../commons/refer/iunreferenceable), [IConfigurable](../../../commons/config/iconfigurable), [IOpenable](../../../commons/run/iopenable), [ICleanable](../../../commons/run/icleanable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IUnreferenceable](../../../components/refer/iunreferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/run/iopenable), [ICleanable](../../../components/run/icleanable)
 
 ### Description
 The SqlitePersistence class allows you to create abstract persistence components that store data in SQLite using the default driver.
@@ -22,12 +22,12 @@ Important points
 - **table**: (optional) SQLite table name
 - **schema**: (optional) SQLite schema name
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number (default: 27017)
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**: (optional) username
     - **password**: (optional) user's password
 - **options**:
@@ -37,9 +37,9 @@ Important points
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
 ### Constructors
@@ -61,11 +61,11 @@ SQLite database name.
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _connection
 SQLite connection component.
@@ -105,9 +105,9 @@ Adds a statement to schema definition.
 #### clear
 Clears a component's state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### clearSchema
 Clears all auto-created objects
@@ -118,17 +118,17 @@ Clears all auto-created objects
 #### close
 Closes a component and frees the used resources.
 
-> `public` close(correlationId: string): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config:**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config:**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### convertFromPublic
@@ -152,18 +152,18 @@ Converts an object value from internal to public format.
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
 
 #### createSchema
 Checks if a table exists and if not, it creates the necessary database objects.
-> `protected` createSchema(correlationId: string): Promise\<void\>
+> `protected` createSchema(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### defineSchema
@@ -175,11 +175,11 @@ Defines a database schema via auto-create objects or convenience methods.
 #### deleteByFilter
 Deletes data items that match to a given filter.
 This method shall be called by a public **deleteByFilter** method from child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` deleteByFilter(correlationId: string, filter: any): Promise\<void\>
+> `protected` deleteByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function to filter items.
 
 
@@ -241,11 +241,11 @@ Generates a list of column parameters.
 Gets a number of data items retrieved by a given filter.
 
 This method shall be called by a public **getCountByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getCountByFilter(correlationId: string, filter: any): Promise\<number\>
+> `protected` getCountByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<number\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) JSON object filter
 - **returns**: Promise\<number\> - number of filtered items.
 
@@ -254,11 +254,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getListByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getListByFilter(correlationId: string, filter: any, sort: any, select: any): Promise\<T[]\>
+> `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function to filter items
 - **sort**: any - (optional) sorting parameters
 - **select**: any - (optional) projection parameters (not used yet)
@@ -269,11 +269,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a random item from items that match to a given filter.
 
 This method shall be called by a public **getOneRandom** method from a child class
-that receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+that receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getOneRandom(correlationId: string, filter: any): Promise\<T\>
+> `protected` getOneRandom(context: [IContext](../../../components/context/icontext), filter: any): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter JSON object
 - **returns**: Promise\<T\> - random item.
 
@@ -282,16 +282,16 @@ that receives [FilterParams](../../../commons/data/filter_params) and converts t
 Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getPageByFilter** method from the a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(correlationId: string, filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../commons/data/data_page)>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../commons/data/data_page)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter for JSON objects.
-- **paging**: [PagingParams](../../../commons/data/paging_params) - (optional) paging parameters
+- **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting JSON object
 - **select**: any - (optional) projection JSON object
-- **returns**: Promise<[DataPage<T>](../../../commons/data/data_page)> - data page of result by filter
+- **returns**: Promise<[DataPage<T>](../../../data/query/data_page)> - data page of result by filter
 
 
 
@@ -306,9 +306,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### quoteIdentifier
@@ -328,9 +328,9 @@ Adds the schema's name to the table's name
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 #### unsetReferences
@@ -352,7 +352,7 @@ export class MySqlitePersistence extends SqlitePersistence<MyData> {
         this.ensureIndex(this._tableName + '_name', { name: 1 }, { unique: true });
     }
 
-    public async set(correlationId: string, item: MyData): Promise<MyData> {
+    public async set(context: IContext, item: MyData): Promise<MyData> {
         if (item == null)
             return null;
 
@@ -390,7 +390,7 @@ export class MySqlitePersistence extends SqlitePersistence<MyData> {
         });
     }
 
-    public async getOneByName(correlationId: string, name: string): Promise<MyData> {
+    public async getOneByName(context: IContext, name: string): Promise<MyData> {
         let query = "SELECT * FROM " + this.quotedTableName() + " WHERE name=?";
         let params = [name];
 
