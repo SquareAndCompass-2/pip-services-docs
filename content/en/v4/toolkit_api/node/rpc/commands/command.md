@@ -17,21 +17,21 @@ The Command class allows you to call a method or a function.
 
 Creates a new command object and assigns it's parameters.
 
-> `public` constructor(name: string, schema: [Schema](../../validate/schema), action: [IExecutable](../../run/iexecutable) | (correlationId: string, args: Parameters) => Promise<any>)
+> `public` constructor(name: string, schema: [Schema](../../../data/validate/schema), action: [IExecutable](../../run/iexecutable) | (correlationId: string, args: Parameters) => Promise<any>)
 
 - **name**: string - command name.
-- **schema**: [Schema](../../validate/schema) - schema to validate command arguments.
-- **action**:  [IExecutable](../../run/iexecutable) - function to be executed by this command.
+- **schema**: [Schema](../../../data/validate/schema) - schema to validate command arguments.
+- **action**:  [IExecutable](../../../components/exec/iexecutable) - function to be executed by this command.
 
 ### Instance methods
 
 #### execute
-Executes the command. Before execution it validates [args](../../run/parameters) using the defined schema.
+Executes the command. Before execution it validates [args](../../../components/exec/parameters) using the defined schema.
 
 Raise [ApplicationException](../../errors/application_exception) when execution fails for whatever reason.  
 See [Parameters](../../run/parameters)
 
-> `public` execute(correlationId: string, args: [Parameters](../../run/parameters)): Promise\<any\>
+> `public` execute(correlationId: string, args: [Parameters](../../../components/exec/parameters)): Promise\<any\>
 
 - **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 - **args**: [Parameters](../../run/parameters) - parameters (arguments) to pass to this command for execution.
