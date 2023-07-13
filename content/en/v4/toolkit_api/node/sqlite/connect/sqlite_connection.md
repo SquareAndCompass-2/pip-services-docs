@@ -120,6 +120,6 @@ Opens the component.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
