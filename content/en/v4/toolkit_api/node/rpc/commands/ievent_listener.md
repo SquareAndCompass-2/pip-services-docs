@@ -16,17 +16,17 @@ The IEventListener interface allows you to define actions to be taken by listene
 #### onEvent
 A method called when events this listener is subscribed to are fired.
 
-> onEvent(correlationId: string, event: [IEvent](../ievent), args: [Parameters](../../run/parameters)): void
+> onEvent(context: [IContext](../../../components/context/icontext), event: [IEvent](../ievent), args: [Parameters](../../../components/exec/parameters)): void
 
-- **correlationId**: string - fired evemt
-- **event**: [IEvent](../ievent) - (optional) transaction id used to trace execution through the call chain.
-- **args**: [Parameters](../../run/parameters) - event arguments.
+- **context**: [IContext](../../../components/context/icontext) - a context to trace execution through a call chain
+- **event**: [IEvent](../ievent) - (optional) fired event.
+- **args**: [Parameters](../../../components/exec/parameters) - event arguments.
 
 ### Examples
 
 ```typescript
 export class MyListener implements IEventListener {
-    private onEvent(correlationId: string, event: IEvent, args: Parameters): void {
+    private onEvent(context: [IContext](../../../components/context/icontext), event: IEvent, args: Parameters): void {
         console.log("Fired event " + event.getName());
     }
 }
