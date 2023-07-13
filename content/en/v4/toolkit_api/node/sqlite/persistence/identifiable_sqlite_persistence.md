@@ -10,13 +10,13 @@ description: >
 
 **Extends:** [SqlitePersistence<T>](../sqlite_persistence)
 
-**Implements:** [IWriter<T, K>](../../../data/core/iwriter), [IGetter<T, K>](../../../data/core/igetter), [ISetter<T>](../../../data/core/isetter)
+**Implements:** [IWriter<T, K>](../../../persistence/write/iwriter), [IGetter<T, K>](../../../persistence/read/igetter), [ISetter<T>](../../../persistence/write/isetter)
 
 ### Description
 
 **Important points**
     
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface. 
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface. 
 - In basic scenarios, child classes shall only override [getPageByFilter](../sqlite_persistence/#getpagebyfilter), [getListByFilter](../sqlite_persistence/#getlistbyfilter) or [deleteByFilter](../sqlite_persistence/#deletebyfilter) operations with a specific filter function.
 - All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing **this._collection** and **this._model** properties.
@@ -26,7 +26,7 @@ description: >
 - **table**: (optional) SQLite table name
 - **schema**: (optional) SQLite schema name
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **database**: database file path
     - **uri**: resource URI with file:// protocol
 
@@ -34,7 +34,7 @@ description: >
 #### References
 - **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
 - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials ([ICredentialStore](../../../components/auth/icredential_store))
+- **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials ([ICredentialStore](../../../config/auth/icredential_store))
 
 
 ### Constructors
@@ -68,9 +68,9 @@ Converts the given object from the public partial format.
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -78,9 +78,9 @@ Creates a data item.
 #### deleteById
 Deletes a data item by it's unique id.
 
-> `public` deleteById(correlationId: string, id: K): Promise\<T\>
+> `public` deleteById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the item to be deleted
 - **returns**: Promise\<T\> - deleted item
 
@@ -88,18 +88,18 @@ Deletes a data item by it's unique id.
 #### deleteByIds
 Deletes multiple data items by their unique ids.
 
-> `public` deleteByIds(correlationId: string, ids: K[]): Promise\<void\>
+> `public` deleteByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of the data items to be deleted.
 
 
 #### getListByIds
 Gets a list of data items retrieved by given unique ids.
 
-> `public` getListByIds(correlationId: string, ids: K[]): Promise\<T[]\>
+> `public` getListByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of the data items to be retrieved
 - **returns**: Promise\<T[]\> - data list
 
@@ -107,9 +107,9 @@ Gets a list of data items retrieved by given unique ids.
 #### getOneById
 Gets a data item by its unique id.
 
-> `public` getOneById(correlationId: string, id: K): Promise\<T\>
+> `public` getOneById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the data item to be retrieved.
 - **returns**: Promise\<T\> - data item
 
@@ -118,9 +118,9 @@ Gets a data item by its unique id.
 Sets a data item. If the data item exists, it updates it.
 Otherwise, it creates a new data item.
 
-> `public` set(correlationId: string, item: T): Promise\<T\>
+> `public` set(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be set.
 - **returns**: Promise\<T\> - new or updated item
 
@@ -128,9 +128,9 @@ Otherwise, it creates a new data item.
 #### update
 Updates a data item.
 
-> `public` update(correlationId: string, item: T): Promise\<T\>
+> `public` update(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be updated.
 - **returns**: Promise\<T\> - updated item
 
@@ -138,9 +138,9 @@ Updates a data item.
 #### updatePartially
 Updates only a few selected fields in a data item.
 
-> `public` updatePartially(correlationId: string, id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: any - id of data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **returns**: Promise\<T\> - updated item
@@ -168,9 +168,9 @@ class MySqlitePersistence extends IdentifiableSqlitePersistence<MyData, string> 
         return filterCondition;
     }
     
-    public getPageByFilter(correlationId: string, filter: FilterParams,
+    public getPageByFilter(context: IContext, filter: FilterParams,
         paging: PagingParams): Promise<DataPage<MyData>> {
-        return super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+        return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
 
