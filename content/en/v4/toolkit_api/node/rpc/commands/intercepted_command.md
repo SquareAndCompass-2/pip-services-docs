@@ -26,13 +26,13 @@ about the interceptor that is being used and the next command in the chain.
 ### Instance methods
 
 #### execute
-Executes the next command in the execution chain using the given [parameters](../../run/parameters) (arguments).  
-See [Parameters](../../run/parameters)
+Executes the next command in the execution chain using the given [parameters](../../../components/exec/parameters) (arguments).  
+See [Parameters](../../../components/exec/parameters)
 
-> `public` execute(correlationId: string, args: [Parameters](../../run/parameters)): Promise\<any\>
+> `public` execute(context: [IContext](../../../components/context/icontext), args: [Parameters](../../../components/exec/parameters)): Promise\<any\>
 
-- **correlationId**: string - unique transaction id used to trace calls across components.
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to pass to the command for execution.
+- **context**: [IContext](../../../components/context/icontext) - a context to trace execution through a call chain.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to pass to the command for execution.
 - **returns**: Promise\<any\> - execution result
 
 #### getName
@@ -44,14 +44,14 @@ Returns a string with the name of the command that is being intercepted.
 
 
 #### validate
-Validates the [parameters](../../run/parameters) (arguments) that are to be passed to the command that is next 
+Validates the [parameters](../../../components/exec/parameters) (arguments) that are to be passed to the command that is next 
 in the execution chain.  
-See [Parameters](../../run/parameters), [ValidationResult](../../validate/validation_result)
+See [Parameters](../../../components/exec/parameters), [ValidationResult](../../validate/validation_result)
 
-> `public` validate(args: [Parameters](../../run/parameters)): [ValidationResult](../../validate/validation_result)[]
+> `public` validate(args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to validate for the next command.
-- **returns**: [ValidationResult](../../validate/validation_result)[] - array of ValidationResults.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate for the next command.
+- **returns**: [ValidationResult](../../../data/validate/validation_result)[] - array of ValidationResults.
 
 ### Examples
 
@@ -62,9 +62,9 @@ export class CommandLogger implements ICommandInterceptor {
         return command.getName();
     }
           
-    public async execute(correlationId: string, command: ICommand, args: Parameters): Promise\<any\> {
+    public async execute(context: IContext, command: ICommand, args: Parameters): Promise\<any\> {
         console.log("Executed command " + command.getName());
-        await command.execute(correlationId, args);
+        await command.execute(context, args);
     }
           
     private validate(command: ICommand, args: Parameters): ValidationResult[] {
