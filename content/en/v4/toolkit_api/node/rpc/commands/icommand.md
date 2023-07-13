@@ -7,7 +7,7 @@ description: >
     An interface used to define Commands.
 ---
 
-**Extends:** [IExecutable](../../run/iexecutable)
+**Extends:** [IExecutable](../../../components/exec/iexecutable)
 
 ### Description
 
@@ -25,13 +25,13 @@ Gets the command name.
 #### validate
 Validates command arguments before execution using a defined schema.
 
-> validate(args: [Parameters](../../run/parameters)): [ValidationResult](../../validate/validation_result)[]
+> validate(args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to validate.
-- **returns**: [ValidationResult](../../validate/validation_result)[] - command name.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate.
+- **returns**: [ValidationResult](../../../data/validate/validation_result)[] - command name.
 
 ### See also
 - #### [Command](../command)
-- #### [IExecutable](../../run/iexecutable)
+- #### [IExecutable](../../../components/exec/iexecutable)
 - #### [ICommandInterceptor](../icommand_interceptor)
 - #### [InterceptedCommand](../intercepted_command)
