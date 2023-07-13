@@ -14,16 +14,16 @@ The InstrumentTiming class allows you to create logs, countes and timings for me
 ### Constructors
 Creates a new instance of InstrumentTiming.
 
-> `public` constructor(correlationId: string, name: string, verb: string, logger: [ILogger](../../../components/log/ilogger), counters: [ICounters](../../../components/count/icounters),
-counterTiming: [CounterTiming](../../../components/count/counter_timing), traceTiming: [TraceTiming](../../../components/trace/trace_timing))
+> `public` constructor(context: [IContext](../../../components/context/icontext), name: string, verb: string, logger: [ILogger](../../../observability/log/ilogger), counters: [ICounters](../../../observability/count/icounters),
+counterTiming: [CounterTiming](../../../observability/count/counter_timing), traceTiming: [TraceTiming](../../../observability/trace/trace_timing))
 
-- **correlationId**: string -  transaction id used to trace execution through the call chain.    
+- **context**: [IContext](../../../components/context/icontext) -  a context to trace execution through a call chain.    
 - **name**: string - name    
 - **verb**: string - verb or 'call'     
-- **logger**: [ILogger](../../../components/log/ilogger) - logger    
-- **counters**: [ICounters](../../../components/count/icounters) - counters     
-- **counterTiming**: [CounterTiming](../../../components/count/counter_timing) - counter    
-- **traceTiming**: [TraceTiming](../../../components/trace/trace_timing) - time tracer    
+- **logger**: [ILogger](../../../observability/log/ilogger) - logger    
+- **counters**: [ICounters](../../../observability/count/icounters) - counters     
+- **counterTiming**: [CounterTiming](../../../observability/count/counter_timing) - counter    
+- **traceTiming**: [TraceTiming](../../../observability/trace/trace_timing) - time tracer    
 
 
 ### Instance methods
