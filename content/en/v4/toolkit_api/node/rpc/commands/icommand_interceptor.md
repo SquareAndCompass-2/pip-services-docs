@@ -36,11 +36,11 @@ Executes the wrapped command with specified arguments.
 The interceptor can use this method to intercept and alter the command execution.
 Otherwise, it shall just delete the call to the wrapped command.
 
-> execute(correlationId: string, command: [ICommand](../icommand), args: [Parameters](../../run/parameters)): Promise\<any\>
+> execute(correlationId: string, command: [ICommand](../icommand), args: [Parameters](../../../components/exec/parameters)): Promise\<any\>
 
 - **correlationId**: string - (optional) transaction id to used trace execution through the call chain.
 - **command**: [ICommand](../icommand) - next command in the call chain that is to be executed.
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to pass to the command for execution.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to pass to the command for execution.
 - **returns**: Promise\<any\> - execution result.
 
 #### validate
@@ -49,11 +49,11 @@ Validates the arguments of the wrapped command before its execution.
 The interceptor can use this method to intercept and alter validation of the command arguments.
 Otherwise, it shall just delegate the call to the wrapped command.
 
-> validate(command: [ICommand](../icommand), args: [Parameters](../../run/parameters)): [ValidationResult](../../validate/validation_result)[]
+> validate(command: [ICommand](../icommand), args: [Parameters](../../run/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
 - **command**: [ICommand](../icommand) - next command in the call chain to be validated against.
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to validate.
-- **returns**: [ValidationResult](../../validate/validation_result)[] - array of ValidationResults.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate.
+- **returns**: [ValidationResult](../../../data/validate/validation_result)[] - array of ValidationResults.
 
 
 ### See also
