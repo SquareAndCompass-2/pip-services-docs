@@ -86,13 +86,13 @@ See [IEventListener](../ievent_listener)
 
 #### execute
 Executes a [command](../icommand) specificed by its name.  
-See [ICommand](../icommand), [Parameters](../../run/parameters)
+See [ICommand](../icommand), [Parameters](../../../components/exec/parameters)
 
-> `public` execute(correlationId: string, commandName: string, args: [Parameters](../../run/parameters)): Promise\<any\>
+> `public` execute(context: [IContext](../../../components/context/icontext), commandName: string, args: [Parameters](../../../components/exec/parameters)): Promise\<any\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **commandName**: string - name of the command that is to be executed.
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to pass to the command for execution.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to pass to the command for execution.
 - **returns**: Promise\<any\> - execution result
 
 #### findCommand
@@ -132,11 +132,11 @@ See [IEvent](../ievent)
 Fires an event specified by its name and notifies all registered
 [listeners](../ievent_listener)
 
-> `public` notify(correlationId: string, eventName: string, args: [Parameters](../../run/parameters)): void
+> `public` notify(context: [IContext](../../../components/context/icontext), eventName: string, args: [Parameters](../../../components/exec/parameters)): void
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **eventName**: string - name of the event that is to be fired.
-- **args**: [Parameters](../../run/parameters) - event arguments (parameters).
+- **args**: [Parameters](../../../components/exec/parameters) - event arguments (parameters).
 
 #### removeListener
 Removes a previosly added [listener](../ievent_listener).  
@@ -148,16 +148,16 @@ See [IEventListener](../ievent_listener)
 - **listener**: [IEventListener](../ievent_listener) - listener to remove.
 
 #### validate
-Validates the [args](../../run/parameters) for a command specified by its name using a defined schema.
+Validates the [args](../../../components/exec/parameters) for a command specified by its name using a defined schema.
 If the validation schema is not defined, then the methods returns no errors.
 It returns a validation error if the command is not found.
 
 
-> `public` validate(commandName: string, args: [Parameters](../../run/parameters)): [ValidationResult](../../validate/validation_result)[]
+> `public` validate(commandName: string, args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../validate/validation_result)[]
 
 - **commandName**: string - name of the command for which the 'args' must be validated.
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to validate.
-- **returns**: [ValidationResult](../../validate/validation_result)[] - array of ValidationResults. If no command is found by the given name, then the returned array of ValidationResults will contain a single entry, whose type will be [ValidationResultType.Error](../../validate/validation_result_type).
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate.
+- **returns**: [ValidationResult](../../../data/validate/validation_result)[] - array of ValidationResults. If no command is found by the given name, then the returned array of ValidationResults will contain a single entry, whose type will be [ValidationResultType.Error](../../../data/validate/validation_result_type).
 
 ### Examples
 
@@ -175,9 +175,9 @@ export class MyDataCommandSet extends CommandSet {
         return new Command(
           'get_mydata',
           null,
-          async (correlationId: string, args: Parameters) => Promise<any> {
+          async (context: IContext, args: Parameters) => Promise<any> {
               let param = args.getAsString('param');
-              return await this._controller.getMyData(correlationId, param);
+              return await this._controller.getMyData(context, param);
           }
         );
     }
