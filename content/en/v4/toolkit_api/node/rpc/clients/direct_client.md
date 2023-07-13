@@ -25,9 +25,9 @@ Important points
 
 #### References
 
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../obesrvability/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../obesrvability/count/icounters) components to pass collected measurements
-- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../obesrvability/trace/itracer) components to record traces
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:traces:\*:\*:1.0** - (optional) [ITracer](../../../observability/trace/itracer) components to record traces
 - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve a connection
 
 
@@ -81,11 +81,11 @@ Configures component by passing configuration parameters.
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../trace/instrument_timing)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **name**: string - method name.
-- **returns**: [InstrumentTiming](../../services/instrument_timing) - InstrumentTiming object used to end the time measurement.
+- **returns**: [InstrumentTiming](../../trace/instrument_timing) - InstrumentTiming object used to end the time measurement.
 
 
 
