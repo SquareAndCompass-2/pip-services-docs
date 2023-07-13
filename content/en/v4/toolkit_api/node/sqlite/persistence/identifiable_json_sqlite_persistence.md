@@ -15,7 +15,7 @@ description: >
 
 Important points    
     
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface.
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
 - The JSON table has only two fields: id and data.
 - In basic scenarios, child classes shall only override [getPageByFilter](../sqlite_persistence/#getpagebyfilter), [getListByFilter](../sqlite_persistence/#getlistbyfilter) or [deleteByFilter](../sqlite_persistence/#deletebyfilter) operations with a specific filter function.
 - All other operations can be used out of the box. 
@@ -26,15 +26,15 @@ Important points
 - **table**: (optional) SQLite table name
 - **schema**: (optional) SQLite schema name 
 - **connection(s)**:    
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **database**: database file path
     - **uri**: resource URI with file:// protocol
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
 
@@ -78,9 +78,9 @@ Adds a DML statement to automatically create a JSON(B) table
 #### updatePartially
 Updates only a few selected fields in a data item.
 
-> `public` updatePartially(correlationId: string, id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **return**: Promise\<T\> - updated item
@@ -109,9 +109,9 @@ class MySqlitePersistence extends IdentifiableSqliteJsonPersistence<MyData, stri
     
         return filterCondition;
     }
-    public getPageByFilter(correlationId: string, filter: FilterParams,
+    public getPageByFilter(context: IContext, filter: FilterParams,
         paging: PagingParams): Promise<DataPage<MyData>> {
-        return super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+        return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
 
