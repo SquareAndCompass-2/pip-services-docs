@@ -15,7 +15,7 @@ description: >
 ### Classes
 
 #### [SwaggerController](swagger_controller)
-The SwaggerController class allows you to create a Swagger UI service.
+The SwaggerController class allows you to create a Swagger UI controller.
 
 
 </div>
