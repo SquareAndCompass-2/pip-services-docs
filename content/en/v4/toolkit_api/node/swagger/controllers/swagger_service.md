@@ -9,7 +9,7 @@ description: >
 
 **Implements:** [ISwaggerController](../../../http/controllers/iswagger_controller)
 
-**Extends**: [RestService](../../../rpc/services/rest_service)
+**Extends**: [RestController](../../../http/controllers/rest_controller)
 
 ### Description
 
