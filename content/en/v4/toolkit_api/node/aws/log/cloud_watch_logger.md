@@ -47,9 +47,9 @@ Creates a new instance of this logger.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### configure
 Configures a component by passing configuration parameters.
@@ -69,9 +69,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### save
 Saves the current counters' measurements.
@@ -93,7 +93,7 @@ Writes a log message to the logger destination.
 > `protected` write(level: [LogLevel](../../../components/log/log_level), context: [Context](../../../components/context/context), ex: Error, message: string): void
 
 - **level**: [LogLevel](../../../components/log/log_level) - log level.
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ex**: Error - error object associated with this message.
 - **message**: string - human-readable message to log.
 
