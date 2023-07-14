@@ -47,10 +47,10 @@ Calls a remote action in AWS Lambda function.
 The name of the action is added as "cmd" parameter
 to the action parameters. 
 
-> `public` callCommand(cmd: string, context: [Context](../../../components/context/context), params: any): Promise\<any\>
+> `public` callCommand(cmd: string, context: [IContext](../../../components/context/icontext), params: any): Promise\<any\>
 
 - **cmd**: string - action name
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - command parameters.
 - **returns**: Promise\<any\> - action result.
 
