@@ -37,16 +37,16 @@ Configures the component by passing its configuration parameters.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### sendMetrics
 Sends the given metrics.
 
 > `public` sendMetrics(context: [Context](../../../components/context/context), metrics: [DataDogMetric[]](../datadog_metric)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messages**: [DataDogMetric[]](../datadog_metric) - messages
 
 #### setReferences
