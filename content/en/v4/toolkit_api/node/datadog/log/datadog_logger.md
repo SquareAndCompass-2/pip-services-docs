@@ -54,9 +54,9 @@ Creates a new instance of the logger.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
@@ -77,9 +77,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### save
