@@ -63,9 +63,9 @@ Creates an instance of this class.
 Merges connection options with connection parameters. 
 This method can be overriden in child classes.
 
-> `public` resolve(context: [Context](../../../components/context/context): Promise<[CouchbaseConnectionParams](../couchbase_connection_params)>
+> `public` resolve(context: [IContext](../../../components/context/icontext): Promise<[CouchbaseConnectionParams](../couchbase_connection_params)>
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise<[CouchbaseConnectionParams](../couchbase_connection_params)> - resolved URI.
 
 
