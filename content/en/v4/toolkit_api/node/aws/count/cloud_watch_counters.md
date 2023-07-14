@@ -45,9 +45,9 @@ Creates a new instance of this counters.
 #### close
 Closes component and frees used resources.
 
-> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
@@ -67,9 +67,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### save
 Saves the current counters' measurements.
