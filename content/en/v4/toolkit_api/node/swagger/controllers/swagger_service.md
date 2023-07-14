@@ -7,7 +7,7 @@ description: >
     Swagger UI service.
 ---
 
-**Implements:** [ISwaggerController](../../../rpc/services/iswagger_controller)
+**Implements:** [ISwaggerController](../../../http/controllers/iswagger_controller)
 
 **Extends**: [RestService](../../../rpc/services/rest_service)
 
