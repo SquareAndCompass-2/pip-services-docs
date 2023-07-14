@@ -85,10 +85,10 @@ Tracer.
 #### call
 Calls an AWS Lambda Function action.
 
-> `protected` call(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
+> `protected` call(cmd: string, context: [IContext](../../../components/context/icontext), params: any = {}): Promise\<any\>
 
 - **cmd**: string - action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
@@ -96,19 +96,19 @@ Calls an AWS Lambda Function action.
 #### callOneWay
 Calls a AWS Lambda Function action asynchronously without waiting for response.
 
-> `protected` callOneWay(cmd: string, context: [Context](../../../components/context/context), params: any = {}): Promise\<any\>
+> `protected` callOneWay(cmd: string, context: [IContext](../../../components/context/icontext), params: any = {}): Promise\<any\>
 
 - **cmd**: string - an action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - (optional) action parameters.
 - **returns**: Promise\<any\> - action result.
 
 #### close
 Closes component and frees used resources.
 
-> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### configure
 Configures a component by passing its configuration parameters.
@@ -121,20 +121,20 @@ Configures a component by passing its configuration parameters.
 Adds instrumentation to log calls and measures call time.
 It returns a InstrumentTiming object that is used to end the time measurement.
 
-> `protected` instrument(context: [Context](../../../components/context/context), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing) 
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - a method name.
 - **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
 #### invoke
 Performs AWS Lambda Function invocation.
 
-> `protected` invoke(invocationType: string, cmd: string, context: [Context](../../../components/context/context), args: any): Promise\<any\>
+> `protected` invoke(invocationType: string, cmd: string, context: [IContext](../../../components/context/icontext), args: any): Promise\<any\>
 
 - **invocationType**: string - invocation type: "RequestResponse" or "Event"
 - **cmd**: string - action name to be called.
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **args**: any - action arguments
 - **returns**: Promise\<any\> - action result.
 
@@ -148,9 +148,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### setReferences
 Sets references to dependent components.
