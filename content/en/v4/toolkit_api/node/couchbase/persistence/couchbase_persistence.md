@@ -103,17 +103,17 @@ Maximum number of records to return from the database per request.
 #### clear
 Clears a component's state.
 
-> `public` clear(context: [Context](../../../components/context/context): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context..
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### close
 Closes a component and frees used resources.
 
-> `public` close(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
@@ -154,9 +154,9 @@ Converts an objecc  from internal to public format.
 #### create
 Creates a data item.
 
-> `public` create(context: [Context](../../../components/context/context), item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context..
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -175,9 +175,9 @@ Deletes data items that match to a given filter.
 This method shall be called by a public **deleteByFilter** method from a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` deleteByFilter(context: [Context](../../../components/context/context), filter: any): Promise\<void\>
+> `protected` deleteByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context..
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function to filter items.
 
 
@@ -197,9 +197,9 @@ Gets a number of data items retrieved by a given filter.
 This method shall be called by a public **getCountByFilter** method from the child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getCountByFilter(context: [Context](../../../components/context/context), filter: any): Promise\<number\>
+> `protected` getCountByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<number\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) JSON object filter
 - **returns**: Promise\<number\> - number of filtered items.
 
@@ -210,9 +210,9 @@ Gets a list of data items retrieved by a given filter and sorted according to so
 This method shall be called by a public **getListByFilter** method from a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getListByFilter(context: [Context](../../../components/context/context), filter: any, sort: any, select: any): Promise\<T[]\>
+> `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise\<T[]\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function to filter items
 - **sort**: any - (optional) sorting parameters
 - **select**: any - (optional) projection parameters (not used yet)
@@ -225,9 +225,9 @@ Gets a random item from items that match to a given filter.
 This method shall be called by a public **getOneRandom** method from a child class
 that receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getOneRandom(context: [Context](../../../components/context/context), filter: any): Promise\<T\>
+> `protected` getOneRandom(context: [IContext](../../../components/context/icontext), filter: any): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter JSON object
 - **returns**: Promise\<T\> - random item.
 
@@ -238,9 +238,9 @@ Gets a page of data items retrieved by a given filter and sorted according to so
 This method shall be called by a public **getPageByFilter** method from the a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(context: [Context](../../../components/context/context), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../data/query/data_page)>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../data/query/data_page)>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter for JSON objects.
 - **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting JSON object
@@ -260,9 +260,9 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### quoteIdentifier
@@ -295,7 +295,7 @@ class MyCouchbasePersistence extends CouchbasePersistence<MyData> {
     super("mydata", "mycollection", new MyDataCouchbaseSchema());
   }
 
-  public getByName(context: Context, name: string): Promise<MyData> {
+  public getByName(context: IContext, name: string): Promise<MyData> {
     let criteria = { name: name };
     return new Promise((resolve, reject) => {
        this._model.findOne(criteria, (err, value) => {
