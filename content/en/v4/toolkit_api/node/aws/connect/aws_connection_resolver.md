@@ -62,9 +62,9 @@ Configures a component by passing its configuration parameters.
 Resolves a connection and credential parameters and generates a single
 AWSConnectionParams value.
 
-> `public` resolve(context: [Context](../../../components/context/context)): Promise<[AwsConnectionParams](../aws_connection_params)>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise<[AwsConnectionParams](../aws_connection_params)>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context. 
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain. 
 - **returns**: Promise<[AwsConnectionParams](../aws_connection_params)> - receives an AWSConnectionParams value or error.
 
 #### setReferences
