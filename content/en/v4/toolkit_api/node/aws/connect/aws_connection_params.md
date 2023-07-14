@@ -173,9 +173,9 @@ Sets the AWS service name.
 #### validate
 Validates this connection parameters 
 
-> `public` validate(context: [Context](../../../components/context/context))
+> `public` validate(context: [IContext](../../../components/context/icontext))
 
-- **context**: [Context](../../../components/context/context) - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 ### Static methods
 
