@@ -37,16 +37,16 @@ Configures the component by passing its configuration parameters.
 #### open
 Opens the component.
 
-> `public` open(context: [Context](../../../components/context/context)): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### sendLogs
 Sends log messages.
 
-> `public` sendLogs(context: [Context](../../../components/context/context), messages: [DataDogLogMessage[]](../datadog_log_message)): Promise\<void\>
+> `public` sendLogs(context: [IContext](../../../components/context/icontext), messages: [DataDogLogMessage[]](../datadog_log_message)): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messages**: [DataDogLogMessage[]](../datadog_log_message) - messages to send.
 
 #### setReferences
