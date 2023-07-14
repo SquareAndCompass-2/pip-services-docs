@@ -5,21 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-servi
 no_list: true
 weight: 60
 description: > 
-  A set of components to implement Cassandra persistence.
----
-
----
-type: docs
-title: "Persistence module"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-persistence-node"
-no_list: true
-weight: 60
-description: > 
-  
-   The persistence components come in two kinds. The first kind is a basic persistence that can work with any object types and provides only minimal set of operations. 
-   
-   The second kind is so called "identifieable" persistence with works with "identifable" data objects, i.e. objects that have unique ID field. The identifiable persistence provides a full set or CRUD operations that covers most common cases
- 
+  The persistence components come in two kinds. The first kind is a basic persistence that can work with any object types and provides only minimal set of operations. The second kind is so called "identifieable" persistence with works with "identifable" data objects, i.e. objects that have unique ID field. The identifiable persistence provides a full set or CRUD operations that covers most common cases.
 ---
 
 ### Important points
