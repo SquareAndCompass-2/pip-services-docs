@@ -1,6 +1,16 @@
 ---
 type: docs
-title: "Data module"
+title: "Persistence module"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-cassandra-node"
+no_list: true
+weight: 60
+description: > 
+  A set of components to implement Cassandra persistence.
+---
+
+---
+type: docs
+title: "Persistence module"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-persistence-node"
 no_list: true
 weight: 60
