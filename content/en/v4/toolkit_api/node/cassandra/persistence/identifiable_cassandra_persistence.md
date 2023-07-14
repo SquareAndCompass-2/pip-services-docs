@@ -82,9 +82,9 @@ Converts the given object from the public partial format.
 #### create
 Creates a data item.
 
-> `public` create(context: [Context](../../../components/context/context), item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -92,9 +92,9 @@ Creates a data item.
 #### deleteById
 Deletes a data item by it's unique id.
 
-> `public` deleteById(context: [Context](../../../components/context/context), id: K): Promise\<T\>
+> `public` deleteById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the item to be deleted
 - **returns**: Promise\<T\> - deleted item
 
@@ -102,18 +102,18 @@ Deletes a data item by it's unique id.
 #### deleteByIds
 Deletes multiple data items by their unique ids.
 
-> `public` deleteByIds(context: [Context](../../../components/context/context), ids: K[]): Promise\<void\>
+> `public` deleteByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<void\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of the data items to be deleted.
 
 
 #### getListByIds
 Gets a list of data items retrieved by given unique ids.
 
-> `public` getListByIds(context: [Context](../../../components/context/context), ids: K[]): Promise\<T[]\>
+> `public` getListByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<T[]\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] - ids of the data items to be retrieved
 - **returns**: Promise\<T[]\> - data list
 
@@ -121,9 +121,9 @@ Gets a list of data items retrieved by given unique ids.
 #### getOneById
 Gets a data item by its unique id.
 
-> `public` getOneById(context: [Context](../../../components/context/context), id: K): Promise\<T\>
+> `public` getOneById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the data item to be retrieved.
 - **returns**: Promise\<T\> - data item
 
@@ -132,9 +132,9 @@ Gets a data item by its unique id.
 Sets a data item. If the data item exists, it updates it.
 Otherwise, it creates a new data item.
 
-> `public` set(context: [Context](../../../components/context/context), item: T): Promise\<T\>
+> `public` set(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be set.
 - **returns**: Promise\<T\> - new or updated item
 
@@ -142,9 +142,9 @@ Otherwise, it creates a new data item.
 #### update
 Updates a data item.
 
-> `public` update(context: [Context](../../../components/context/context), item: T): Promise\<T\>
+> `public` update(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be updated.
 - **returns**: Promise\<T\> - updated item
 
@@ -154,7 +154,7 @@ Updates only a few selected fields in a data item.
 
 > `public` updatePartially(context: [Context](../../../components/context/context), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) Basic implementation of an execution context.
+- **context**: [Context](../../../components/context/context) - (optional) a context to trace execution through a call chain.
 - **id**: any - id of data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **returns**: Promise\<T\> - updated item
@@ -173,7 +173,7 @@ class MyCassandraPersistence extends IdentifiableCassandraPersistence<MyData, st
             criteria.push({ name: name });
         return criteria.length > 0 ? { $and: criteria } : null;
     }
-    public getPageByFilter(context: Context, filter: FilterParams,
+    public getPageByFilter(context: IContext, filter: FilterParams,
         paging: PagingParams): Promise<DataPage<MyData>> {
         return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
