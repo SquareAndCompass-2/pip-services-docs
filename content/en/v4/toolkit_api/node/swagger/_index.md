@@ -14,7 +14,7 @@ description: >
 The module contains the following packages:
 
 - [**Build**](build) - Swagger service factory
-- [**Services**](services) - Swagger UI service
+- [**Services**](controllers) - Swagger UI controller
 
 ### Use
 
