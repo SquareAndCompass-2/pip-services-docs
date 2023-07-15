@@ -16,10 +16,10 @@ The IQuerablePageReader interface is used by data processing components that can
 #### getPageByQuery
 Gets a page of data items using a query string.
 
-> getPageByQuery(correlationId: string, query: string, paging: [PagingParams](../../../commons/data/paging_params), sort: [SortParams](../../../commons/data/sort_params)): Promise<[DataPage](../../../commons/data/data_page)\<T\>>
+> getPageByQuery(correlationId: string, query: string, paging: [PagingParams](../../../data/query/paging_params), sort: [SortParams](../../../data/query/sort_params)): Promise<[DataPage](../../../data/query/data_page)\<T\>>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **query**: string - (optional) query string
-- **paging**: [PagingParams](../../../commons/data/paging_params) - (optional) paging parameters
-- **sort**: [SortParams](../../../commons/data/sort_params) - (optional) sorting parameters
-- **returns**: Promise<[DataPage](../../../commons/data/data_page)\<T\>> - list of items
+- **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
+- **sort**: [SortParams](../../../data/query/sort_params) - (optional) sorting parameters
+- **returns**: Promise<[DataPage](../../../data/query/data_page)\<T\>> - list of items
