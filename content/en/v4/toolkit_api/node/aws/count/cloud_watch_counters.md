@@ -115,6 +115,6 @@ counters.dump();
 ```
 
 ### See also
-- #### [Counter](../../../components/count/counter)
-- #### [CachedCounters](../../../components/count/cached_counters)
-- #### [CompositeLogger](../../../components/log/composite_logger) 
+- #### [Counter](../../../observability/count/counter)
+- #### [CachedCounters](../../../observability/count/cached_counters)
+- #### [CompositeLogger](../../../observability/log/composite_logger) 
