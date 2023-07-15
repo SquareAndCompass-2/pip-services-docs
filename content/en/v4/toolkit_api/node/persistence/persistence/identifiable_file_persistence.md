@@ -17,7 +17,7 @@ The IdentifiableFilePersistence class allows you to create persistence component
 
 Important points
 
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface.
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
 - In basic scenarios child classes shall only override [getPageByFilter](../memory_persistence/#getpagebyfilter), [getListByFilter](../memory_persistence/#getlistbyfilter) or [deleteByFilter](../memory_persistence/#deletebyfilter) operations with a specific filter function. All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing cached items via the self._items property and calling the **save** method on updates.
 
@@ -55,9 +55,9 @@ JSON file persister.
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 ### Examples
 
@@ -77,9 +77,9 @@ class MyFilePersistence extends IdentifiableFilePersistence<MyData, string> {
         };
     }
   
-    public async getPageByFilter(correlationId: string, filter: FilterParams,
+    public async getPageByFilter(context: IContext, filter: FilterParams,
         paging: PagingParams): Promise<DataPage<MyData>> {
-        return await super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+        return await super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
   
 }
