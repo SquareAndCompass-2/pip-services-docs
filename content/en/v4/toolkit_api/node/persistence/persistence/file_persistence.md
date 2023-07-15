@@ -12,7 +12,7 @@ description: >
 
 **Extends:** [MemoryPersistence<T>](../memory_persistence)
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -27,7 +27,7 @@ Important points
 - **path**: path to the file where data is stored
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
 
 
 
@@ -54,9 +54,9 @@ JSON file persister.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 ### Examples
 
@@ -66,7 +66,7 @@ class MyJsonFilePersistence extends FilePersistence<MyData> {
         super(new JsonPersister(path));
     }
     
-    public async getByName(correlationId: string, name: string): Promise<MyData> {
+    public async getByName(context: IContext, name: string): Promise<MyData> {
         let item = this._items.find((d) => d.name == name);
         retur item;
     }); 
@@ -74,7 +74,7 @@ class MyJsonFilePersistence extends FilePersistence<MyData> {
     public async set(correlatonId: string, item: MyData): Promise<MyData> {
         this._items = this._items.filter((d) => d.name != name);
         this._items.push(item);
-        await this.save(correlationId);
+        await this.save(context);
         return item;
     }
   
