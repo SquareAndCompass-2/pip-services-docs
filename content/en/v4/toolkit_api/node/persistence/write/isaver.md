@@ -16,7 +16,7 @@ The ISaver interface is used by data processing components that save data items.
 #### save
 Saves given data items.
 
-> save(correlationId: string, items: T[]): Promise\<void\>
+> save(context: [IContext](../../../components/context/icontext), items: T[]): Promise\<void\>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **items**: T[] - a list of items to save.
