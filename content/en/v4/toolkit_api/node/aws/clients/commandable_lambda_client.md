@@ -62,7 +62,7 @@ to the action parameters.
 class MyLambdaClient extends CommandableLambdaClient implements IMyClient {
     ...
  
-    public async getData(context: Context, id: string): Promise<any> {
+    public async getData(context: IContext, id: string): Promise<any> {
         return this.callCommand("get_data", context, { id: id });
     }
     ...
