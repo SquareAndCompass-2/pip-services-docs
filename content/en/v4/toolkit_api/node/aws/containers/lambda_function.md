@@ -60,7 +60,7 @@ Map of registred validation schemas.
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = new [CompositeTracer()](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer) = new [CompositeTracer()](../../../observability/trace/composite_tracer)
 
 
 </span>
