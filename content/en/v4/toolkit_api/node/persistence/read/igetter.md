@@ -16,9 +16,9 @@ The IGetter interface is used by data processing components that are capable of 
 #### getOneById
 Gets a data item by its unique id.
 
-> getOneById(correlationId: string, id: K): Promise\<T\>
+> getOneById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the item to be retrieved.
 - **returns**: Promise\<T\> - returned item.
 
