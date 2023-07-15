@@ -67,4 +67,4 @@ let result = await myDataClient.getDataByFilter(filter, paging);
 ```
 
 ### See also
-- #### [StringValueMap](../string_value_map)
+- #### [StringValueMap](../../../commons/data/string_value_map)
