@@ -9,7 +9,7 @@ description: >
     It is used by [FilePersistence](../file_persistence), but can be useful on its own.
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [ILoader<T>](../../core/iloader), [ISaver<T>](../../core/isaver)
+**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [ILoader<T>](../../read/iloader), [ISaver<T>](../../write/isaver)
 
 ### Description
 
@@ -49,25 +49,25 @@ Sets the file path where data is stored.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### load
 Loads data items from an external JSON file.
 
-> `public` load(correlationId: string): Promise\<T[]\>
+> `public` load(context: [IContext](../../../components/context/icontext)): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise\<T[]\> - loaded items
 
 
 #### save
 Saves given data items to an external JSON file.
 
-> `public` save(correlationId: string, items: T[]): Promise\<void\>
+> `public` save(context: [IContext](../../../components/context/icontext), items: T[]): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **items**: T[] - list if data items to save
 
 
