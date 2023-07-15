@@ -7,7 +7,7 @@ description: >
     Logger that writes log messages to AWS CloudWatch Log.
 ---
 
-**Implements**: [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements**: [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 **Extends:** [CachedLogger](../../../components/log/cached_logger)
 
@@ -20,10 +20,10 @@ The CloudWatchLogger class allows you to create loggers that write log messages 
 - **stream**: (optional) CloudWatch Log stream (default: context name)
 - **group**: (optional) CloudWatch Log group (default: context instance ID or hostname)
 - **connections**:                   
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **region**: (optional) AWS region
 - **credentials**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **access_id**: AWS access/client id
     - **access_key**: AWS access/client key
  - **options**:
@@ -32,8 +32,8 @@ The CloudWatchLogger class allows you to create loggers that write log messages 
 
 
 #### References
-- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/info/context_info) to detect the context id and specify the counters' source
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections
+- **\*:context-info:\*:\*:1.0** - (optional) [ContextInfo](../../../components/context/context_info) to detect the context id and specify the counters' source
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores used to resolve credentials requests
 
 ### Constructors
@@ -54,9 +54,9 @@ Closes a component and frees used resources.
 #### configure
 Configures a component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -76,23 +76,23 @@ Opens the component.
 #### save
 Saves the current counters' measurements.
 
-> `protected` save(messages: [LogMessage[]](../../../components/log/log_message)): Promise\<void\> 
+> `protected` save(messages: [LogMessage[]](../../../observability/log/log_message)): Promise\<void\> 
 
-- **messages**: [LogMessage[]](../../../components/log/log_message) - current counters' measurements to be saved.
+- **messages**: [LogMessage[]](../../../observability/log/log_message) - current counters' measurements to be saved.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 #### write
 Writes a log message to the logger destination.
 
-> `protected` write(level: [LogLevel](../../../components/log/log_level), context: [Context](../../../components/context/context), ex: Error, message: string): void
+> `protected` write(level: [LogLevel](../../../observability/log/log_level), context: [IContext](../../../components/context/icontext), ex: Error, message: string): void
 
-- **level**: [LogLevel](../../../components/log/log_level) - log level.
+- **level**: [LogLevel](../../../observability/log/log_level) - log level.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ex**: Error - error object associated with this message.
 - **message**: string - human-readable message to log.
@@ -124,6 +124,6 @@ logger.debug("123", "Everything is OK.");
 ```
 
 ### See also
-- #### [Counter](../../../components/count/counter)
-- #### [CachedCounters](../../../components/count/cached_counters)
-- #### [CompositeLogger](../../../components/log/composite_logger) 
+- #### [Counter](../../../observability/count/counter)
+- #### [CachedCounters](../../../observability/count/cached_counters)
+- #### [CompositeLogger](../../../observability/log/composite_logger) 
