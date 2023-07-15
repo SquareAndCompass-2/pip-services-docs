@@ -11,7 +11,7 @@ description: >
 
 **Extends:** [MemoryPersistence<T>](../memory_persistence)
    
-**Implements:** [IWriter](../../core/iwriter), [IGetter](../../core/igetter), [ISetter](../../core/isetter)
+**Implements:** [IWriter](../../write/iwriter), [IGetter](../../read/igetter), [ISetter](../../write/isetter)
 
 ### Description
 
@@ -19,7 +19,7 @@ The IdentifiableMemoryPersistence class allows you to create persistence compone
 
 Important points
 
-- The data items must implement [IIdentifiable](../../../commons/data/iidentifiable).
+- The data items must implement [IIdentifiable](../../../data/data/iidentifiable).
 - In basic scenarios child classes shall only override [getPageByFilter](../memory_persistence/#getpagebyfilter), [getListByFilter](../memory_persistence/#getlistbyfilter) or [deleteByFilter](../memory_persistence/#deletebyfilter) operations with a specific filter function. All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing cached items via the this._items property and calling the **save** method on updates.
 
@@ -34,10 +34,10 @@ Important points
 ### Constructors
 Creates a new instance of the identifiable file persistence component.
 
-> `public` constructor(loader?: [ILoader<T>](../../core/iloader), saver?: [ISaver<T>](../../core/isaver))
+> `public` constructor(loader?: [ILoader<T>](../../read/iloader), saver?: [ISaver<T>](../../write/isaver))
 
-- **loader**: [ILoader<T>](../../core/iloader) - (optional) loader used to load items from an external datasource.
-- **saver**: [ISaver<T>](../../core/isaver) - (optional) saver used to save items to  and external datasource.
+- **loader**: [ILoader<T>](../../read/iloader) - (optional) loader used to load items from an external datasource.
+- **saver**: [ISaver<T>](../../write/isaver) - (optional) saver used to save items to  and external datasource.
 
 
 ### Instance methods
@@ -45,9 +45,9 @@ Creates a new instance of the identifiable file persistence component.
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -55,9 +55,9 @@ Creates a data item.
 #### deleteById
 Deletes a data item based on it's unique id.
 
-> `public` deleteById(correlationId: string, id: K): Promise\<T\>
+> `public` deleteById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K -  id of the item to be deleted
 - **returns**: Promise\<T\> - deleted item.
 
@@ -65,18 +65,18 @@ Deletes a data item based on it's unique id.
 #### deleteByIds
 Deletes multiple data items based on their unique ids.
 
-> `public` deleteByIds(correlationId: string, ids: K[]): Promise\<void\>
+> `public` deleteByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] -  ids of data items to be deleted.
 
 
 #### getListByIds
 Gets a list of data items retrieved by given unique ids.
 
-> `public` getListByIds(correlationId: string, ids: K[]): Promise\<T[]\>
+> `public` getListByIds(context: [IContext](../../../components/context/icontext), ids: K[]): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **ids**: K[] -  ids of data items to be retrieved
 - **returns**: Promise\<T[]\> - data list of results by ids.
 
@@ -84,9 +84,9 @@ Gets a list of data items retrieved by given unique ids.
 #### getOneById
 Gets a data item based on its unique id.
 
-> `public` getOneById(correlationId: string, id: K): Promise\<T\>
+> `public` getOneById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of data item to be retrieved.
 - **returns**: Promise\<T\> - data item by id.
 
@@ -94,9 +94,9 @@ Gets a data item based on its unique id.
 #### set
 Sets a data item. If the data item exists, it updates it; otherwise, it creates a new data item.
 
-> `public` set(correlationId: string, item: T): Promise\<T\>
+> `public` set(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be set.
 - **returns**: Promise\<T\> - updated item
 
@@ -104,9 +104,9 @@ Sets a data item. If the data item exists, it updates it; otherwise, it creates 
 #### update
 Updates a data item.
 
-> `public` update(correlationId: string, item: T): Promise\<T\>
+> `public` update(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be updated.
 - **returns**: Promise\<T\> - updated item.
 
@@ -114,9 +114,9 @@ Updates a data item.
 #### updatePartially
 Updates only a few selected fields in a data item.
 
-> `public` updatePartially(correlationId: string, id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of a data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **returns**: Promise\<T\> - updated item.
@@ -136,8 +136,8 @@ class MyMemoryPersistence extends IdentifiableMemoryPersistence<MyData, string> 
         };
     }
   
-    public async getPageByFilter(correlationId: string, filter: FilterParams, paging: PagingParams): DataPage<MyData> {
-        return await super.getPageByFilter(correlationId, this.composeFilter(filter), paging, null, null);
+    public async getPageByFilter(context: IContext, filter: FilterParams, paging: PagingParams): DataPage<MyData> {
+        return await super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
   
 }
