@@ -83,7 +83,7 @@ Applies given action to the interseptors
 #### applyValidation
 Applies a validation according to a given schema.
 
-> `protected` applyValidation(schema: [Schema](../../../commons/validate/schema), action: (params: any) => Promise\<any\>): (params: any) => Promise\<any\>
+> `protected` applyValidation(schema: [Schema](../../../data/validate/schema), action: (params: any) => Promise\<any\>): (params: any) => Promise\<any\>
 
 - **schema**: [Schema](../../../data/validate/schema) - validation schema
 - **action**: (params: any) => Promise\<any\> - action
