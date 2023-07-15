@@ -18,6 +18,6 @@ Saves given data items.
 
 > save(correlationId: string, items: T[]): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **items**: T[] - a list of items to save.
 
