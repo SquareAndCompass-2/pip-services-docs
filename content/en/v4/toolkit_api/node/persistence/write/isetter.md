@@ -16,9 +16,9 @@ The ISetter interface is used by data processing components that can set (create
 #### set
 Sets a data item. If the data item exists it updates it, otherwise it creates a new data item.
 
-> set(correlationId: string, item: T): Promise\<T\>
+> set(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be set.
 - **returns**: Promise\<T\> - updated item
 
