@@ -16,9 +16,9 @@ The IWriter interface is used by data processng components that can create, upda
 #### create
 Creates a data item.
 
-> create(correlationId: string, item: T): Promise\<T\>
+> create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: T - created item
 
@@ -26,9 +26,9 @@ Creates a data item.
 #### update
 Updates a data item.
 
-> update(correlationId: string, item: T): Promise\<T\>
+> update(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be updated.
 - **returns**: Promise\<T\> - updated item
 
@@ -36,8 +36,8 @@ Updates a data item.
 #### deleteById
 Updates a data item.
 
-> deleteById(correlationId: string, id: K): Promise\<T\>
+> deleteById(context: [IContext](../../../components/context/icontext), id: K): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: K - id of the item to be deleted
 - **returns**: Promise\<T\> - deleted item.
