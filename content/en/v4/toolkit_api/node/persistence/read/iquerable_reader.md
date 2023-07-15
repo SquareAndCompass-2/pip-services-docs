@@ -16,9 +16,9 @@ The IQuerableReader interface is used by data processing components that can que
 #### getListByQuery
 Gets a list of data items using a query string.
 
-> getListByQuery(correlationId: string, query: string, sort: [SortParams](../../../commons/data/sort_params)): Promise\<T[]\>
+> getListByQuery(correlationId: string, query: string, sort: [SortParams](../../../data/query/sort_params)): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **query**: string - (optional) query string
-- **sort**: [SortParams](../../../commons/data/sort_params) - (optional) sorting parameters
+- **sort**: [SortParams](../../../data/query/sort_params) - (optional) sorting parameters
 - **returns**: Promise\<T[]\> - list of items
