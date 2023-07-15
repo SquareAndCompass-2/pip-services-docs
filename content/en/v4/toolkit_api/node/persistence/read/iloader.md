@@ -16,8 +16,8 @@ The ILoader interface is used by data processing components that load data items
 #### load
 Loads data items.
 
-> load(correlationId: string): Promise\<T[]\>
+> load(context: [IContext](../../../components/context/icontext)): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: Promise\<T[]\> - list of data items
 
