@@ -16,9 +16,6 @@ description: >
 #### [IPartialUpdater](ipartial_updater)
 Interface for data processing components used to update data items partially.
 
-#### [IQuerablePageReader](iquerable_page_reader)
-Interface for data processing components that can query a page of data items.
-
 #### [ISaver](isaver)
 Interface for data processing components that save data items.
 
