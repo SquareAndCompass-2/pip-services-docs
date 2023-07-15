@@ -8,8 +8,8 @@ description: >
 
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable),
-[IOpenable](../../../commons/run/iopenable), [ICleanable](../../../commons/run/icleanable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable),
+[IOpenable](../../../components/run/iopenable), [ICleanable](../../../components/run/icleanable)
 
 ### Description
 
@@ -32,10 +32,10 @@ Important points
 ### Constructors
 Creates a new instance of the memory persistence component.
 
-> `public` constructor(loader: [ILoader<T>](../../core/iloader), saver: [ISaver<T>](../../core/isaver))
+> `public` constructor(loader: [ILoader<T>](../../read/iloader), saver: [ISaver<T>](../../write/isaver))
 
-- **loader**: [ILoader<T>](../../core/iloader) - (optional) loader used to load items from an external datasource.
-- **saver**: [ISaver<T>](../../core/isaver) - (optional) saver used to save items to an external datasource.
+- **loader**: [ILoader<T>](../../read/iloader) - (optional) loader used to load items from an external datasource.
+- **saver**: [ISaver<T>](../../write/isaver) - (optional) saver used to save items to an external datasource.
 
 
 ### Fields
@@ -44,7 +44,7 @@ Creates a new instance of the memory persistence component.
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _items
 Items to load/save.
@@ -52,11 +52,11 @@ Items to load/save.
 
 #### _loader
 Loader.
-> `protected` **_loader**: [ILoader<T>](../../core/iloader)
+> `protected` **_loader**: [ILoader<T>](../../read/iloader)
 
 #### _saver
 Saver.
-> `protected` **_saver**: [ISaver<T>](../../core/isaver)
+> `protected` **_saver**: [ISaver<T>](../../write/isaver)
 
 #### _opened
 Boolean that indicates whether the compent is open or not.
@@ -74,25 +74,25 @@ Maximum amount of items per page.
 #### clear
 Clears the component's state.
 
-> `public` clear(correlationId: string): Promise\<void\>
+> `public` clear(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### create
 Creates a data item.
 
-> `public` create(correlationId: string, item: T): Promise\<T\>
+> `public` create(context: [IContext](../../../components/context/icontext), item: T): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **item**: T - item to be created.
 - **returns**: Promise\<T\> - created item
 
@@ -100,11 +100,11 @@ Creates a data item.
 #### deleteByFilter
 Deletes data items that match to a given filter.
 This method shall be called by a public **deleteByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` deleteByFilter(correlationId: string, filter: any): Promise\<void\>
+> `protected` deleteByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function used to filter items.
 
 
@@ -112,11 +112,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets the number of items retrieved by a given filter.
 
 This method shall be called by a public **getCountByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getCountByFilter(correlationId: string, filter: any): Promise\<number\>
+> `protected` getCountByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<number\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any -  id of the item to be deleted
 - **returns**: Promise\<number\> - number of data items that satisfy the filter.
 
@@ -125,11 +125,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a list of data items retrieved by a given filter and sorted according to sorting parameters.
 
 This method shall be called by a public **getListByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getListByFilter(correlationId: string, filter: any, sort: any, select: any): Promise\<T[]\>
+> `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise\<T[]\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter function used to filter items
 - **sort**: any - (optional) sorting parameters
 - **select**: any - (optional) projection parameters (not used yet)
@@ -140,11 +140,11 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a random item from items that match to a given filter.
 
 This method shall be called by a public **getOneRandom** method from a child class
-that receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+that receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getOneRandom(correlationId: string, filter: any): Promise\<T\>
+> `protected` getOneRandom(context: [IContext](../../../components/context/icontext), filter: any): Promise\<T\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) a filter function to filter items.
 - **returns**: Promise\<T\> - random item.
 
@@ -153,16 +153,16 @@ that receives [FilterParams](../../../commons/data/filter_params) and converts t
 Gets a page of data items retrieved by a given filter and sorted according to sorting parameters.
 
 This method shall be called by a public **getPageByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(correlationId: string, filter: any, paging: [PagingParams](../../../commons/data/paging_params), sort: any, select: any): Promise<[DataPage<T>](../../../commons/data/data_page)>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: [PagingParams](../../../data/query/paging_params), sort: any, select: any): Promise<[DataPage<T>](../../../data/query/data_page)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - filter function used to filter items
-- **paging**: [PagingParams](../../../commons/data/paging_params) - (optional) paging parameters
+- **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting parameters
 - **select**: any - (optional) projection parameters (not used yet)
-- **returns**: Promise<[DataPage<T>](../../../commons/data/data_page)> - data page with filterd results.
+- **returns**: Promise<[DataPage<T>](../../../data/query/data_page)> - data page with filterd results.
 
 
 #### isOpen
@@ -176,40 +176,40 @@ Checks if the component is open.
 #### load
 Loads items.
 
-> `protected` load(correlationId: string): Promise\<void\>
+> `protected` load(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### save
 Saves items to an external data source using a configured saver component.
 
-> `public` save(correlationId: string): Promise\<void\>
+> `public` save(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### setReferences
 Sets the component's references. References must match configured dependencies.
 
-> `public` setReferences(references: [IReferences](../ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../ireferences) - references to set.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to set.
 
 ### Examples
 
 ```typescript
 class MyMemoryPersistence extends MemoryPersistence<MyData> {
      
-    public async getByName(correlationId: string, name: string): Promise<MyData> {
+    public async getByName(context: IContext, name: string): Promise<MyData> {
         let item = this._items.find((d) => d.name == name);
         return item;
     }); 
@@ -217,7 +217,7 @@ class MyMemoryPersistence extends MemoryPersistence<MyData> {
     public set(correlatonId: string, item: MyData): Promise<MyData> {
         this._items = this._items.find((d) => d.name != name);
         this._items.push(item);
-        await this.save(correlationId);
+        await this.save(context);
         return item;
     }
   
