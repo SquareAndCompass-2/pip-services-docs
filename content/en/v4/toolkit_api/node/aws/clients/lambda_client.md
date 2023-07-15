@@ -166,7 +166,7 @@ Sets references to dependent components.
 class MyLambdaClient extends LambdaClient implements IMyClient {
     ...
  
-    public async getData(context: Context, id: string): Promise<MyData> {
+    public async getData(context: IContext, id: string): Promise<MyData> {
         let timing = this.instrument(context, 'myclient.get_data');
         const result = await this.call("get_data" context, { id: id });
         timing.endTiming();
