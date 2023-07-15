@@ -16,10 +16,10 @@ The IFilteredReader interface is used by data processing components that can ret
 #### getListByFilter
 Gets a list of data items using filter parameters.
 
-> getListByFilter(correlationId: string, filter: [FilterParams](../../../commons/data/filter_params), paging: [PagingParams](../../../commons/data/paging_params), sort: [SortParams](../../../commons/data/sort_params)): [DataPage](../../../commons/data/data_page)
+> getListByFilter(correlationId: string, filter: [FilterParams](../../../data/query/filter_params), paging: [PagingParams](../../../data/query/paging_params), sort: [SortParams](../../../data/query/sort_params)): [DataPage](../../../data/query/data_page)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
-- **filter**: [FilterParams](../../../commons/data/filter_params) - (optional) filter parameters
-- **sort**: [SortParams](../../../commons/data/sort_params) - (optional) sort parameters
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
+- **filter**: [FilterParams](../../../data/query/filter_params) - (optional) filter parameters
+- **sort**: [SortParams](../../../data/query/sort_params) - (optional) sort parameters
 - **returns**: Promise\<T[]\> - list of items
 
