@@ -7,7 +7,7 @@ description: >
     Abstract service that receives remove calls via the Azure Function protocol.
 ---
 
-**Implements**: [IAzureFunctionController](../iazure_function_controller), [IOpenable](../../../commons/run/iopenable), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements**: [IAzureFunctionController](../iazure_function_controller), [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 The AzureFunctionController class allows you to create a service that receives remove calls via the Azure Function protocol.
@@ -23,8 +23,8 @@ The AzureFunctionController class allows you to create a service that receives r
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
 Creates an instance of this service.
@@ -39,19 +39,19 @@ Creates an instance of this service.
 
 #### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 #### _dependencyResolver
 Dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../observability/refer/dependency_resolver)
 
 #### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### _tracer
 Tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 </span>
 
@@ -73,16 +73,16 @@ This method shall only be used in testing.
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### applyValidation
 Performs a validation.
 
-> `protected` applyValidation(schema: [Schema](../../../commons/validate/schema), action: (context: any) => Promise\<any\>): (context: any) => Promise\<any\>
+> `protected` applyValidation(schema: [Schema](../../../data/validate/schema), action: (context: any) => Promise\<any\>): (context: any) => Promise\<any\>
 
-- **schema**: [Schema](../../../commons/validate/schema) - schema used in the validation
+- **schema**: [Schema](../../../data/validate/schema) - schema used in the validation
 - **action**: (context: any) => Promise\<any\> - action
 - **returns**: (context: any) => Promise\<any\> - returned result
 
@@ -90,17 +90,17 @@ Performs a validation.
 #### close
 Closes a component and frees used resources.
 
-> `public` close(correlationId: string): Promise\<void\> 
+> `public` close(context: [IContext](../../../components/context/icontext)): Promise\<void\> 
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### generateActionCmd
@@ -128,26 +128,26 @@ This method can be overloaded in child classes.
 - **context**: any - context.
 - **returns**: string - returned command from context.
 
-#### getCorrelationId
-Returns a correlationId from the Azure Function context.
+#### getTraceId
+Returns a traceId from the Azure Function context.
 
 This method can be overloaded in child classes.
 
-> `protected` getCorrelationId(context: any): string
+> `protected` getTraceId(context: any): string
 
 - **context**: any - context.
-- **returns**: string - returned correlationId from context.
+- **returns**: string - returned traceId from context.
 
 
 #### instrument
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method's name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - Timing object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - Timing object to end the time measurement.
 
 #### isOpen
 Checks if the component is open.
@@ -160,26 +160,26 @@ Checks if the component is open.
 #### open
 Opens the component.
 
-> `public` open(correlationId: string): Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)): Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### registerAction
 Registers an action in Azure Function function.
 
-> `protected` registerAction(name: string, schema: [Schema](../../../commons/validate/schema), action: (context: any) => Promise\<any\>): void
+> `protected` registerAction(name: string, schema: [Schema](../../../data/validate/schema), action: (context: any) => Promise\<any\>): void
 
 - **name**: string - action name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **action**: (context: any) => Promise\<any\> - action function that is called when the operation is invoked.
 
 #### registerActionWithAuth
 Registers an action with authorization.
 
-> `protected` registerActionWithAuth(name: string, schema: [Schema](../../../commons/validate/schema), authorize: (context: any, next: (context: any) => Promise\<any\>) => Promise\<any\>, action: (context: any) => Promise\<any\>): void
+> `protected` registerActionWithAuth(name: string, schema: [Schema](../../../data/validate/schema), authorize: (context: any, next: (context: any) => Promise\<any\>) => Promise\<any\>, action: (context: any) => Promise\<any\>): void
 
 - **name**: string - action's name
-- **schema**: [Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
 - **authorize**: (context: any, next: (context: any) => Promise\<any\>) => Promise\<any\> - authorization interceptor
 - **action**: (context: any) => Promise\<any\> - action function that is called when the operation is invoked.
 
@@ -195,9 +195,9 @@ Registers a middleware for actions in Azure Function service.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
@@ -230,9 +230,9 @@ class MyAzureFunctionController extends AzureFunctionController {
    }
    public register(): void {
        registerAction("get_mydata", null, async (context) => {
-           let correlationId = context.correlation_id;
+           let context = context.correlation_id;
            let id = context.id;
-           return await this._controller.getMyData(correlationId, id);
+           return await this._controller.getMyData(context, id);
        });
        ...
    }
