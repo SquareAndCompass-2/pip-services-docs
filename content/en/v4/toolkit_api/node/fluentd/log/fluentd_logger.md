@@ -22,7 +22,7 @@ The FluentdLogger class allows you to create loggers that dump execution logs to
 - **level**: maximum log level to capture
 - **source**: source (context) name
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: connection protocol: http or https
     - **host**: host name or IP address
     - **port**: port number
