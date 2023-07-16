@@ -33,7 +33,7 @@ Returns a command from the Azure Function context.
 #### getParametrs
 Returns a body from the Azure Function context http request.
 
-> `public static` getParametrs(context: any): [Parameters](../../../commons/run/parameters)
+> `public static` getParametrs(context: any): [Parameters](../../../components/run/parameters)
 
 - **context**: any - Azure Function context.
-- **returns**: [Parameters](../../../commons/run/parameters) - returned body from context.
+- **returns**: [Parameters](../../../components/run/parameters) - returned body from context.
