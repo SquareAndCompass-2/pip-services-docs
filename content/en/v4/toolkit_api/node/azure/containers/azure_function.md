@@ -101,14 +101,14 @@ This method can be overloaded in child classes
 - **context**: any - Azure Function context
 - **returns**: string - Returns command from context
 
-#### getCorrelationId
-Returns correlationId from Azure Function context.
+#### getTraceId
+Returns traceId from Azure Function context.
 This method can be overloaded in child classes
 
-> `protected` getCorrelationId(context: any): string
+> `protected` getTraceId(context: any): string
 
 - **context**: any - Azure Function context
-- **returns**: string - Returns correlationId from context
+- **returns**: string - Returns traceId from context
 
 #### getHandler
 Return plugin function
