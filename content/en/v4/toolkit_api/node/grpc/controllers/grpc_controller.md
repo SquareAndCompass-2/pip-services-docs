@@ -59,7 +59,7 @@ The GRPC endpoint that exposes this service.
 
 #### _dependencyResolver
 The dependency resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../observability/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### _logger
 The logger.
