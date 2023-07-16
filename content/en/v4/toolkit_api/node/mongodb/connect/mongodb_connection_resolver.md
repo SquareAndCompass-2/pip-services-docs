@@ -10,7 +10,7 @@ description: >
   
 ---
 
-**Implements:** [IReferenceable](../../../a context to trace execution through a call chain/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
 
@@ -49,7 +49,7 @@ MongoDB connection resolver.
 
 #### _credentialResolver
 MongoDB credential resolver.
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver) 
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver) 
 
 </span>
 
@@ -59,9 +59,9 @@ MongoDB credential resolver.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../config/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../config/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### resolve
