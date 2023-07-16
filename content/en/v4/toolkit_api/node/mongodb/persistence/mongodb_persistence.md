@@ -178,7 +178,7 @@ Defines the database schema
 
 #### deleteByFilter
 This method shall be called by a public **deleteByFilter** method from the child class that
-receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > `public` deleteByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<void\>
 
@@ -199,7 +199,7 @@ Adds index definition to create it on opening.
 Gets a number of data items retrieved by a given filter.
 
 This method shall be called by a public **getCountByFilter** method from the child class that
-receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > `protected` getCountByFilter(context: [IContext](../../../components/context/icontext), filter: any): Promise\<number\>
 
@@ -212,7 +212,7 @@ receives [FilterParams](../../../data/data/filter_params) and converts them into
 Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getListByFilter** method from the child class that
-receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise<T[]>
 
@@ -227,7 +227,7 @@ receives [FilterParams](../../../data/data/filter_params) and converts them into
 Gets a random item from items that match to a given filter.
 
 This method shall be called by a public [getOneRandom](#getonerandom) method from the child class
-that receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
+that receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > `protected` getOneRandom(context: [IContext](../../../components/context/icontext), filter: any): Promise\<T\>
 
@@ -240,9 +240,9 @@ that receives [FilterParams](../../../data/data/filter_params) and converts them
 Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getPageByFilter** method from the child class that
-receives [FilterParams](../../../data/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: [PagingParams](../../../commons/data/paging_params), sort: any, select: any): Promise<[DataPage](../../../commons/data/data_page)\<T\>>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: [PagingParams](../../../data/query/paging_params), sort: any, select: any): Promise<[DataPage](../../../data/query/data_page)\<T\>>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter JSON object
