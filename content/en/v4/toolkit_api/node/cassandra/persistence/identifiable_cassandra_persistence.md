@@ -35,7 +35,7 @@ Important points
     - **port**: port number (default: 27017)
     - **uri**: resource URI or connection string with all parameters in it
 - **credential(s)**:    
-    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**: (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**: (optional) username
     - **password**: (optional) user's password
 - **options**:
@@ -45,8 +45,8 @@ Important points
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials ([ICredentialStore](../../../config/auth/icredential_store))
 
 
@@ -152,9 +152,9 @@ Updates a data item.
 #### updatePartially
 Updates only a few selected fields in a data item.
 
-> `public` updatePartially(context: [Context](../../../components/context/context), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
+> `public` updatePartially(context: [IContext](../../../components/context/icontext), id: K, data: [AnyValueMap](../../../commons/data/any_value_map)): Promise\<T\>
 
-- **context**: [Context](../../../components/context/context) - (optional) a context to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **id**: any - id of data item to be updated.
 - **data**: [AnyValueMap](../../../commons/data/any_value_map) - map with fields to be updated.
 - **returns**: Promise\<T\> - updated item
