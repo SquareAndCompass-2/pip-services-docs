@@ -158,7 +158,7 @@ Validates this connection parameters
 Retrieves GcpConnectionParams from multiple configuration parameters.
 The values are retrieves from "connection" and "credential" sections.
 
-> `public static` mergeConfigs(...configs: [ConfigParams](../../../commons/config/config_params)[]): [GcpConnectionParams]()
+> `public static` mergeConfigs(...configs: [ConfigParams](../../../components/config/config_params)[]): [GcpConnectionParams]()
 
 - **config**: string - a list with configuration parameters
 - **returns**: [GcpConnectionParams]() - the generated GcpConnectionParams object.
