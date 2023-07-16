@@ -4,13 +4,13 @@ title: "CommandableAzureFunctionController"
 linkTitle: "CommandableAzureFunctionController"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-azure-node"
 description: >
-    Abstract service that receives commands via the Azure Function protocol to operations automatically generated for commands defined in [ICommandable components](../../../commons/commands/icommandable).
+    Abstract service that receives commands via the Azure Function protocol to operations automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable) components.
 ---
 
 **Extends**: [AzureFunctionController](../azure_function_controller)
 
 ### Description
-The CommandableAzureFunctionController class allows you to create abstract services that receive commands via the Azure Function protocols to operations automatically generated for commnads defined in [ICommandable components](../../../commons/commands/icommandable).
+The CommandableAzureFunctionController class allows you to create abstract services that receive commands via the Azure Function protocols to operations automatically generated for commnads defined in [ICommandable](../../../rpc/commands/icommandable) components.
 
 **Important points** 
 
@@ -27,8 +27,8 @@ The CommandableAzureFunctionController class allows you to create abstract servi
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
 
@@ -43,10 +43,10 @@ The CommandableAzureFunctionController class allows you to create abstract servi
 Returns body from Azure Function context.
 This method can be overloaded in child classes
 
-> `protected` getParametrs(context: any): [Parameters](../../../commons/run/parameters)
+> `protected` getParametrs(context: any): [Parameters](../../../components/exec/parameters)
 
 - **context**: any - Azure Function context.
-- **returns**: [Parameters](../../../commons/run/parameters) - Returns Parameters from context
+- **returns**: [Parameters](../../../components/exec/parameters) - Returns Parameters from context
 
 #### register
 Registers all actions in Azure Function.
