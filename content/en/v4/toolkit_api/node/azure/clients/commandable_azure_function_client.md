@@ -8,11 +8,11 @@ description: >
  
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
-Commandable services are generated automatically for [ICommandable](../../../commons/commands/icommandable) objects. Each command is exposed as action determined by "cmd" parameter.
+Commandable services are generated automatically for [ICommandable](../../../rpc/commands/icommandable) objects. Each command is exposed as action determined by "cmd" parameter.
 
 
 #### Configuration parameters
@@ -30,9 +30,9 @@ Commandable services are generated automatically for [ICommandable](../../../com
     - **auth_code**: Azure Function auth code if use custom authorization provide empty string
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages.
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements.
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connections.
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connections.
 - **\*:credential-store:\*:\*:1.0** - (optional) Credential stores to resolve credentials.
 
 ### Constructors
@@ -50,10 +50,10 @@ Calls a remote action in Azure Function.
 The name of the action is added as "cmd" parameter
 to the action parameters. 
 
-> `public` callCommand\<T\>(cmd: string, correlationId: string, params: any): Promise\<T\>
+> `public` callCommand\<T\>(cmd: string, context: [IContext](../../../components/context/icontext), params: any): Promise\<T\>
 
 - **cmd**: string - an action name
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: any - command parameters.
 - **returns**: Promise\<T\> - action result.
 
@@ -64,8 +64,8 @@ to the action parameters.
 class MyCommandableAzureClient extends CommandableAzureFunctionClient implements IMyClient {
     ...
  
-    public async getData(correlationId: string, id: string): Promise<any> {
-        return this.callCommand("get_data", correlationId, { id: id });
+    public async getData(context: IContext, id: string): Promise<any> {
+        return this.callCommand("get_data", context, { id: id });
     }
     ...
 }
