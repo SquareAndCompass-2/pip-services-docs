@@ -20,18 +20,18 @@ Importan points
 
 #### References
 
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:service:azure-function:\*:1.0**: (optional) [IAzureFunctionController](../../services/iazure_function_controller) services to handle action requests.
-- **\*:service:commandable-azure-function:\*:1.0**: (optional) [IAzureFunctionController](../../services/iazure_function_controller) services to handle action requests.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
+- **\*:service:azure-function:\*:1.0**: (optional) [IAzureFunctionController](../../controllers/iazure_function_controller) services to handle action requests.
+- **\*:service:commandable-azure-function:\*:1.0**: (optional) [IAzureFunctionController](../../controllers/iazure_function_controller) services to handle action requests.
 
 ### Constructors
 Creates a new instance of this Azure Function.
 
 > public constructor(name?: string, description?: string)
 
-- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/info/context_info))
-- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/info/context_info))
+- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/context/context_info))
+- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/context/context_info))
 
 
 ### Fields
@@ -48,23 +48,23 @@ The default path to config file.
 
 ### _counters
 Performance counters.
-> `protected` **_counters**: [CompositeCounters](../../../components/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
 ### _dependencyResolver
 Dependencies resolver.
-> `protected` **_dependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 ### _logger
 Logger.
-> `protected` **_logger**: [CompositeLogger](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 ### _tracer
 The tracer.
-> `protected` **_tracer**: [CompositeTracer](../../../components/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observability/trace/composite_tracer)
 
 ### _schemas
 The map of registred validation schemas.
-> `protected` **_schemas**: { [id: string]: [Schema](../../../commons/validate/schema) }
+> `protected` **_schemas**: { [id: string]: [Schema](../../../data/validate/schema) }
 
 </span>
 
@@ -122,28 +122,28 @@ Return plugin function
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method's name.
-- **returns**: [InstrumentTiming](../../../rpc/services/instrument_timing) - Timing object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - Timing object to end the time measurement.
 
 #### open
 Opens the component.
 
-> `public` open(correlationId: string) :Promise\<void\>
+> `public` open(context: [IContext](../../../components/context/icontext)) :Promise\<void\>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 #### registerAction
 Registers an action in this Azure Function.
 
 Note: This method has been deprecated. Use AzureFunctionController instead.
 
-> `protected` registerAction(cmd: string, schema: [Schema](../../../commons/validate/schema),  action: (context: any) => Promise\<any\>): void
+> `protected` registerAction(cmd: string, schema: [Schema](../../../data/validate/schema),  action: (context: any) => Promise\<any\>): void
 
 - **cmd**: str - a action/command name.
-- **schema**: [Schema](../../../commons/validate/schema) - a validation schema to validate received parameters.
+- **schema**: [Schema](../../../data/validate/schema) - a validation schema to validate received parameters.
 - **action**: (context: any) => Promise\<any\> - an action function that is called when action is invoked.
 
 #### register
@@ -169,9 +169,9 @@ makes this function ready to access action calls.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences))
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences))
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 ### Examples
