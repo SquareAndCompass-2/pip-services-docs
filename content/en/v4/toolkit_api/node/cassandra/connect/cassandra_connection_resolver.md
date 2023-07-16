@@ -22,7 +22,7 @@ The CassandraConnectionResolver class is used to resolve Cassandra connections a
 #### Configuration parameters
 
 - **connection(s)**:
-	- **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../configs/connect/idiscovery)
+	- **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 	- **host**: host name or IP address
 	- **port**: port number (default: 27017)
 	- **database**: database name
@@ -68,4 +68,4 @@ This method can be overriden in child classes.
 
 - **options**: [ConfigParams](../../../components/config/config_params) - connection options
 - **connection**: [ConnectionParams](../../../config/connect/connection_params) - connection parameters to be merged
-- **returns**: [ConfigParams](../../../commons/config/config_params) - merged connection options.
+- **returns**: [ConfigParams](../../../components/config/config_params) - merged connection options.
