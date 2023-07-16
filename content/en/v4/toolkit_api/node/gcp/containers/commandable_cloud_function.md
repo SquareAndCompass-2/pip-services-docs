@@ -19,7 +19,7 @@ The CommandableCloudFunction allows you to create an abstract Google Function fu
   
 - Container configuration for this Google Function is stored in *"./config/config.yml"* file. But this path can be overridden by the *CONFIG_PATH* environment variable.
  
-- **Note**: This component has been deprecated. Use Google [CloudFunctionController](../../gcp/controllers/cloud_function_controller) instead.
+- **Note**: This component has been deprecated. Use Google [CloudFunctionController](../../controllers/cloud_function_controller) instead.
 
 
 #### References
