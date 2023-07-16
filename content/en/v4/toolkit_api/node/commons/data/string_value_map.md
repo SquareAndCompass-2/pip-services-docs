@@ -15,7 +15,7 @@ The StringValueMap class allows you to create a cross-language implementation of
 Important points
 
 - The class provides several methods to convert the stored values to different types, such as array, boolean or datetime.
-- This class is widely used in Pip.Services as a basis for variety of classes, such as [ConfigParams](../../config/config_params), [ConnectionParams](../../../components/connect/connection_params), [CredentialParams](../../../components/auth/credential_params) (in the Pip.Services components package) and others.
+- This class is widely used in Pip.Services as a basis for variety of classes, such as [ConfigParams](../../../components/config/config_params), [ConnectionParams](../../../config/connect/connection_params), [CredentialParams](../../../config/auth/credential_params) (in the Pip.Services components package) and others.
 
 ### Constructors
 Creates a new instance of the map and assigns its value.
@@ -231,7 +231,7 @@ See [AnyValueMap](../any_value_map), [AnyValueMap.fromValue](../any_value_map/#f
 
 #### getAsNullableBoolean
 Converts a map's element into a boolean or returns null if the conversion is not possible.  
-See [BooleanConverter.toNullableBoolean](../boolean_converter/#tonullableboolean)
+See [BooleanConverter.toNullableBoolean](../../convert/boolean_converter/#tonullableboolean)
 
 > `public` getAsNullableBoolean(key: string): boolean
 
@@ -241,7 +241,7 @@ See [BooleanConverter.toNullableBoolean](../boolean_converter/#tonullableboolean
 
 #### getAsNullableDateTime
 Converts a map's element into a Date or returns null if the conversion is not possible.  
-See [DateTimeConverter.toNullableDateTime](../date_time_converter/#tonullabledatetime)
+See [DateTimeConverter.toNullableDateTime](../../convert/date_time_converter/#tonullabledatetime)
 
 > `public` getAsNullableDateTime(key: string): Date
 
@@ -251,7 +251,7 @@ See [DateTimeConverter.toNullableDateTime](../date_time_converter/#tonullabledat
 
 #### getAsNullableDouble
 Converts a map's element into a double or returns null if the conversion is not possible.  
-See [DoubleConverter.toNullableDouble](../double_converter/#tonullabledouble)
+See [DoubleConverter.toNullableDouble](../../convertdouble_converter/#tonullabledouble)
 
 > `public` getAsNullableDouble(key: string): number
 
@@ -261,7 +261,7 @@ See [DoubleConverter.toNullableDouble](../double_converter/#tonullabledouble)
 
 #### getAsNullableFloat
 Converts a map's element into a float or returns null if the conversion is not possible.  
-See [FloatConverter.toNullableFloat](../float_converter/#tonullablefloat)
+See [FloatConverter.toNullableFloat](../../convertfloat_converter/#tonullablefloat)
 
 > `public` getAsNullableFloat(key: string): number
 
@@ -271,7 +271,7 @@ See [FloatConverter.toNullableFloat](../float_converter/#tonullablefloat)
 
 #### getAsNullableInteger
 Converts a map's element into an integer or returns null if the conversion is not possible.  
-See [IntegerConverter.toNullableInteger](../integer_converter/#tonullableinteger)
+See [IntegerConverter.toNullableInteger](../../convertinteger_converter/#tonullableinteger)
 
 > `public` getAsNullableInteger(key: string): number
 
@@ -281,7 +281,7 @@ See [IntegerConverter.toNullableInteger](../integer_converter/#tonullableinteger
 
 #### getAsNullableLong
 Converts a map's element into a long or returns null if the conversion is not possible.  
-See [LongConverter.toNullableLong](../long_converter/#tonullablelong)
+See [LongConverter.toNullableLong](../../convertlong_converter/#tonullablelong)
 
 > `public` getAsNullableLong(key: string): number
 
@@ -363,7 +363,7 @@ If conversion is not possible it returns the default value for the specified typ
 #### getAsTypeWithDefault
 Converts a map's element into a value defined by a specified typecode.
 If the conversion is not possible, it returns the default value for the specified type.  
-See [TypeConverter.toTypeWithDefault](../type_converter/#totypewithdefault)
+See [TypeConverter.toTypeWithDefault](../../convert/type_converter/#totypewithdefault)
 
 > `public` getAsTypeWithDefault\<T\>(type: [TypeCode](../../convert/type_code), key: string, defaultValue: T): T
 
