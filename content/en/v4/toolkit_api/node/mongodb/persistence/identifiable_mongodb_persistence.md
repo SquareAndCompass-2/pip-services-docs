@@ -11,7 +11,7 @@ description: >
 
 **Extends:** [MongoDbPersistence<T>](../mongodb_persistence)
 
-**Implements**: [IWriter<T, K>](../../../persistence/write/iwriter), [IGetter<T, K>](../../../data/core/igetter), [ISetter<T>](../../../persistence/write/isetter)
+**Implements**: [IWriter<T, K>](../../../persistence/write/iwriter), [IGetter<T, K>](../../../persistence/read/igetter), [ISetter<T>](../../../persistence/write/isetter)
 
 
 ### Description
@@ -183,7 +183,7 @@ class MyMongoDbPersistence extends MongoDbPersistence<MyData, string> {
             criteria.push({ name: name });
         return criteria.length > 0 ? { $and: criteria } : null;
     }
-    public getPageByFilter(context: string, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
+    public getPageByFilter(context: IContext, filter: FilterParams, paging: PagingParams): Promise<DataPage<MyData>> {
         return super.getPageByFilter(context, this.composeFilter(filter), paging, null, null);
     }
 }
