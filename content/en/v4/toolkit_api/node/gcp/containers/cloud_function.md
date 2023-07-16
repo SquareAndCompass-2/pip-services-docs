@@ -30,8 +30,8 @@ Creates a new instance of this Google Function.
 
 > public constructor(name?: string, description?: string)
 
-- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/info/context_info))
-- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/info/context_info))
+- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/context/context_info))
+- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/context/context_info))
 
 
 ### Fields
@@ -113,7 +113,7 @@ Return plugin function
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/services/instrument_timing)
+> `protected` instrument(context: [IContext](../../../components/context/icontext), name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method's name.
@@ -131,7 +131,7 @@ Registers an action in this Google Function.
 
 Note: This method has been deprecated. Use CloudFunctionController instead.
 
-> `protected` registerAction(cmd: string, schema: [Schema](../../../commons/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise<any>): void 
+> `protected` registerAction(cmd: string, schema: [Schema](../../../data/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise<any>): void 
 
 - **cmd**: str - a action/command name.
 - **schema**: [Schema](../../../data/validate/schema) - a validation schema to validate received parameters.
