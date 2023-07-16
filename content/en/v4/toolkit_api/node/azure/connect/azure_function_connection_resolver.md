@@ -9,7 +9,7 @@ description: >
  
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
@@ -29,7 +29,7 @@ validate them and compose a [AzureFunctionConnectionParams](../azure_function_co
     - **auth_token**:    Google-generated ID token or null if using custom auth
 
 #### References
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection.
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection.
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials.
 
 ### Fields
@@ -38,11 +38,11 @@ validate them and compose a [AzureFunctionConnectionParams](../azure_function_co
 
 #### _connectionResolver
 Connection resolver.
-> `protected` **_connectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver)
+> `protected` **_connectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver)
 
 #### _credentialResolver
 Credential resolver.
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver)
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver)
 
 </span>
 
@@ -51,25 +51,25 @@ Credential resolver.
 #### configure
 Configures a component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### resolve
 Resolves connection and credential parameters and generates a single
 [AzureFunctionConnectionParams](../azure_function_connection_params) value.
 
-> `public` resolve(correlationId: string): Promise<[AzureFunctionConnectionParams](../azure_function_connection_params)>
+> `public` resolve(context: [IContext](../../../components/context/icontext)): Promise<[AzureFunctionConnectionParams](../azure_function_connection_params)>
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain. 
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain. 
 - **returns**: Promise<[AzureFunctionConnectionParams](../azure_function_connection_params)> - receives an AzureFunctionConnectionParams value or error.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 
@@ -91,5 +91,5 @@ const connectionParams = await connectionResolver.resolve("123");
 ```
 
 ### See also
-- #### [ConnectionParams](../../../components/connect/connection_params)
-- #### [IDiscovery](../../../components/connect/idiscovery)
+- #### [ConnectionParams](../../../config/connect/connection_params)
+- #### [IDiscovery](../../../config/connect/idiscovery)
