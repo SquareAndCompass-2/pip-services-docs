@@ -8,7 +8,7 @@ description: >
 
 ---
 
-**Implements:** [IOpenable](../../../components/run/iopenable), [IReferenceable](../../../component/refer/ireferenceable),
+**Implements:** [IOpenable](../../../components/run/iopenable), [IReferenceable](../../../components/refer/ireferenceable),
 [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
@@ -50,7 +50,7 @@ The GRPC client.
 
 #### _connectionResolver
 The connection resolver.
-> `protected` **_connectionResolver**: [HttpConnectionResolver](../../../rpc/connect/http_connection_resolver)
+> `protected` **_connectionResolver**: [HttpConnectionResolver](../../../config/connect/http_connection_resolver)
 
 #### _logger
 The logger.
