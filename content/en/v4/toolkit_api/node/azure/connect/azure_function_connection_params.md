@@ -8,7 +8,7 @@ description: >
     and connect to specific Azure resources.
 ---
 
-**Extends:** [ConfigParams](../../../commons/config/config_params)
+**Extends:** [ConfigParams](../../../components/config/config_params)
 
 ### Description
 Contains connection parameters to authenticate against Azure Functions
@@ -16,7 +16,7 @@ and connect to specific Azure Function.
 
 The class is able to compose and parse Azure Function connection parameters.
 
-In addition to standard parameters [CredentialParams](../../../components/auth/credential_params) may contain any number of custom parameters
+In addition to standard parameters [CredentialParams](../../../config/auth/credential_params) may contain any number of custom parameters
 
 
 #### Configuration parameters
@@ -117,25 +117,25 @@ Sets the Azure function connection protocol.
 #### validate
 Validates this connection parameters 
 
-> `public` validate(correlationId: string)
+> `public` validate(context: [IContext](../../../components/context/icontext))
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 ### Static methods
 
 #### fromConfig
 Validates this connection parameters 
 
-> `public static` fromConfig(config: [ConfigParams](../../../commons/config/config_params)): [AzureFunctionConnectionParams]()
+> `public static` fromConfig(config: [ConfigParams](../../../components/config/config_params)): [AzureFunctionConnectionParams]()
 
-- **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters
 - **returns**: [AzureFunctionConnectionParams]() - the generated AzureFunctionConnectionParams object.
 
 #### mergeConfigs
 Retrieves AzureFunctionConnectionParams from multiple configuration parameters.
 The values are retrieves from "connection" and "credential" sections.
 
-> `public static` mergeConfigs(...configs: [ConfigParams](../../../commons/config/config_params)[]): [AzureFunctionConnectionParams]()
+> `public static` mergeConfigs(...configs: [ConfigParams](../../../components/config/config_params)[]): [AzureFunctionConnectionParams]()
 
 - **config**: string - a list with configuration parameters
 - **returns**: [AzureFunctionConnectionParams]() - the generated AzureFunctionConnectionParams object.
