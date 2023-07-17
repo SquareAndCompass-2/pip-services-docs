@@ -200,4 +200,4 @@ Sets the specified references.
 
 > `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - specified references
+- **references**: [IReferences](../../../components/refer/ireferences) - specified references
