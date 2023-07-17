@@ -229,5 +229,5 @@ let result = await client.getData("123", "1");
 ```
 
 ### See also
-- #### [RestController](../../services/rest_controller)
-- #### [CommandableHttpController](../../services/commandable_http_controller)
+- #### [RestController](../../controllers/rest_controller)
+- #### [CommandableHttpController](../../controllers/commandable_http_controller)
