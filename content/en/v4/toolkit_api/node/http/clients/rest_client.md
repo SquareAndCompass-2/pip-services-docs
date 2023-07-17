@@ -62,7 +62,7 @@ The invocation timeout in milliseconds.
 
 #### _connectionResolver
 The connection resolver.
-> `protected` **_connectionResolver**: [HttpConnectionResolver](../../connect/http_connection_resolver) = HttpConnectionResolver()
+> `protected` **_connectionResolver**: [HttpConnectionResolver](../../../config/connect/http_connection_resolver) = HttpConnectionResolver()
 
 #### _logger
 The logger.
