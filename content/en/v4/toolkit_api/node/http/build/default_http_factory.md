@@ -11,7 +11,7 @@ description: >
 
 ### Description
 
-TODO: add description
+This class enables the creation of HTTP components by specifying their descriptors.
 
 ### Constructors
 Create a new instance of the factory.
