@@ -66,7 +66,7 @@ Configures the component by passing its configuration parameters.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../componentss/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
 - **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
