@@ -148,6 +148,6 @@ public async MyMethod(config: ConfigParams, references: IReferences): Promise<vo
 ```
 
 ### See also
-- #### [IConfigurable](../../../commons/config/iconfigurable)
-- #### [IReferenceable](../../../commons/refer/ireferenceable)
-- #### [IOpenable](../../../commons/run/iopenable)
+- #### [IConfigurable](../../../components/config/iconfigurable)
+- #### [IReferenceable](../../../components/refer/ireferenceable)
+- #### [IOpenable](../../../components/run/iopenable)
