@@ -7,7 +7,7 @@ description: >
     Class used to receive a message, obtain a list of received messages and the number of received messages, and to clear the message list. 
 ---
 
-**Implements:** [IMessageReceiver](../../queues/imessage_receiver), [ICleanable](../../../commons/run/icleanable)
+**Implements:** [IMessageReceiver](../../queues/imessage_receiver), [ICleanable](../../../components/run/icleanable)
 
 ### Description
 
