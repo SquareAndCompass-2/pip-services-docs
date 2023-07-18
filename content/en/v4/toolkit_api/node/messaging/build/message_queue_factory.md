@@ -10,7 +10,7 @@ description: >
 
 **Extends:** [Factory](../../../components/build/factory)  
 
-**Implements:** [IMessageQueueFactory](../imessage_queue_factory), [IConfigurable](../../../commons/config/iconfigurable), [IReferenceable](../../../commons/refer/ireferenceable)
+**Implements:** [IMessageQueueFactory](../imessage_queue_factory), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
 
 ### Description
 
@@ -23,11 +23,11 @@ The MessageQueueFactory class allows you to create [IMessageQueue](../../queues/
 #### _config
 Configuration paramters
 
-> `protected` **_config**: [ConfigParams](../../../commons/config/config_params)
+> `protected` **_config**: [ConfigParams](../../../components/config/config_params)
 
 #### _references
 References used to locate the component dependencies
-> `protected` **_references**: [IReferences](../../../commons/refer/ireferences) 
+> `protected` **_references**: [IReferences](../../../components/refer/ireferences) 
 
 </span>
 
@@ -46,16 +46,16 @@ Creates a message queue component and assigns its name.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params))
+> `public` configure(config: [ConfigParams](../../../components/config/config_params))
 
-- **config**: [ConfigParams](../../../commons/config/config_params) -  configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) -  configuration parameters to be set.
 
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences))
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences))
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 ### See also
