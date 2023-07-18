@@ -154,7 +154,7 @@ Sends a message into the queue.
 #### openWithParams
 Opens the component with given connection and credential parameters.
 
-> `protected` openWithParams(context: [IContext](../../../components/context/icontext), connections: [ConnectionParams](../../../components/connect/connection_params)[], credentials: [CredentialParams](../../../components/auth/credential_params)): Promise\<void\>
+> `protected` openWithParams(context: [IContext](../../../config/connect/connection_paramst), connections: [ConnectionParams](../../../components/connect/connection_params)[], credentials: [CredentialParams](../../../config/auth/credential_params)): Promise\<void\>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **connections**: [ConnectionParams](../../../config/connect/connection_params)[] - connection parameters
