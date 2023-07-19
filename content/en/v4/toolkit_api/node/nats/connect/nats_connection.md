@@ -69,7 +69,7 @@ Number of milliseconds to wait on flushing messages (default: 3000)
 
 #### _logger
 Logger
-> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = new [CompositeLogger()](../../../components/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger) = new [CompositeLogger()](../../../observability/log/composite_logger)
 
 #### _maxReconnect
 Maximum number of reconnection attempts (default: 3)
