@@ -41,8 +41,8 @@ Important points
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../observability/connect/idiscovery) services
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
@@ -249,7 +249,7 @@ receives [FilterParams](../../../data/query/filter_params) and converts them int
 Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a public **getListByFilter** method from a child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > `protected` getListByFilter(context: [IContext](../../../components/context/icontext), filter: any, sort: any, select: any): Promise\<T[]\>
 
