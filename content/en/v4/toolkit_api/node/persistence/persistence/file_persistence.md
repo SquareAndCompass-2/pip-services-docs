@@ -71,7 +71,7 @@ class MyJsonFilePersistence extends FilePersistence<MyData> {
         retur item;
     }); 
      
-    public async set(correlatonId: string, item: MyData): Promise<MyData> {
+    public async set(context: IContext, item: MyData): Promise<MyData> {
         this._items = this._items.filter((d) => d.name != name);
         this._items.push(item);
         await this.save(context);
