@@ -40,11 +40,11 @@ The NatsConnectionResolver class is used to resolve NATS connections and credent
 
 #### _connectionResolver
 Connection resolver.
-> `protected` **_connectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver)
+> `protected` **_connectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver)
 
 #### _credentialResolver
 Credential resolver.
-> `protected` **_credentialResolver**: [CredentialResolver](../../../components/auth/credential_resolver)
+> `protected` **_credentialResolver**: [CredentialResolver](../../../config/auth/credential_resolver)
 
 </span>
 
@@ -82,6 +82,6 @@ Resolves NATS connection options from connection and credential parameters.
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../commons/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
