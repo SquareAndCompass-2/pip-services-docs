@@ -9,7 +9,7 @@ description: >
     It is used by [FilePersistence](../file_persistence), but can be useful on its own.
 ---
 
-**Implements:** [IConfigurable](../../../commons/config/iconfigurable), [ILoader<T>](../../read/iloader), [ISaver<T>](../../write/isaver)
+**Implements:** [IConfigurable](../../../components/config/iconfigurable), [ILoader<T>](../../read/iloader), [ISaver<T>](../../write/isaver)
 
 ### Description
 
