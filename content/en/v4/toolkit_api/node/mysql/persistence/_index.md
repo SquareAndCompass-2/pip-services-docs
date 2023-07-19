@@ -17,7 +17,7 @@ description: >
 #### [IdentifiableJsonMySqlPersistence](identifiable_json_mysql_persistence)
 Abstract persistence component that stores data in MySQL in JSON or JSONB fields
 and implements a number of CRUD operations over data items with unique ids.
-The data items must implement the [IIdentifiable](../../commons/data/iidentifiable) interface.
+The data items must implement the [IIdentifiable](../../data/data/iidentifiable) interface.
 
 
 #### [IdentifiableMySqlPersistence](identifiable_mysql_persistence)
