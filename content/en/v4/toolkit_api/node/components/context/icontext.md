@@ -10,7 +10,7 @@ description: >
 ---
 
 ### Description
-TODO: add description
+A context for monitoring the flow of execution through a call chain.
 
 ### Instance Methods  
 
