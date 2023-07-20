@@ -153,7 +153,7 @@ If the validation schema is not defined, then the methods returns no errors.
 It returns a validation error if the command is not found.
 
 
-> `public` validate(commandName: string, args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../validate/validation_result)[]
+> `public` validate(commandName: string, args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
 - **commandName**: string - name of the command for which the 'args' must be validated.
 - **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate.
