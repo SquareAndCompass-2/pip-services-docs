@@ -281,14 +281,14 @@ Gets a page of data items retrieved by a given filter and sorted according to so
 This method shall be called by a public **getPageByFilter** method from a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../commons/data/data_page)>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../data/query/data_page)>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter for JSON objects
 - **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting JSON object
 - **select**: any - (optional) projection JSON object
-- **returns**: Promise<[DataPage<T>](../../../commons/data/data_page)> - data page with filtered result
+- **returns**: Promise<[DataPage<T>](../../../data/query/data_page)> - data page with filtered result
 
 
 
