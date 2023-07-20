@@ -7,7 +7,7 @@ description: >
     An interface for Events that can send asynchronious notifications to multiple subscribed listeners.
 ---
 
-**Extends:** [INotifiable](../../../node/components/exec/inotifiable)
+**Extends:** [INotifiable](../../../components/exec/inotifiable)
 
 ### Description
 
