@@ -15,7 +15,7 @@ description: >
 
 ### Description
 
-The RedisLock class allows you to create a distributed lock that is implemented based on the Redis in-memory database.
+The RedisLock class enables the creation of a distributed lock using Redis in-memory database, providing efficient synchronization and coordination among multiple processes or nodes in distributed systems, thereby enhancing performance and reliability
 
 
 #### Configuration parameters
