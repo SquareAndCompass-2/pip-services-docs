@@ -63,9 +63,9 @@ Closes the component and frees used resources.
 #### configure
 Configures the component by passing its configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../observability/config/config_params)): void
+> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
 
-- **config**: [ConfigParams](../../../observability/config/config_params) - configuration parameters to be set.
+- **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### isOpen
@@ -121,5 +121,5 @@ counters.dump();
 ```
 
 ### See also
-- #### [RestService](../../../rpc/services/rest_service)
-- #### [CommandableHttpService](../../../rpc/services/commandable_http_service)
+- #### [RestController](../../../http/controllers/rest_controller)
+- #### [CommandableHttpController](../../../http/controllers/commandable_http_controller)
