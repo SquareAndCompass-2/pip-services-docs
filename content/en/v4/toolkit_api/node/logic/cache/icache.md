@@ -10,7 +10,8 @@ description: >
 
 ### Description
 
-TODO: add description
+
+The interface serves as a foundational structure and set of methods specifically tailored to manage caches, optimizing the performance of the system by efficiently storing and retrieving values, thereby reducing the need for repeated computations.
 
 ### Instance methods
 
