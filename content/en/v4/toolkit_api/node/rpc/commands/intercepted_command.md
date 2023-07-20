@@ -46,7 +46,7 @@ Returns a string with the name of the command that is being intercepted.
 #### validate
 Validates the [parameters](../../../components/exec/parameters) (arguments) that are to be passed to the command that is next 
 in the execution chain.  
-See [Parameters](../../../components/exec/parameters), [ValidationResult](../../validate/validation_result)
+See [Parameters](../../../components/exec/parameters), [ValidationResult](../../../data/validate/validation_result)
 
 > `public` validate(args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
