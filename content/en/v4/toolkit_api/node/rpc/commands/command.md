@@ -17,7 +17,7 @@ The Command class allows you to call a method or a function.
 
 Creates a new command object and assigns it's parameters.
 
-> `public` constructor(name: string, schema: [Schema](../../../data/validate/schema), action: [IExecutable](../../run/iexecutable) | (context: [IContext](../../../components/context/icontext), args: Parameters) => Promise<any>)
+> `public` constructor(name: string, schema: [Schema](../../../data/validate/schema), action: [IExecutable](../../../components/exec/iexecutable) | (context: [IContext](../../../components/context/icontext), args: Parameters) => Promise<any>)
 
 - **name**: string - command name.
 - **schema**: [Schema](../../../data/validate/schema) - schema to validate command arguments.
@@ -29,7 +29,7 @@ Creates a new command object and assigns it's parameters.
 Executes the command. Before execution it validates [args](../../../components/exec/parameters) using the defined schema.
 
 Raise [ApplicationException](../../../commons/errors/application_exception) when execution fails for whatever reason.  
-See [Parameters](../../run/parameters)
+See [Parameters](../../../components/exec/parameters)
 
 > `public` execute(context: [IContext](../../../components/context/icontext), args: [Parameters](../../../components/exec/parameters)): Promise\<any\>
 
@@ -49,7 +49,7 @@ Validates the command [args](../../../components/exec/parameters) before executi
 
 > `public` validate(args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
-- **args**: [Parameters](../../run/parameters) - parameters (arguments) to validate using this command's schema.
+- **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate using this command's schema.
 - **returns**: [ValidationResult](../../../data/validate/validation_result)[] - array of ValidationResults or an empty array (if no schema is set).
 
 ### Examples
