@@ -49,7 +49,7 @@ Validates the arguments of the wrapped command before its execution.
 The interceptor can use this method to intercept and alter validation of the command arguments.
 Otherwise, it shall just delegate the call to the wrapped command.
 
-> validate(command: [ICommand](../icommand), args: [Parameters](../../run/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
+> validate(command: [ICommand](../icommand), args: [Parameters](../../../components/exec/parameters)): [ValidationResult](../../../data/validate/validation_result)[]
 
 - **command**: [ICommand](../icommand) - next command in the call chain to be validated against.
 - **args**: [Parameters](../../../components/exec/parameters) - parameters (arguments) to validate.
