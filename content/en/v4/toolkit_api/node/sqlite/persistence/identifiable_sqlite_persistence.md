@@ -13,7 +13,7 @@ description: >
 **Implements:** [IWriter<T, K>](../../../persistence/write/iwriter), [IGetter<T, K>](../../../persistence/read/igetter), [ISetter<T>](../../../persistence/write/isetter)
 
 ### Description
-
+The abstract persistence component serves as a tool for storing data in SQLite databases and offers a range of essential CRUD operations, allowing easy creation, retrieval, updating, and deletion of data items identified by unique IDs. With this component, developers can efficiently manage and interact with data, making database operations straightforward and reliable for various applications.
 **Important points**
     
 - The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface. 
