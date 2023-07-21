@@ -292,14 +292,14 @@ Gets a page of data items retrieved by a given filter and sorted according to so
 This method shall be called by a public **getPageByFilter** method from a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../commons/data/data_page)>
+> `protected` getPageByFilter(context: [IContext](../../../components/context/icontext), filter: any, paging: PagingParams, sort: any, select: any): Promise<[DataPage<T>](../../../data/query/data_page)>
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: any - (optional) filter for JSON objects.
 - **paging**: [PagingParams](../../../data/query/paging_params) - (optional) paging parameters
 - **sort**: any - (optional) sorting JSON object
 - **select**: any - (optional) projection JSON object
-- **returns**: Promise<[DataPage<T>](../../../commons/data/data_page)> - a data page of result by filter
+- **returns**: Promise<[DataPage<T>](../../../data/query/data_page)> - a data page of result by filter
 
 
 
@@ -338,9 +338,9 @@ Joins schema and database name in dot notation
 #### setReferences
 Sets references to dependent components.
 
-> `public` setReferences(references: [IReferences](../../../node/components/refer/ireferences)): void
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
 
-- **references**: [IReferences](../../../node/components/refer/ireferences) - references to locate the component dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### unsetReferences
