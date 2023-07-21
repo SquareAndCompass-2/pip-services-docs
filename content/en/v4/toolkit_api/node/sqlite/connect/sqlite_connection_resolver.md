@@ -4,14 +4,14 @@ title: "SqliteConnectionResolver"
 linkTitle: "SqliteConnectionResolver"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-sqlite-node"
 description: >
-    Within database management, the SqliteConnectionResolver class plays a crucial role as it not only resolves SQLite connections and credential parameters but also takes charge of validating these crucial elements, ensuring their accuracy and security, ultimately leading to the generation of reliable and efficient connection URIs for smooth database interactions.
+    Helper class that resolves a SQLite connection and credential parameters, validates them and generates a connection URI.
 
 ---
 
 **Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable)
 
 ### Description
-The SqliteConnectionResolver class is used to resolve SQLite connections and credential paramters, validate them and generate connection URIs.
+Within database management, the SqliteConnectionResolver class plays a crucial role as it not only resolves SQLite connections and credential parameters but also takes charge of validating these crucial elements, ensuring their accuracy and security, ultimately leading to the generation of reliable and efficient connection URIs for smooth database interactions.
 
 **Important points**  
 
