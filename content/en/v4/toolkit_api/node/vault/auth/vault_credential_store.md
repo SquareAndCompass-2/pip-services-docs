@@ -13,7 +13,7 @@ Credential store that keeps credentials in memory.
 #### Configuration parameters
   
 **connection(s):**                
-**- discovery_key:**         (optional) a key to retrieve the connection from [[https://pip-services4-node.github.io/pip-services4-components-node/interfaces/connect.idiscovery.html IDiscovery]]     
+**- discovery_key:**         (optional) a key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)    
 **- host:**                  host name or IP address     
 **- port:**                  port number     
 **- uri:**                   resource URI or connection string with all parameters in it     
@@ -34,16 +34,16 @@ Credential store that keeps credentials in memory.
 **- root_path:**             root path after the base URL     
 **- timeout:**               default timeout in milliseconds (default: 5 sec)     
 **- namespace:**             namespace (multi-tenancy) feature available on all Vault Enterprise versions          
-  
- * @see [[ICredentialStore]]
- * @see [[CredentialParams]]
- * 
- * ### Example ###
- * 
- *     
- *     let credentialStore = new VaultCredentialStore();
- *     credentialStore.open();
- *     
- *     let credential = await credentialStore.lookup("123", "key1");
- *     // Result: user=jdoe; pass=pass123
- */
+
+### Examples
+
+```typescript  
+let credentialStore = new VaultCredentialStore();
+credentialStore.open();
+
+let credential = await credentialStore.lookup("123", "key1");
+// Result: user=jdoe; pass=pass123
+```
+### See also
+- ####  [[ICredentialStore]]
+- ####  [[CredentialParams]]
