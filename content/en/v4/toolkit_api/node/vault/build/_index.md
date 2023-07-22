@@ -12,6 +12,6 @@ description: >
 
 ### Classes
 
-#### [VaultCredentialStore](default_rabbitmq_factory)
+#### [VaultCredentialStore](vault_credential_store)
 Default factory that creates [RabbitMQMessageQueue](../queues/rabbitmq_message_queue/) components by their descriptors.
 </div>
