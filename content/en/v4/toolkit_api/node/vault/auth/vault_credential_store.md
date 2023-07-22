@@ -4,8 +4,10 @@ title: "VaultCredentialStore"
 linkTitle: "VaultCredentialStore"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-vault-node"
 description: > 
-    Credential store that keeps credentials in memory .
+    Credential store that keeps credentials in memory.
 ---
+
+**Implements:** [ICredentialStore](../../../config/auth/icredential_store), [IReconfigurable](../../../components/config/ireconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 Credential store that keeps credentials in memory.
