@@ -12,7 +12,8 @@ Credential store that keeps credentials in memory.
  * 
 #### Configuration parameters
   
-**connection(s):**                
+**connection(s):**    
+     
 **- discovery_key:**         (optional) a key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)    
 **- host:**                  host name or IP address     
 **- port:**                  port number     
@@ -22,6 +23,7 @@ Credential store that keeps credentials in memory.
 **- proxy_port:**            proxy port number     
           
 **credential(s):**     
+     
 **- store_key:**             key to retrieve parameters from credential store     
 **- username:**              set user name for ldap and userpass auth type, role_id for approle and k8s auth type, cert_name for cert auth type     
 **- password:**              user password for ldap and userpass auth type, secret_id for approle auth type, token for k8s and cert_name auth type     
@@ -30,7 +32,8 @@ Credential store that keeps credentials in memory.
 **- file_key:**              client key file for https mode     
 **- file_cacert:**           root CA cert path for https mode    
         
-**options:**     
+**options:**    
+     
 **- root_path:**             root path after the base URL     
 **- timeout:**               default timeout in milliseconds (default: 5 sec)     
 **- namespace:**             namespace (multi-tenancy) feature available on all Vault Enterprise versions          
