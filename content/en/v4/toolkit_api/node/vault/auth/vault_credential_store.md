@@ -20,6 +20,7 @@ Credential store that keeps credentials in memory.
 **- proxy_enable:**          enable proxy (default false)     
 **- proxy_host:**            proxy host name     
 **- proxy_port:**            proxy port number     
+          
 **credential(s):**     
 **- store_key:**             key to retrieve parameters from credential store     
 **- username:**              set user name for ldap and userpass auth type, role_id for approle and k8s auth type, cert_name for cert auth type     
@@ -28,6 +29,7 @@ Credential store that keeps credentials in memory.
 **- file_cert:**             client certificate file for https mode     
 **- file_key:**              client key file for https mode     
 **- file_cacert:**           root CA cert path for https mode    
+        
 **options:**     
 **- root_path:**             root path after the base URL     
 **- timeout:**               default timeout in milliseconds (default: 5 sec)     
