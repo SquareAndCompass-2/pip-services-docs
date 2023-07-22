@@ -5,20 +5,20 @@ gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-servi
 no_list: true
 weight: 500
 description: > 
-    The RabbitMQ module contains a set of components for working with the message queue in RabbitMQ through the AMQP protocol.
+    The Vault module contains a set of components for working with the HashiCorp Vault, which is an identity-based secrets and encryption management system.
 ---
 
 ### Packages
 
 The module contains the following packages:
-- [**Build**](build) - Factory for constructing module components
-- [**Connect**](connect) - Components for creating and configuring a connection with RabbitMQ
-- [**Queues**](queues) - components of working with a message queue via the RabbitMQ protocol
+- [**Auth**](build) - Components for using a credential store for Vault.
+- [**Build**](connect) - Factory for constructing module components
+- [**Connect**](queues) - Components for creating and configuring a connection with Vault
 
 
 ### Use
 
 Install the NPM package as
 ```bash
-npm install pip-services4-rabbitmq-node --save
+npm install pip-services4-vault-node --save
 ```
