@@ -7,6 +7,8 @@ description: >
     Creates [ICredentialStore](../../../config/auth/icredential_store) components by their descriptors. .
 ---
 
+**Extends** [Factory](../../../components/build/factory)
+    
 ### Description
 Creates [ICredentialStore](../../../config/auth/icredential_store)components by their descriptors.
 
