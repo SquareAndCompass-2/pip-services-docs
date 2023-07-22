@@ -48,5 +48,5 @@ let credential = await credentialStore.lookup("123", "key1");
 // Result: user=jdoe; pass=pass123
 ```
 ### See also
-- ####  [[ICredentialStore]]
-- ####  [[CredentialParams]]
+- ####  [ICredentialStore](../../../config/auth/icredential_store)
+- ####  [CredentialParams](../../../config/auth/credential_params)
