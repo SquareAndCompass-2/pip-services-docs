@@ -7,6 +7,8 @@ description: >
     Creates .
 ---
 
+**Implements:**[IDiscovery](../../../config/connect/idiscovery), [IReconfigurable](../../../components/config/ireconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/config/iconfigurable)
+
 ### Description
 Discovery service that keeps connections in memory.
 
