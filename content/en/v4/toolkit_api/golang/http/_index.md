@@ -5,7 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-service
 no_list: true
 weight: 500
 description: > 
-    Components for supporting work with the AWS cloud platform.
+    The rpc module provides the synchronous communication using local calls or the HTTP(S) protocol. It contains both server and client side implementations.
 ---
 
 
