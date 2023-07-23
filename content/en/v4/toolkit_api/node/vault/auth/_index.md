@@ -5,7 +5,7 @@ linkTitle: "Auth"
 no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-vault-node"
 description: >
-    This package contains classes used to create [RabbitMQMessageQueue](../queues/rabbitmq_message_queue/) components by their descriptors. 
+    Credential store that keeps credentials in memory. 
 ---
 ---
 <div class="module-body"> 
