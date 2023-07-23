@@ -5,14 +5,14 @@ linkTitle: "Connect"
 no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-vault-node"
 description: >
-   Creates [ICredentialStore](../../../config/auth/icredential_store)components by their descriptors. 
+   Discovery service that keeps connections in memory.. 
 ---
 ---
 <div class="module-body"> 
 
 ### Classes
 
-#### [VaultCredentialStore](default_rabbitmq_factory)
-Creates [ICredentialStore](../../../config/auth/icredential_store)components by their descriptors.
+#### [VaultCredentialStore](vault_credential_store)
+Discovery service that keeps connections in memory..
 </div>
 
