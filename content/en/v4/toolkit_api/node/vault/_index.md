@@ -11,9 +11,9 @@ description: >
 ### Packages
 
 The module contains the following packages:
-- [**Auth**](build) - Components for using a credential store for Vault.
-- [**Build**](connect) - Factory for constructing module components
-- [**Connect**](queues) - Components for creating and configuring a connection with Vault
+- [**Auth**](auth) - Components for using a credential store for Vault.
+- [**Build**](build) - Factory for constructing module components
+- [**Connect**](connect) - Components for creating and configuring a connection with Vault
 
 
 ### Use
