@@ -11,7 +11,7 @@ description: >
 
 ### Description
 Credential store that keeps credentials in memory.
- * 
+        
 #### Configuration parameters
   
 **connection(s):**    
