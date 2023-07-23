@@ -6,7 +6,7 @@ no_list: true
 weight: 30
 description: > 
  
-    It dynamic and static objects and data handling components.
+    It contains dynamic and static objects and data handling components.
 
 ---
 
