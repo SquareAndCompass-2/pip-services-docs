@@ -5,7 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-service
 no_list: true
 weight: 500
 description: > 
-    Components for supporting work with the AWS cloud platform.
+    The Observability module contains observability component definitions that can be used to build applications and services.
 ---
 
 
