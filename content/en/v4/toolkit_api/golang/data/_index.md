@@ -5,7 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-service
 no_list: true
 weight: 500
 description: > 
-    Contains a DataDog logger and performance counters components.
+    It contains dynamic and static objects and data handling components.
 ---
 
 
