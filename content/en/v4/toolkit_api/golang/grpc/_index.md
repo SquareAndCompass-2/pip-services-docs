@@ -5,7 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-service
 no_list: true
 weight: 500
 description: > 
-    Components for supporting work with the AWS cloud platform.
+    This module is used to organize synchronous data exchange using calls through the gRPC protocol. It has implementations of both, the server and client parts.
 ---
 
 
