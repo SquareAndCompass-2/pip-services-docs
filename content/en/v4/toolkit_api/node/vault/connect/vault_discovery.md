@@ -4,7 +4,7 @@ title: "VaultDiscovery"
 linkTitle: "VaultDiscovery"
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-rabbitmq-node"
 description: > 
-    Creates .
+    Discovery service that keeps connections in memory.
 ---
 
 **Implements:** [IDiscovery](../../../config/connect/idiscovery), [IReconfigurable](../../../components/config/ireconfigurable), [IReferenceable](../../../components/refer/ireferenceable), [IConfigurable](../../../components/config/iconfigurable), [IOpenable](../../../components/config/iconfigurable)
