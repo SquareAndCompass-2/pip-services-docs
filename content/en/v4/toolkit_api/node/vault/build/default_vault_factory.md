@@ -10,7 +10,7 @@ description: >
 **Extends** [Factory](../../../components/build/factory)
     
 ### Description
-Creates [ICredentialStore](../../../config/auth/icredential_store)components by their descriptors.
+Creates [ICredentialStore](../../../config/auth/icredential_store) components by their descriptors.
 
 ### See also
 - ####  [IFactory](../../../components/build/ifactory)
