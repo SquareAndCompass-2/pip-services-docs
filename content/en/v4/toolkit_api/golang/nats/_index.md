@@ -5,7 +5,7 @@ gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-service
 no_list: true
 weight: 500
 description: > 
-    Components for supporting work with the AWS cloud platform.
+    A set of components for working with message queues via a NATS server [https://nats.io/](https://nats.io/).
 ---
 
 
