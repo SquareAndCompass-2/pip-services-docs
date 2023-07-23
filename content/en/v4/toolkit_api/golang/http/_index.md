@@ -1,4 +1,3 @@
-
 ---
 type: docs
 title: "AWS module"
