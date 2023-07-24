@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "Azure module"
-gitUrl: "https://github.com/pip-services/pip-services-docs/tree/master/content/en/v4/toolkit_api/node/azure"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-azure-go"
 no_list: true
 weight: 500
 description: > 
