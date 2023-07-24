@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "AWS module"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-node"
+gitUrl: "https://github.com/pip-services/pip-services-docs/tree/master/content/en/v4/toolkit_api/node/aws"
 no_list: true
 weight: 500
 description: > 
@@ -23,4 +23,7 @@ This module contains the following packages:
 - [**Test**](test) - contains classes used for automated testing
 
 ### Use
-
+Get the package from the Github repository:
+```bash
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-go@latest
+```
