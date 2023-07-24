@@ -18,8 +18,6 @@ The module contains the following packages:
 
 ### Use
 
-### Use
-
 Get the package from the Github repository:
 ```bash
 go get -u github.com/pip-services4/pip-services4-node/tree/main/pip-services4-rabbitmq-go@latest
