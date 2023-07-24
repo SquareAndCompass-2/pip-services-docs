@@ -29,8 +29,6 @@ The module contains the following packages:
 * [**Test**](test) - minimal set of test components to make testing easier
 
 ### Use
-
-### Use
 Get the package from the Github repository:
 ```bash
 go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-container-go@latest
