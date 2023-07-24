@@ -1,7 +1,7 @@
 ---
 type: docs
-title: "Elastisearch module"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-node"
+title: "ElasticSearch module"
+gitUrl: "https:/github.com/pip-services4/pip-services4-go/tree/main/pip-services4-elasticsearch-go"
 no_list: true
 weight: 500
 description: > 
@@ -9,5 +9,16 @@ description: >
 ---
 
 
-### Modules
+### Packages
 
+The module contains the following packages:
+
+- [**Build**](build) - contains a factory for the construction of components
+- [**Log**](log) - Logging components
+
+
+### Use
+Get the package from the Github repository:
+```bash
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-elasticsearch-go@latest
+```
