@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "Config module"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-config-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-config-go"
 no_list: true
 weight: 30
 description: > 
@@ -21,10 +21,8 @@ The module contains the following packages:
 * [**Connect**](connect) - data query objects
 
 
-
 ### Use
-
-Install the NPM package as
+Get the package from the Github repository:
 ```bash
-npm install pip-services4-config-node --save
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-config-go@latest
 ```
