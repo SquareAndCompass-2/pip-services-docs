@@ -21,9 +21,6 @@ The module contains the following packages:
 * [**Run**](run) - the root package
 
 
-
-### Use
-
 ### Use
 Get the package from the Github repository:
 ```bash
