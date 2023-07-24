@@ -21,7 +21,8 @@ The module contains the following packages:
 
 ### Use
 
-Install the NPM package as
+### Use
+Get the package from the Github repository:
 ```bash
-npm install pip-services4-azure-node --save
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-azure-go
 ```
