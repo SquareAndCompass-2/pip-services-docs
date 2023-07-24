@@ -1,12 +1,28 @@
 ---
 type: docs
 title: "Logic module"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-logic-go"
 no_list: true
-weight: 500
+weight: 30
 description: > 
+ 
     The Logic module contains standard component definitions to handle complex business transactions.
+
 ---
 
 
-### Modules
+### Packages
+
+The module contains the following packages:
+
+- [**Cache**](cahce) - distributed cache
+- [**Lock**](lock) -  distributed lock components
+- [**State**](state) -  distributed state management components
+
+
+
+### Use
+Get the package from the Github repository:
+```bash
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-logic-go@latest
+```
