@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "Azure module"
-gitUrl: "https://github.com/pip-services/pip-services-docs/tree/master/content/en/v4/toolkit_api/node/azure)
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-azure-node"
 no_list: true
 weight: 500
 description: > 
@@ -21,3 +21,7 @@ The module contains the following packages:
 
 ### Use
 
+Install the NPM package as
+```bash
+npm install pip-services4-azure-node --save
+```
