@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "Container module"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-container-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-container-go"
 no_list: true
 weight: 50
 description: > 
@@ -30,7 +30,8 @@ The module contains the following packages:
 
 ### Use
 
-Install the NPM package as
+### Use
+Get the package from the Github repository:
 ```bash
-npm install pip-services4-container-node --save
+go get -u github.com/pip-services4/pip-services4-go/tree/main/pip-services4-container-go@latest
 ```
