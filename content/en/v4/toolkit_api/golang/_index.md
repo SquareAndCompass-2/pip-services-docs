@@ -1,7 +1,7 @@
 ---
 type: docs
-title: "Pip.Services Toolkit for Node.js"
-linkTitle: "Node.js"
+title: "Pip.Services Toolkit for Goland"
+linkTitle: "Goland"
 table_view: true
 weight: 10
 ---
