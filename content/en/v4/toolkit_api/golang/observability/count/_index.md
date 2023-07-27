@@ -32,7 +32,7 @@ The performance counters measure how code is performing:
 how fast or slow, how many transactions performed, how many objects
 are stored, what was the latest transaction time and so on.
 
-#### [ITimingCallback](itiming_callback)
+#### [ICounterTimingCallback](icounter_itiming_callback)
 Interface for a callback to end measurement of execution elapsed time.
 
 <br>
