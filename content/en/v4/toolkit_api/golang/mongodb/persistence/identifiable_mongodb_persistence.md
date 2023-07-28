@@ -2,7 +2,7 @@
 type: docs
 title: "IdentifiableMongoDbPersistence"
 linkTitle: "IdentifiableMongoDbPersistence"
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-mongodb-gox"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/blob/main/pip-services4-mongodb-go"
 description: >
     Abstract persistence component that stores data in MongoDB
     and implements a number of CRUD operations over data items with unique ids.
