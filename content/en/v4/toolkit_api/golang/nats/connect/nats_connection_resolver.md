@@ -52,9 +52,9 @@ Credential resolver.
 #### Compose
 Composes NATS connection options from connection and credential parameters.
 
-> (c [*NatsConnectionResolver]()) Compose(correlationId string, connections [[]*ConnectionParams](../../../config/connect/connection_params), credential [*CredentialParams](../../../config/auth/credential_params)) ([*ConfigParams](../../../components/config/config_params), error)
+> (c [*NatsConnectionResolver]()) Compose(context [IContext](../../../components/context/icontext), connections [[]*ConnectionParams](../../../config/connect/connection_params), credential [*CredentialParams](../../../config/auth/credential_params)) ([*ConfigParams](../../../components/config/config_params), error)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **connections**: [[]*ConnectionParams](../../../config/connect/connection_params) - connection parameters
 - **credential**: [*CredentialParams](../../../config/auth/credential_params) - credential parameters
 - **returns**: ([*ConfigParams](../../../components/config/config_params), error) - resolved NATS connection options.
@@ -72,9 +72,9 @@ Configures the component by passing its configuration parameters.
 #### Resolve
 Resolves NATS connection options from connection and credential parameters.
 
-> (c [*NatsConnectionResolver]()) Resolve(correlationId string) ([*ConfigParams](../../../components/config/config_params), error)
+> (c [*NatsConnectionResolver]()) Resolve(context [IContext](../../../components/context/icontext)) ([*ConfigParams](../../../components/config/config_params), error)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: ([*ConfigParams](../../../components/config/config_params), error) - resolved NATS connection options.
 
 
