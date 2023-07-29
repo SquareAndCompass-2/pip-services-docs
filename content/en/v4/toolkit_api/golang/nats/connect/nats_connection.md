@@ -105,10 +105,10 @@ Raises an error if the connection is closed.
 #### Close
 Closes a component and frees used resources.
 
-> (c [*NatsConnection]()) Close(ctx context.Context, correlationId string) error
+> (c [*NatsConnection]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred.
 
 
@@ -159,10 +159,10 @@ Checks if the component is open.
 #### Open
 Opens the component.
 
-> (c [*NatsConnection]()) Open(ctx context.Context, correlationId string) error
+> (c [*NatsConnection]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred.
 
 
