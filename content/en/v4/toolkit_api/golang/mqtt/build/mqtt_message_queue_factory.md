@@ -2,7 +2,7 @@
 type: docs
 title: "MqttMessageQueueFactory"
 linkTitle: "MqttMessageQueueFactory"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-config-go"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-mqtt-go"
 description: > 
     Creates [MqttMessageQueue](../../queues/mqtt_message_queue) components by their descriptors. 
    
