@@ -135,7 +135,7 @@ Closes a component and frees used resources.
 > (c [*KafkaConnection]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context
-- **context**: [IContext](../../../components/context/icontext)g - (optional) a context to trace execution through a call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred.
 
 #### Commit!
