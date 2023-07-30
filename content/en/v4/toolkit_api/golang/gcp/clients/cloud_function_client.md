@@ -115,21 +115,21 @@ AddPagingParams method are adds paging parameters (skip, take, total) to invocat
 #### Call
 Calls a Google Function action.
 
-> (c [*CloudFunctionClient]()) Call(ctx context.Context, cmd string, correlationId string, args [*AnyValueMap](../../../commons/data/any_value_map)) (*http.Response, error)
+> (c [*CloudFunctionClient]()) Call(ctx context.Context, cmd string, context [IContext](../../../components/context/icontext), args [*AnyValueMap](../../../commons/data/any_value_map)) (*http.Response, error)
 
 - **ctx**: context.Context - operation context.
 - **cmd**: string - an action name to be called.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**:  [*AnyValueMap](../../../commons/data/any_value_map) - (optional) action parameters.
 - **returns**: (*http.Response, error) - action result.
 
 #### Close
 Closes component and frees used resources.
 
-> (c [*CloudFunctionClient]()) Close(ctx context.Context, correlationId string) error
+> (c [*CloudFunctionClient]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error close.
 
 
@@ -146,10 +146,10 @@ Configures component by passing configuration parameters.
 Adds instrumentation to log calls and measure call time.
 It returns a CounterTiming object that is used to end the time measurement.
 
-> (c [*CloudFunctionClient]()) Instrument(ctx context.Context, correlationId string, name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
+> (c [*CloudFunctionClient]()) Instrument(ctx context.Context, context [IContext](../../../components/context/icontext), name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - a method name.
 - **return**: [*InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
@@ -165,10 +165,10 @@ Checks if the component is opened.
 #### Open
 Opens the component.
 
-> (c [*CloudFunctionClient]()) Open(ctx context.Context, correlationId string) error
+> (c [*CloudFunctionClient]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - open error.
 
 #### SetReferences
