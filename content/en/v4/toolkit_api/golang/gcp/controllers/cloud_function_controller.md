@@ -9,11 +9,11 @@ description: >
 ---
 
 ### Description
-The CloudFunctionService class allows you to create a service that receives remove calls via the Google Function protocol.
+The CloudFunctionController class allows you to create a controller that receives remove calls via the Google Function protocol.
 
 **Important points**
 
-- This service is intended to work inside an CloudFunction container that exposes registered actions externally.
+- This controller is intended to work inside an CloudFunction container that exposes registered actions externally.
 
 #### Configuration parameters
  
