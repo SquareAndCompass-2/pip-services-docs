@@ -8,15 +8,15 @@ description: >
 ---
 
 ### Description
-The CommandableCloudFunctionService class allows you to create abstract services that receive commands via the Google Function protocols to operations automatically generated for commnads defined in [ICommandable](../../../rpc/commands/icommandable) components.
+The CommandableCloudFunctionController class allows you to create abstract controllers that receive commands via the Google Function protocols to operations automatically generated for commnads defined in [ICommandable](../../../rpc/commands/icommandable) components.
 
 **Important points** 
 
 - Each command is exposed as an invoke method that receives a command's name and parameters.
 
-- Commandable services require only 3 lines of code to implement a robust external Google Function-based remote interface.
+- Commandable controllers require only 3 lines of code to implement a robust external Google Function-based remote interface.
 
-- This service is intended to work inside an Google Function container that exploses registered actions externally.
+- This controller is intended to work inside an Google Function container that exploses registered actions externally.
 
 #### Configuration parameters
  
@@ -30,10 +30,10 @@ The CommandableCloudFunctionService class allows you to create abstract services
 
 ### Constructors
 
-#### NewCommandableCloudFunctionService
-Creates a new instance of the service.
+#### NewCommandableCloudFunctionController
+Creates a new instance of the controller.
 
-> NewCommandableCloudFunctionService(name string) [*CommandableCloudFunctionService]()
+> NewCommandableCloudFunctionService(name string) [*CommandableCloudFunctionController]()
 
 - **name**: string - service's name.
 
@@ -57,13 +57,13 @@ Registers all actions in Google Function.
 ### Examples
 
 ```go
-type MyCommandableCloudFunctionService struct {
-	*gcpsrv.CommandableCloudFunctionService
+type MyCommandableCloudFunctionController struct {
+	*gcpsrv.CommandableCloudFunctionController
 }
 
-func NewMyCommandableCloudFunctionService() *MyCommandableCloudFunctionService {
-	c := MyCommandableCloudFunctionService{}
-	c.CommandableCloudFunctionService = gcpsrv.NewCommandableCloudFunctionService("mydata")
+func NewMyCommandableCloudFunctionController() *MyCommandableCloudFunctionController {
+	c := MyCommandableCloudFunctionController{}
+	c.CommandableCloudFunctionController = gcpsrv.NewCommandableCloudFunctionController("mydata")
 	c.DependencyResolver.Put(context.Background(), "controller", crefer.NewDescriptor("mygroup", "controller", "default", "*", "*"))
 	return &c
 }
