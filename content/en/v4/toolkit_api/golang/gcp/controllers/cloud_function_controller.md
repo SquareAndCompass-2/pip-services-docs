@@ -2,7 +2,7 @@
 type: docs
 title: "GcpConnectionParams"
 linkTitle: "GcpConnectionParams"
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-gcp-gox"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-gcp-go"
 description: >
     Contains connection parameters to authenticate against Google
     and connect to specific Google resources.
