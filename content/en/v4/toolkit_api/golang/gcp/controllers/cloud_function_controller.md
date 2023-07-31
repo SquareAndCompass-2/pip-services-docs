@@ -1,11 +1,11 @@
-
 ---
 type: docs
-title: "CloudFunctionController"
-linkTitle: "CloudFunctionController"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-gcp-go"
+title: "GcpConnectionParams"
+linkTitle: "GcpConnectionParams"
+gitUrl: "https://github.com/pip-services3-gox/pip-services3-gcp-gox"
 description: >
-    Abstract service that receives remove calls via the Google Function protocol.
+    Contains connection parameters to authenticate against Google
+    and connect to specific Google resources.
 ---
 
 ### Description
