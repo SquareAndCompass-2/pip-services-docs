@@ -88,19 +88,19 @@ Component used to store the message queue.
 Listens for incoming messages without blocking the current thread.  
 See also [Listen](#listen), [IMessageReceiver](../imessage_receiver)
 
-> (c [*MessageQueue]()) BeginListen(ctx context.Context, correlationId string, receiver [IMessageReceiver](../imessage_receiver))
+> (c [*MessageQueue]()) BeginListen(ctx context.Context, context [IContext](../../../components/context/icontext), receiver [IMessageReceiver](../imessage_receiver))
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../imessage_receiver) - receiver used to receive incoming messages.
 
 #### CheckOpen
 Checks if the queue has been opened.
 Raise an exception if queue wasn't opened or *nil* otherwise
 
-> (c [*MessageQueue]()) CheckOpen(correlationId string) error
+> (c [*MessageQueue]()) CheckOpen(context [IContext](../../../components/context/icontext)) error
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error -  error or nil no errors occured.
 
 
@@ -129,20 +129,20 @@ Gets the queue name
 #### Open
 Opens the component.
 
-> (c [*MessageQueue]()) Open(ctx context.Context, correlationId string) error
+> (c [*MessageQueue]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error -  error or nil no errors occured.
 
 #### SendAsObject
 Sends an object into the queue.
 Before sending the object is converted into JSON string and wrapped in a [MessageEnvelope](../message_envelope).
 
-> (c [*MessageQueue]()) SendAsObject(ctx context.Context, correlationId string, messageType string, message any) (err error)
+> (c [*MessageQueue]()) SendAsObject(ctx context.Context, context [IContext](../../../components/context/icontext), messageType string, message any) (err error)
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageType**: string - a message type.
 - **message**: any - an object value to be sent.
 - **returns**: (err error) -  error or nil no errors occured.
@@ -167,10 +167,10 @@ Gets a string representation of the object.
 #### OpenWithParams
 Opens the component with the given connection and credential parameters.
 
-> OpenWithParams(ctx context.Context, correlationId string, connections [][*cconn.ConnectionParams](../../../config/connect/connection_params), credential [*cauth.CredentialParams](../../../config/auth/credential_params)) error
+> OpenWithParams(ctx context.Context, context [IContext](../../../components/context/icontext), connections [][*cconn.ConnectionParams](../../../config/connect/connection_params), credential [*cauth.CredentialParams](../../../config/auth/credential_params)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **connections**: [][*cconn.ConnectionParams](../../../config/connect/connection_params) - connection parameters.
 - **credentials**: [*cauth.CredentialParams](../../../config/auth/credential_params) - credential parameters.
 - **returns**: error -  error or nil no errors occured.
