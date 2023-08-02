@@ -8,7 +8,7 @@ description: >
  
 ---
 
-**Implements:** [Lock](../../../components/lock/lock) 
+**Implements:** [Lock](../../../logic/lock/lock) 
 
 ### Description
 The MemcachedLock class allows you to create a lock that is implemented based on the Memcached's caching service.
@@ -19,7 +19,7 @@ The MemcachedLock class allows you to create a lock that is implemented based on
 #### Configuration parameters
 
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number
     - **uri**: resource URI or connection string with all parameters in it
@@ -38,7 +38,7 @@ The MemcachedLock class allows you to create a lock that is implemented based on
 
 #### References
 
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services to resolve connection
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services to resolve connection
 
 
 
@@ -47,19 +47,19 @@ The MemcachedLock class allows you to create a lock that is implemented based on
 #### Close
 Closes a component and frees used resources.
 
-> (c [*MemcachedLock]()) Close(ctx context.Context, correlationId string) error
+> (c [*MemcachedLock]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred
 
 #### Configure
 Configures a component by passing its configuration parameters.
 
-> (c [*MemcachedLock]()) Configure(ctx context.Context, config [*ConfigParams](../../../commons/config/config_params))
+> (c [*MemcachedLock]()) Configure(ctx context.Context, config [*ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### IsOpen
 Checks if the component is open.
@@ -72,19 +72,19 @@ Checks if the component is open.
 #### Open
 Opens the component.
 
-> (c [*MemcachedLock]()) Open(ctx context.Context, correlationId string) error
+> (c [*MemcachedLock]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: string - ([IContext](../../../components/context/icontext)) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred
 
 #### ReleaseLock
 Releases a prevously acquired lock by its key.
 
-> (c [*MemcachedLock]()) ReleaseLock(ctx context.Context, correlationId string, key string) error
+> (c [*MemcachedLock]()) ReleaseLock(ctx context.Context, context [IContext](../../../components/context/icontext), key string) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique lock key to release.
 - **returns**: error - error or nil if no errors occurred
 
@@ -92,19 +92,19 @@ Releases a prevously acquired lock by its key.
 #### SetReferences
 Sets references to dependent components.
 
-> (c [*MemcachedLock]()) SetReferences(references [IReferences](../../../commons/refer/ireferences))
+> (c [*MemcachedLock]()) SetReferences(references [IReferences](../../../components/refer/ireferences))
 
-- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
 #### TryAcquireLock
 Makes a single attempt to acquire a lock by its key.
 It returns immediately a positive or negative result.
 
-> (c [*MemcachedLock]()) TryAcquireLock(ctx context.Context, correlationId string, key string, ttl int64) (result bool, err error)
+> (c [*MemcachedLock]()) TryAcquireLock(ctx context.Context, context [IContext](../../../components/context/icontext), key string, ttl int64) (result bool, err error)
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **key**: string - unique lock key to acquire.
 - **ttl**: int64 - lock timeout (time to live) in milliseconds.
 - **returns**: (result bool, err error) - true if lock was successfull and false otherwise.
