@@ -31,10 +31,10 @@ The MessageQueue class allows you to create a message queue that is used as a ba
 - **access_key**: application secret key
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) components to discover connection(s)
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) componetns to lookup credential(s)
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounter) components to pass collected measurements
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) components to discover connection(s)
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) componetns to lookup credential(s)
 
 
 ### Constructors
@@ -54,21 +54,21 @@ Creates a new instance of the message queue.
 #### Logger
 Component used to pass log messages. 
 
-> **Logger**: [*CompositeLogger](../../../components/log/composite_logger)
+> **Logger**: [*CompositeLogger](../../../observability/log/composite_logger)
 
 #### Counters
 Component to pass collected measurements.
 
-> **Counters**: [*CompositeCounters](../../../components/count/composite_counters)
+> **Counters**: [*CompositeCounters](../../../observability/count/composite_counters)
 
 #### ConnectionResolver
 Component used to resolve connections.
 
-> **ConnectionResolver**: [*ConnectionResolver](../../../components/connect/connection_resolver)
+> **ConnectionResolver**: [*ConnectionResolver](../../../config/connect/connection_resolver)
 
 #### CredentialResolver
 Component used to resolve credentials.
-> **CredentialResolver**: [*CredentialResolver](../../../components/auth/credential_resolver)
+> **CredentialResolver**: [*CredentialResolver](../../../config/auth/credential_resolver)
 
 #### name
 Name of the message queue.
@@ -88,29 +88,29 @@ Component used to store the message queue.
 Listens for incoming messages without blocking the current thread.  
 See also [Listen](#listen), [IMessageReceiver](../imessage_receiver)
 
-> (c [*MessageQueue]()) BeginListen(ctx context.Context, correlationId string, receiver [IMessageReceiver](../imessage_receiver))
+> (c [*MessageQueue]()) BeginListen(ctx context.Context, context [IContext](../../../components/context/icontext), receiver [IMessageReceiver](../imessage_receiver))
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../imessage_receiver) - receiver used to receive incoming messages.
 
 #### CheckOpen
 Checks if the queue has been opened.
 Raise an exception if queue wasn't opened or *nil* otherwise
 
-> (c [*MessageQueue]()) CheckOpen(correlationId string) error
+> (c [*MessageQueue]()) CheckOpen(context [IContext](../../../components/context/icontext)) error
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error -  error or nil no errors occured.
 
 
 #### Configure
 Configures the component by passing its configuration parameters.
 
-> (c [*MessageQueue]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../commons/config/config_params))
+> (c [*MessageQueue]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*cconf.ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*cconf.ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### Capabilities
 Gets the queue capabilities
@@ -130,20 +130,20 @@ Gets the queue name
 #### Open
 Opens the component.
 
-> (c [*MessageQueue]()) Open(ctx context.Context, correlationId string) error
+> (c [*MessageQueue]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error -  error or nil no errors occured.
 
 #### SendAsObject
 Sends an object into the queue.
 Before sending the object is converted into JSON string and wrapped in a [MessageEnvelope](../message_envelope).
 
-> (c [*MessageQueue]()) SendAsObject(ctx context.Context, correlationId string, messageType string, message any) (err error)
+> (c [*MessageQueue]()) SendAsObject(ctx context.Context, context [IContext](../../../components/context/icontext), messageType string, message any) (err error)
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageType**: string - a message type.
 - **message**: any - an object value to be sent.
 - **returns**: (err error) -  error or nil no errors occured.
@@ -152,10 +152,10 @@ Before sending the object is converted into JSON string and wrapped in a [Messag
 #### SetReferences
 Sets references to dependent components.
 
-> (c [*MessageQueue]()) SetReferences(ctx context.Context, references [cref.IReferences](../../../commons/refer/ireferences))
+> (c [*MessageQueue]()) SetReferences(ctx context.Context, references [cref.IReferences](../../../components/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
-- **references**: [cref.IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [cref.IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 #### String
 Gets a string representation of the object.
@@ -168,11 +168,11 @@ Gets a string representation of the object.
 #### OpenWithParams
 Opens the component with the given connection and credential parameters.
 
-> OpenWithParams(ctx context.Context, correlationId string, connections [][*cconn.ConnectionParams](../../../components/connect/connection_params), credential [*cauth.CredentialParams](../../../components/auth/credential_params)) error
+> OpenWithParams(ctx context.Context, context [IContext](../../../components/context/icontext), connections [][*cconn.ConnectionParams](../../../config/connect/connection_params), credential [*cauth.CredentialParams](../../../config/auth/credential_params)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
-- **connections**: [][*cconn.ConnectionParams](../../../components/connect/connection_params) - connection parameters.
-- **credentials**: [*cauth.CredentialParams](../../../components/auth/credential_params) - credential parameters.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
+- **connections**: [][*cconn.ConnectionParams](../../../config/connect/connection_params) - connection parameters.
+- **credentials**: [*cauth.CredentialParams](../../../config/auth/credential_params) - credential parameters.
 - **returns**: error -  error or nil no errors occured.
 
