@@ -6,7 +6,7 @@ gitUrl: "https://github.com/pip-services3-gox/pip-services3-sqlserver-gox"
 description: >
     Abstract persistence component that stores data in SqlServer in JSON or JSONB fields
     and implements a number of CRUD operations over data items with unique ids.
-
+draft: true
 ---
 
 **Implements:** [IdentifiableSqlServerPersistence[T,K]](../identifiable_sqlserver_persistence)
