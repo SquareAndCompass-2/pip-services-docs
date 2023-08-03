@@ -92,10 +92,10 @@ Creates a new instance of the connection component.
 #### Close
 Closes the component and frees used resources.
 
-> (c [*SqliteConnection]()) Close(ctx context.Context, correlationId string) error
+> (c [*SqliteConnection]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occured.
 
 
@@ -134,10 +134,10 @@ Checks if the component is open.
 #### Open
 Opens the component.
 
-> (c [*SqliteConnection]()) Open(ctx context.Context, correlationId string) error
+> (c [*SqliteConnection]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occured.
 
 #### SetReferences
