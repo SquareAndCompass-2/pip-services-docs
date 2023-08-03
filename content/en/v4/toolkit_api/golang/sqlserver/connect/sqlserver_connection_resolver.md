@@ -2,7 +2,7 @@
 type: docs
 title: "SqlServerConnectionResolver"
 linkTitle: "SqlServerConnectionResolver"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-memcached-go"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-sqlserver-go"
 description: >
     Helper class that resolves a SqlServer connection and credential parameters,
     validates them and generates a connection URI.
