@@ -2,7 +2,7 @@
 type: docs
 title: "SqlServerConnection"
 linkTitle: "SqlServerConnection"
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-sqlserver-gox"
+gitUrl: "github.com/pip-services4/pip-services4-go/tree/main/pip-services4-sqlserver-go"
 description: >
     SqlServer connection using the default driver.
 
