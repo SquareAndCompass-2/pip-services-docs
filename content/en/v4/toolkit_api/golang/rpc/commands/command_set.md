@@ -161,7 +161,7 @@ It returns a validation error if the command is not found.
 
 ### Examples
 
-```
+```go
 
 		type MyDataCommandSet struct {
 		*CommandSet
