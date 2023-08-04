@@ -66,9 +66,9 @@ Removes a listener, so that it no longer receives notifications for this event.
 
 - **listener**: [IEventListener](../ievent_listener) - listener reference to remove.
 
-**Example**:
+**Example**
 
-```
+```go
 		event: = NewEvent("my_event");
 		event.AddListener(myListener);
 		event.Notify(cpntext.Backgroudn(),
