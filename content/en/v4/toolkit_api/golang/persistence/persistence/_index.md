@@ -51,8 +51,5 @@ able to store data items of any type. Specific CRUD operations
 over the data items must be implemented in child classes by
 accessing the **this._items** property and calling the [save](memory_persistence/#save) method.
 
-#### [Sorter](sorte)
-
-#### [Utilities](utilities)
 </div>
 
