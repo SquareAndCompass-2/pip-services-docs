@@ -69,14 +69,14 @@ Removes a listener, so that it no longer receives notifications for this event.
 **Example**
 
 ```go
-		event: = NewEvent("my_event");
-		event.AddListener(myListener);
-		event.Notify(cpntext.Backgroudn(),
-			Parameters.fromTuples(
-				"param1", "ABC",
-				"param2", 123,
-			)
-		);
+event: = NewEvent("my_event");
+event.AddListener(myListener);
+event.Notify(cpntext.Backgroudn(),
+          Parameters.fromTuples(
+                 "param1", "ABC",
+                  "param2", 123,
+           )
+);
 
 ```
 
