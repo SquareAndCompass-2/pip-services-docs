@@ -19,8 +19,6 @@ Commandable services are generated automatically for [ICommandable](../../common
 #### [GrpcClient](grpc_client)
 Client that calls remote endpoints using the GRPC protocol.
 
-#### [Helpers](helpers)
-
 </div>
 
 
