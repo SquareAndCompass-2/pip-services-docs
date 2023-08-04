@@ -56,7 +56,7 @@ Validates the command [args](../../../components/exec/parameters) before executi
 
 ```
 
-command := NewCommand("add", null, func (ctx context.Context args *exec.Parameters)(any, err) {
+       command := NewCommand("add", null, func (ctx context.Context args *exec.Parameters)(any, err) {
 		param1 := args.getAsFloat("param1");
 		param2 := args.getAsFloat("param2");
 		return (param1 + param2), nil;
