@@ -2,7 +2,7 @@
 type: docs
 title: "IdentifiableFilePersistence"
 linkTitle: "IdentifiableFilePersistence"
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-data-gox"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-persistence-go"
 description: >
     Abstract persistence component that stores data in flat files
     and implements a number of CRUD operations over data items with
