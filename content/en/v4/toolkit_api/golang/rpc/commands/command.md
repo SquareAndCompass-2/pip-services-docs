@@ -54,7 +54,7 @@ Validates the command [args](../../../components/exec/parameters) before executi
 
 ### Examples
 
-```
+```go
 
        command := NewCommand("add", null, func (ctx context.Context args *exec.Parameters)(any, err) {
 		param1 := args.getAsFloat("param1");
