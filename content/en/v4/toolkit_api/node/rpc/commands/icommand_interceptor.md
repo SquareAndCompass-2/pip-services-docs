@@ -2,7 +2,7 @@
 type: docs
 title: "ICommandInterceptor"
 linkTitle: "ICommandInterceptor"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-rpc-go"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-rpc-node"
 description: > 
     An interface for stackable command interceptors, which can extend
     and modify the command call chain.
