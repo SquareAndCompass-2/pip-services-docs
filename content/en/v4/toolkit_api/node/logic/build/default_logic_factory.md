@@ -21,6 +21,6 @@ Create a new instance of the factory.
 
 ### See also
 - #### [Factory](../../../components/build/factory)
-- #### [ICache](../../cahce/icache)
-- #### [MemoryCache](../../cahce/memory_cache)
+- #### [ICache](../../cache/icache)
+- #### [MemoryCache](../../cache/memory_cache)
 - #### [NullCache](../../cahce/null_cache)
