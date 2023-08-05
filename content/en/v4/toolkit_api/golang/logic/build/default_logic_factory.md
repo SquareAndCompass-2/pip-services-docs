@@ -1,1 +1,27 @@
+---
+type: docs
+title: "DefaultLogicFactory"
+linkTitle: "DefaultLogicFactory"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-logic-go"
+description: >
+    Creates business logic components by their descriptors.
+---
+
+**Extends**: [Factory](../../../components/build/factory)
+
+### Description
+
+Generates business logic components by implementing their corresponding descriptors.
+
+### Constructors
+Create a new instance of the factory.
+
+> `public` constructor()
+
+
+### See also
+- #### [Factory](../../../components/build/factory)
+- #### [ICache](../../cahce/icache)
+- #### [MemoryCache](../../cahce/memory_cache)
+- #### [NullCache](../../cahce/null_cache)
 
