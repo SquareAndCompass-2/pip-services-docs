@@ -29,8 +29,6 @@ Used for creating GRPC endpoints. An endpoint is a URL, at which a given service
 #### [GrpcController](grpc_controller)
 Abstract service that receives remote calls via GRPC protocol.
 
-#### [Mediator](mediator)
-
 </div>
 
 
