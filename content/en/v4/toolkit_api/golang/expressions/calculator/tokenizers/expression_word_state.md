@@ -1,9 +1,8 @@
-
 ---
 type: docs
 title: "ExpressionWordState"
 linkTitle: "ExpressionWordState"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-expressions-go"
+gitUrl: "github.com/pip-services4/pip-services4-go/tree/main/pip-services4-expressions-go"
 description: > 
    Implements a word state object.
 ---
