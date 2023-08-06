@@ -9,7 +9,7 @@ description: >
 
 ### Description
 
-TODO: add description
+This class provides a way to create a data object that holds a retrieved state value with its key.
 
 ### Fields
 
