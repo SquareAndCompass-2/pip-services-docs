@@ -1,65 +1,91 @@
 ---
 type: docs
-title: "ArrayConverter"
-linkTitle: "ArrayConverter"
+title: "Convert"
+linkTitle: "Convert"
+no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-commons-go"
-description: > 
-    The ArrayConverter class provides methods to create an array from a set of values.
+description: >
+   
+    This package contains "soft" data converters. Soft data converters differ from the data conversion algorithms 
+    found in typical programming languages, due to the fact that they support rare conversions between 
+    various data types (such as integer to timespan, timespan to string, and so on).
+
+    These converters are useful due to the fact that data in enterprise systems is represented in 
+    various forms, requiring frequent conversions and at times in very difficult combinations.  
+---
 ---
 
-### Description
-The ArrayConverter class provides methods to create an array from a set of values. These values can be in the form of a list,  a single value or a string of comma-delimited values.    
+<div class="module-body"> 
 
-### Methods
+### Constants
 
-#### ListToArray
-Converts a list into an array object with empty array as default.
-Strings with comma-delimited values are split into an array of strings.
-See [ToArray](#toarray)
+#### [TypeCode](type_code)
+Codes for the data types that can be
+converted using [TypeConverter](type_converter).
 
-> ListToArray(value any) []any
+<br>
 
-- **value**: any - list to convert.
-- **returns**: []any - array object or empty array when value is nil
+### Types
 
+#### [ArrayConverter](array_converter)
+Converts arbitrary values into array objects.
 
-#### ToArray
-Converts value into an array object with empty array as default.
-Single values are converted into arrays with single element.
+#### [BooleanConverter](boolean_converter)
+Converts arbitrary values to boolean values using extended conversion rules:
+- Numbers: <>0 are true, =0 are false
+- Strings: "true", "yes", "T", "Y", "1" are true; "false", "no", "F", "N" are false
+- DateTime: <>0 total milliseconds are true, =0 are false
 
-> ToArray(value any) []any
+#### [DateTimeConverter](date_time_converter)
+Converts arbitrary values into Date values using extended conversion rules:
+- Strings: converted using ISO time format
+- Numbers: converted using milliseconds since unix epoch
 
-- **value**: any - value to convert.
-- **returns**: []any - array object or empty array when value is nil.
+#### [DoubleConverter](double_converter)
+Converts arbitrary values into double using extended conversion rules:
+- Strings are converted to double values
+- DateTime: total number of milliseconds since unix epoch
+- Boolean: 1 for true and 0 for false
 
-#### ToArrayWithDefault
-Converts value into array object with specified default.
-Single values are converted into arrays with single element.
+#### [FloatConverter](float_converter)
+Converts arbitrary values into float using extended conversion rules:
+- Strings are converted to float values
+- DateTime: total number of milliseconds since unix epoch
+- Boolean: 1 for true and 0 for false
 
-> ToArrayWithDefault(value any, defaultValue []any) []any
+#### [IntegerConverter](integer_converter)
+Converts arbitrary values into integers using extended conversion rules:
+- Strings are converted to floats, then to integers
+- DateTime: total number of milliseconds since unix epoch
+- Boolean: 1 for true and 0 for false
 
-- **value**: any - value to convert.
-- **defaultValue**: []any - default array object.
-- **returns**: []any - array object or default array when value is nil.
+#### [JsonConverter](json_converter)
+Converts arbitrary values into longs using extended conversion rules:
+- Strings are converted to floats, then to longs
+- DateTime: total number of milliseconds since unix epoch
+- Boolean: 1 for true and 0 for false
 
-#### ToNullableArray
-Converts value into array object.
-Single values are converted into arrays with a single element.
+#### [MapConverter](map_converter)
+Converts arbitrary values into map objects using extended conversion rules:
+- Objects: property names as keys, property values as values
+- Arrays: element indexes as keys, elements as values
 
-> ToNullableArray(value any) ([]any, bool)
+#### [RecursiveMapConverter](recursive_map_converter)
+Converts arbitrary values into map objects using extended conversion rules.
+This class is similar to [MapConverter](map_converter), but it recursively converts all values
+stored in objects and arrays.
 
-- **value**: any - value to convert.
-- **returns**: []any - array object and true or null and false when value is null.
+#### [StringConverter](string_converter)
+Converts arbitrary values into strings using extended conversion rules:
+- Numbers: are converted with '.' as decimal point
+- DateTime: using ISO format
+- Boolean: "true" for true and "false" for false
+- Arrays: as comma-separated list
+- Other objects: using **ToString()** method
 
-### Examples
+#### [TypeConverter](type_converter)
+Converts arbitrary values into objects specified by TypeCodes.
+For each TypeCode this class calls the corresponding converter which applies
+extended conversion rules to convert the values.
 
-```go
-value1 := convert.ArrayConverter.ToArray([...]int{1, 2})
-value2 := convert.ArrayConverter.ToArray(1)
-value3 := convert.ArrayConverter.ListToArray("1,2,3")
-
-fmt.Println(value1) // [1 2]
-fmt.Println(value2) // [1]
-fmt.Println(value3) // [1 2 3]
-```
-
+</div>
