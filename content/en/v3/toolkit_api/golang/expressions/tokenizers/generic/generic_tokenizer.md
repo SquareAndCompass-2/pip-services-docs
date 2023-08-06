@@ -2,7 +2,7 @@
 type: docs
 title: "GenericTokenizer"
 linkTitle: "GenericTokenizer"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-expressions-go"
+gitUrl: "https://github.com/pip-services3-gox/pip-services3-expressions-gox"
 description: > 
     Implements a default tokenizer class.
 ---
