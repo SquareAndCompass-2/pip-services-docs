@@ -60,9 +60,9 @@ Configures a component by passing its configuration parameters.
 Resolves connection and credential parameters and generates a single
 [AzureFunctionConnectionParams](../azure_function_connection_params) value.
 
-> (c [*AzureFunctionConnectionResolver]()) Resolve(correlationId string) ([*AzureFunctionConnectionParams](), error)
+> (c [*AzureFunctionConnectionResolver]()) Resolve(context [IContext](../../../components/context/icontext)) ([*AzureFunctionConnectionParams](), error)
 
-- **correlationId**: string - (optional) transaction id used to trace execution through the call chain. 
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain. 
 - **returns**: ([*AzureFunctionConnectionParams](), error) - receives an AzureFunctionConnectionParams value or error.
 
 #### SetReferences
