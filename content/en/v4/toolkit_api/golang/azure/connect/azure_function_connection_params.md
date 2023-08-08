@@ -152,9 +152,9 @@ Sets the Azure function connection protocol.
 #### Validate
 Validates this connection parameters 
 
-> (c [*AzureFunctionConnectionParams]()) Validate(correlationId string) error
+> (c [*AzureFunctionConnectionParams]()) Validate(context [IContext](../../../components/context/icontext)) error
 
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - validation error.
 
 ### Examples
