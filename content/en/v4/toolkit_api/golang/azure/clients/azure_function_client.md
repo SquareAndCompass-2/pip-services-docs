@@ -115,22 +115,22 @@ AddPagingParams method are adds paging parameters (skip, take, total) to invocat
 #### Call
 Calls a Azure Function action.
 
-> (c [*AzureFunctionClient]()) Call(ctx context.Context, cmd string, correlationId string,
+> (c [*AzureFunctionClient]()) Call(ctx context.Context, cmd string, context [IContext](../../../components/context/icontext),
 	args [*cdata.AnyValueMap](../../../commons/data/any_value_map)) (*http.Response, error)
 
 - **ctx**: context.Context - operation context.
 - **cmd**: string - an action name to be called.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **args**: [*cdata.AnyValueMap](../../../commons/data/any_value_map) - (optional) action parameters.
 - **returns**: (*http.Response, error) - action result.
 
 #### Close
 Closes component and frees used resources.
 
-> (c [*AzureFunctionClient]()) Close(ctx context.Context, correlationId string) error 
+> (c [*AzureFunctionClient]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error 
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error if not closed.
 
 
@@ -147,10 +147,10 @@ Configures component by passing configuration parameters.
 Adds instrumentation to log calls and measure call time.
 It returns a CounterTiming object that is used to end the time measurement.
 
-> (c [*AzureFunctionClient]()) Instrument(ctx context.Context, correlationId string, name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
+> (c [*AzureFunctionClient]()) Instrument(ctx context.Context, context [IContext](../../../components/context/icontext), name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - a method name.
 - **return**: [*InstrumentTiming](../../../rpc/trace/instrument_timing) - object to end the time measurement.
 
@@ -165,10 +165,10 @@ Checks if the component is opened.
 #### Open
 Opens the component.
 
-> (c [*AzureFunctionClient]()) Open(ctx context.Context, correlationId string) error
+> (c [*AzureFunctionClient]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
 
 - **ctx**: context.Context - operation context.
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error if not opened.
 
 #### SetReferences
@@ -194,13 +194,13 @@ func NewMyAzureFunctionClient() *MyAzureFunctionClient {
 	}
 }
 
-func (c *MyAzureFunctionClient) GetData(ctx context.Context, correlationId string, id string) MyData {
-	timing := c.Instrument(ctx, correlationId, "myclient.get_data")
+func (c *MyAzureFunctionClient) GetData(ctx context.Context, context IContext, id string) MyData {
+	timing := c.Instrument(ctx, context, "myclient.get_data")
 
-	response, err := c.Call(ctx, "get_data", correlationId, data.NewAnyValueMapFromTuples("id", dummyId))
+	response, err := c.Call(ctx, "get_data", context, data.NewAnyValueMapFromTuples("id", dummyId))
 
 	defer timing.EndTiming(ctx, err)
-	return rpcclients.HandleHttpResponse[MyData](response, correlationId)
+	return rpcclients.HandleHttpResponse[MyData](response, context)
 }
 
 ...
