@@ -50,11 +50,11 @@ Calls a remote action in Azure Function.
 The name of the action is added as "cmd" parameter
 to the action parameters. 
 
-> (c [*CommandableAzureFunctionClient]()) CallCommand(ctx context.Context, cmd string, correlationId string, params [*cdata.AnyValueMap](../../../commons/data/any_value_map)) (*http.Response, error) 
+> (c [*CommandableAzureFunctionClient]()) CallCommand(ctx context.Context, cmd string, context [IContext](../../../components/context/icontext), params [*cdata.AnyValueMap](../../../commons/data/any_value_map)) (*http.Response, error) 
 
 - **ctx**: context.Context - operation context.
 - **cmd**: string - an action name
-- **correlationId**: string - (optional) transaction id to trace execution through call chain.
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **params**: [*cdata.AnyValueMap](../../../commons/data/any_value_map) - command parameters.
 - **returns**: (*http.Response, error)  - action result.
 
@@ -72,13 +72,13 @@ func NewMyCommandableAzureClient() *MyCommandableAzureClient {
 	}
 }
 
-func (c *MyCommandableAzureClient) GetData(ctx context.Context, correlationId string, id string) MyData {
-	response, err := c.CallCommand(ctx, "dummies.get_dummies", correlationId, cdata.NewAnyValueMapFromTuples("id", id))
+func (c *MyCommandableAzureClient) GetData(ctx context.Context, context IContext, id string) MyData {
+	response, err := c.CallCommand(ctx, "dummies.get_dummies", context, cdata.NewAnyValueMapFromTuples("id", id))
 	if err != nil {
 		return MyData{}, err
 	}
 
-	return rpcclient.HandleHttpResponse[MyData](response, correlationId)
+	return rpcclient.HandleHttpResponse[MyData](response, context)
 }
 
 ...
