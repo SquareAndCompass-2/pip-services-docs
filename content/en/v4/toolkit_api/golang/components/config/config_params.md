@@ -2,7 +2,7 @@
 type: docs
 title: "ConfigParams"
 linkTitle: "ConfigParams"
-gitUrl: "https://github.com/pip-services3-dotnet/pip-services3-commons-dotnet"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-commons-go"
 description: > 
  Contains a key-value map with configuration parameters. 
 
