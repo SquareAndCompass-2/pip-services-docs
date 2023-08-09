@@ -2,7 +2,7 @@
 type: docs
 title: "CredentialParams"
 linkTitle: "CredentialParams"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-components-go"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-config-go"
 description: >
     Contains credentials to authenticate against external services.
     
