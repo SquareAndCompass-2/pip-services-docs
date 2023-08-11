@@ -46,5 +46,5 @@ Object's unique string id.
 
 ### See also
 - #### [IIdentifiable](../iidentifiable)
-- #### [IdGenerator](../../keys/id_generator)
+- #### [IdGenerator](../keys/id_generator)
 
