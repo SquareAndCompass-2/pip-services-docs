@@ -51,5 +51,5 @@ schema.Validate(struct {}{})       // Result: at least one of properties field1,
 ```
 
 ### See also
-- #### [IValidationRule](ivalidation_rule)
+- #### [IValidationRule](../ivalidation_rule)
 
