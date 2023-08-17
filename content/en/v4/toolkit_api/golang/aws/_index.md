@@ -20,7 +20,6 @@ This module contains the following packages:
 - [**Count**](count) - components for working with counters (metrics) with data saving in the CloudWatch AWS service
 - [**Log**](log) - logging components with saving data in the CloudWatch AWS service
 - [**Controllers**](controllers) - contains interfaces and classes used to create Lambda services
-- [**Test**](test) - contains classes used for automated testing
 
 ### Use
 Get the package from the Github repository:
