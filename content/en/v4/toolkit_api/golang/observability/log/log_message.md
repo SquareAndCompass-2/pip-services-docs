@@ -20,11 +20,11 @@ Important points
 
 #### 
 
-> NewLogMessage(level [LevelType](../log_level), source string, correlationId string, [errors.ErrorDescription](../../../commons/errors/error_description) , message string) [LogMessage]()
+> NewLogMessage(level [LevelType](../log_level), source string, context [IContext](../../../components/context/icontext), [errors.ErrorDescription](../../../commons/errors/error_description) , message string) [LogMessage]()
 
 - **level**: [LevelType](../log_level) - log level.
 - **source**: string - source.
-- **correlationId**: string -  transaction id used to trace execution through the call chain.
+- **context**: [IContext](../../../components/context/icontext) -  a context to trace execution through a call chain.
 - **err**: [errors.ErrorDescription](../../../commons/errors/error_description) - error object associated with this message.
 - **message**: string - human-readable message to log.
 
@@ -45,9 +45,9 @@ Log level
 Source (context name)
 > **Source**: string
 
-#### CorrelationId
+#### TraceId
 Transaction id used to trace execution through a call chain.
-> **CorrelationId**: string
+> **TraceId**: string
 
 #### Error
 Transaction id used to trace execution through a call chain.
