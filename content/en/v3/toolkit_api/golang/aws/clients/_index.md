@@ -3,7 +3,7 @@ type: docs
 title: "Clients"
 linkTitle: "Clients"
 no_list: true
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-aws-gox"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-go"
 description: >
     This package contains classes used to call AWS Lambda Functions.
 ---
