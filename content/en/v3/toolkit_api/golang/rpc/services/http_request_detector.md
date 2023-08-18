@@ -2,7 +2,7 @@
 type: docs
 title: "HttpRequestDetector"
 linkTitle: "HttpRequestDetector"
-gitUrl: "https://github.com/pip-services/pip-services-docs/tree/master/content/en/v4/toolkit_api/node/http"
+gitUrl: "https://github.com/pip-services/pip-services-docs/tree/master/content/en/v3/toolkit_api/golang/rpc"
 description: >
     Helper class that retrieves parameters from HTTP requests.
 ---
