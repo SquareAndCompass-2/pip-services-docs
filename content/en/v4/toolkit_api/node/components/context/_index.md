@@ -1,7 +1,7 @@
 ---
 type: docs
-title: "Config"
-linkTitle: "Config"
+title: "Context"
+linkTitle: "Context"
 no_list: true
 gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-components-node"
 description: >
