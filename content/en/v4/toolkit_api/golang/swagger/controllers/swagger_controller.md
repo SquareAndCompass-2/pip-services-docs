@@ -11,12 +11,12 @@ description: >
 
 ### Description
 
-The SwaggerService class allows you to create a Swagger UI service.
+The SwaggerService class allows you to create a Swagger controller.
 
 
 ### Constructors
 
 #### NewSwaggerService
-Creates a new instance of the Swagger service.  
+Creates a new instance of the Swagger controller.  
 
-> NewSwaggerService() [*SwaggerService]()
+> NewSwaggerController() [*SwaggerController]()
