@@ -2,7 +2,7 @@
 type: docs
 title: "RoleAuthorizer"
 linkTitle: "RoleAuthorizer"
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-http-go"
 description: >
     Provides methods to check on a user's roles.
 ---
@@ -15,27 +15,24 @@ The RoleAuthorizer class provides methods to check on a user's roles.
 
 #### userInRoles
 Checks on the roles a user has been assigned.
-Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> `public` userInRoles(roles: string[]): (req: any, res: any, next: () => void) => void
+> UserInRoles(roles []string) func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
 
 - **roles**: string[] - roles list.
-- **returns**: (req: any, res: any, next: () => void) => void - returns roles handler.
+- **returns**: (c *RoleAuthorizer)  - returns roles handler.
 
 #### userInRole
 Check if the role is assigned to the user.  
-Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> `public` userInRole(role: string): (req: any, res: any, next: () => void) => void
+> UserInRole(role string) func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
 
 - **role**: string - the user role.
-- **returns**: (req: any, res: any, next: () => void) => void - returns role handler.
+- **returns**: (c *RoleAuthorizer)  - returns role handler.
 
 
 #### admin
 Check if the user has admin role.  
-Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> `public` admin(): (req: any, res: any, next: () => void) => void
+> Admin() func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
 
-- **returns**: (req: any, res: any, next: () => void) => void - returns admin handler.
+- **returns**: (c *RoleAuthorizer) - returns admin handler.
