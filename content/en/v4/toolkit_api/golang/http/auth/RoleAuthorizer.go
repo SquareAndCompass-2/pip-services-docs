@@ -2,38 +2,40 @@
 type: docs
 title: "RoleAuthorizer"
 linkTitle: "RoleAuthorizer"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-http-go"
+gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
 description: >
-    Provides methods to check a user's roles.
+    Provides methods to check on a user's roles.
 ---
 
 ### Description
 
-The RoleAuthorizer class provides methods to check a user's roles.
+The RoleAuthorizer class provides methods to check on a user's roles.
 
 ### Instance methods
 
 #### userInRoles
-Checks the roles a user has been assigned.
+Checks on the roles a user has been assigned.
+Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> UserInRoles(roles []string) func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
+> `public` userInRoles(roles: string[]): (req: any, res: any, next: () => void) => void
 
 - **roles**: string[] - roles list.
-- **returns**: (c *RoleAuthorizer)  - returns roles handler.
+- **returns**: (req: any, res: any, next: () => void) => void - returns roles handler.
 
 #### userInRole
-Checks if the role is assigned to the user.  
+Check if the role is assigned to the user.  
+Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> ` UserInRole(role string) func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
+> `public` userInRole(role: string): (req: any, res: any, next: () => void) => void
 
 - **role**: string - the user role.
-- **returns**: (c *RoleAuthorizer) - returns role handler.
+- **returns**: (req: any, res: any, next: () => void) => void - returns role handler.
 
 
 #### admin
-Checks if the user has admin role.  
+Check if the user has admin role.  
+Throws [UnauthorizedException](../../../commons/errors/unauthorized_exception) exception if not authorized or not owner.
 
-> func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
+> `public` admin(): (req: any, res: any, next: () => void) => void
 
-- **returns**: Admin() - returns admin handler.
-
+- **returns**: (req: any, res: any, next: () => void) => void - returns admin handler.
