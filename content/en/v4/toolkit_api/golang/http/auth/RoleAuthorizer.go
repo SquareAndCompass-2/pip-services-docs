@@ -1,11 +1,10 @@
-
 ---
 type: docs
 title: "RoleAuthorizer"
 linkTitle: "RoleAuthorizer"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-http-go"
 description: >
-    Provides methods to check on a user's roles.
+    Provides methods to check a user's roles.
 ---
 
 ### Description
