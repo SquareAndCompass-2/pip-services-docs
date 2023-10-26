@@ -3,7 +3,7 @@ type: docs
 title: "Auth"
 linkTitle: "Auth"
 no_list: true
-gitUrl: "https://github.com/pip-services4/pip-services4-node/tree/main/pip-services4-http-node"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-http-go"
 description: >
     This package provides classes used to grant access.
 ---
