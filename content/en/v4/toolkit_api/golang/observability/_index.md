@@ -14,7 +14,7 @@ description: >
 ### Packages
 
 The module contains the following packages:
-
+- [**Build**](build) - factory components
 - [**Count**](count) - performance counters
 - [**Log**](log) - basic logging components that provide console and composite logging, as well as an interface for developing custom loggers
 - [**Trace**](trace) - tracing components
