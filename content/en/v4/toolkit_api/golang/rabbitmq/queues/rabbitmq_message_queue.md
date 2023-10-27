@@ -14,7 +14,7 @@ description: >
 
 ### Classes
 
-#### [RabbitMQMessageQueue](rabbitmq_message_queue)
+#### [RabbitMQMessageQueue](../rabbitmq_message_queue)
 Message queue that sends and receives messages via a RabbitMQ message broker.
 
 </div>
