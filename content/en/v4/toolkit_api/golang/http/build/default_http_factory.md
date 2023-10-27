@@ -16,7 +16,7 @@ This class enables the creation of HTTP components by specifying their descripto
 ### Constructors
 Create a new instance of the factory.
 
-> `public` constructor()
+> NewDefaultHttpFactory() *DefaultHttpFactory
 
 
 ### See also
