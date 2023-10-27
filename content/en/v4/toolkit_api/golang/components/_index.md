@@ -15,7 +15,7 @@ The module contains the following packages:
 
 * [**Build**](build) - basic factories for constructing objects
 * [**Config**](config) - configuration readers and managers, whose main task is to deliver configuration parameters to the application from wherever they are being stored
-* [**Context**](context) - 
+* [**Context**](context) - contains a simple object that defines the context of execution
 * [**Exec**](exec) - connection discovery and configuration services
 * [**Refer**](refer) - this package provides interfaces and classes used to create different types of tracers
 * [**Run**](run) - the root package
