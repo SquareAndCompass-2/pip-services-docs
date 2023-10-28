@@ -16,28 +16,28 @@ description: >
 
 ### Classes
 
-#### [RandomArray](random_array)
+#### [Array](array)
 Random generator for array objects.
 
-#### [RandomBoolean](random_boolean)
+#### [Boolean](boolean)
 Random generator for boolean values.
 
-#### [RandomDateTime](random_date_time)
+#### [DateTime](date_time)
 Random generator for Date time values.
 
-#### [RandomDouble](random_double)
+#### [Double](double)
 Random generator for double values.
 
-#### [RandomFloat](random_float)
+#### [Float](float)
 Random generator for float values.
 
-#### [RandomInteger](random_integer)
+#### [Integer](integer)
 Random generator for integer values.
 
-#### [RandomString](random_string)
+#### [String](string)
 Random generator for string values.
 
-#### [RandomText](random_text)
+#### [Text](text)
 Random generator for various text values such as names, addresses or phone numbers.
 
 
