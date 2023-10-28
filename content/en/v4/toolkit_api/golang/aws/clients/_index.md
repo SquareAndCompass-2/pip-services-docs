@@ -20,5 +20,7 @@ Abstract client that calls commandable AWS Lambda Functions.
 #### [LambdaClient](lambda_client)
 Abstract client that calls AWS Lambda Functions.
 
+#### [Helpers](helpers)
+Helper methods for processing AWS responses
 </div>
 
