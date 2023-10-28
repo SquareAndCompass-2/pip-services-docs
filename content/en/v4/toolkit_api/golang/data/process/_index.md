@@ -13,11 +13,9 @@ description: >
 
 ### Classes
 
-#### [IdGenerator](id_generator)
-Helper class used to generate unique object IDs.
-It supports two types of IDs: long and short. 
-Long IDs are string GUIDs. They are globally unique and 32-character long. 
-ShortIDs are just 9-digit random numbers. They are not guaranteed to be unique.
+#### [TagsProcessor](tags_processor)
+Helper class used to extract and process search tags from objects.
+The search tags can be kept individually or embedded as hash tags inside text
+like "This text has #hash_tag that can be used for search."
 
 </div>
-
