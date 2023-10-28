@@ -1,8 +1,8 @@
-![image](https://github.com/pip-services/pip-services-docs/assets/68734409/37271f3c-284f-4578-bf32-43c6a7fe5848)---
+---
 type: docs
 title: "CloudWatchLogger"
 linkTitle: "CloudWatchLogger"
-gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-aws-go"
+gitUrl: "https://github.com/pip-services3-gox/pip-services3-aws-gox"
 description: >
     Logger that writes log messages to AWS CloudWatch Log.
 ---
