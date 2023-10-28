@@ -8,41 +8,26 @@ description: >
 ---
 
 ### Description
-
+ 
 The SyntaxErrorCode class defines general syntax errors.
 
-### Fields
+### Enumeration members
 
-<span class="hide-title-link">
+The codes are as follows:
 
-#### ErrorNear
-Error near.
-> ErrErrorNear = "ERROR_NEAR"
-
-#### Internal
-Internal error.
-> ErrInternal = "INTERNAL"
-
-#### MissedCloseParenthesis
-Missed close parenthesis.
-> ErrMissedCloseParenthesis = "MISSED_CLOSE_PARENTHESIS"
-
-#### MissedCloseSquareBracket
-Missed close square bracket.
-> ErrMissedCloseSquareBracket = "MISSED_CLOSE_SQUARE_BRACKET"
-
-#### UnexpectedEnd
+Unknown     
+- **ErrUnknown** = "UNKNOWN"   
+Internal error
+- **ErrInternal** = "INTERNAL"    
 Unexpected end.
-> ErrUnexpectedEnd = "UNEXPECTED_END"
-
-#### Unknown
-Unknown
-> ErrUnknown = "UNKNOWN"
-
-#### UnknownSymbol
+- **ErrUnexpectedEnd** = "UNEXPECTED_END"    
+Error near
+- **ErrErrorNear** = "ERROR_NEAR"   
+Error at
+- **ErrErrorAt** = "ERROR_AT"     
 Unknown symbol
-> ErrUnknownSymbol = "UNKNOWN_SYMBOL"
-
-
-</span>
-
+- **ErrUnknownSymbol** = "UNKNOWN_SYMBOL"    
+Missed close parenthesis
+- **ErrMissedCloseParenthesis** = "MISSED_CLOSE_PARENTHESIS"    
+Missed close square bracket
+- **ErrMissedCloseSquareBracket** = "MISSED_CLOSE_SQUARE_BRACKET"
