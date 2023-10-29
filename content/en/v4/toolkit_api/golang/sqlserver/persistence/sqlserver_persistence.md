@@ -301,7 +301,7 @@ receives [FilterParams](../../../data/query/filter_params) and converts them int
 - **paging**: [PagingParams](../../../data/query/filter_params) - (optional) paging parameters
 - **sort**: string - (optional) sorting JSON object
 - **selection**: string - (optional) projection JSON object
-- **returns**: (page [DataPage[T]](../../../commons/data/data_page), err error) - data page of result by filter
+- **returns**: (page [DataPage[T]](../../../data/query/data_page), err error) - data page of result by filter
 
 
 
