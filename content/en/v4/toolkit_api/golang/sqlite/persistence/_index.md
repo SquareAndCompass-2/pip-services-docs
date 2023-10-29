@@ -24,7 +24,6 @@ Abstract persistence component that stores data in SQLite and implements a numbe
 #### [SqlitePersistence](sqlite_persistence)
 Abstract persistence component that stores data in SQLite using the default driver.
 
-#### [Utils](utils)
 
 </div>
 
