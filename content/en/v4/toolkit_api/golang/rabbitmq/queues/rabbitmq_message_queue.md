@@ -120,10 +120,10 @@ This method is usually used to remove the message after successful processing.
 #### Configure
 Configures the component by passing its configuration parameters.
 
-> (c [*RabbitMQMessageQueue]()) Configure(ctx context.Context, config [*ConfigParams](../../../commons/config/config_params))
+> (c [*RabbitMQMessageQueue]()) Configure(ctx context.Context, config [*ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 #### EndListen
 Ends listening for incoming messages.
