@@ -57,11 +57,11 @@ Credential resolver
 #### Compose
 Composes MQTT connection options from connection and credential parameters.
 
-> (c [*MqttConnectionResolver]()) Compose(context [IContext](../../../components/context/icontext), connection [*ConnectionParams](../../../config/connect/connection_resolver), credential [*CredentialParams](../../../config/auth/credential_resolver)) (options [*ConfigParams](../../../commons/config/config_params), err error)
+> (c [*MqttConnectionResolver]()) Compose(context [IContext](../../../components/context/icontext), connection [*ConnectionParams](../../../config/connect/connection_resolver), credential [*CredentialParams](../../../config/auth/credential_resolver)) (options [*ConfigParams](../../../config/auth/credential_params), err error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
-- **connection**: [*ConnectionParams](../../../components/connect/connection_params) - connection parameters
-- **credential**: [*CredentialParams](../../../components/auth/credential_params) - credential parameters
+- **connection**: [*ConnectionParams](../../../config/connect/connection_paramss) - connection parameters
+- **credential**: [*CredentialParams](../../../config/auth/credential_params) - credential parameters
 - **returns**: (options [*ConfigParams](../../../components/config/config_params), err error) - resolved MQTT connection options
 
 
