@@ -28,8 +28,8 @@ The RabbitMQMessageQueue class allows you to create message queues that send and
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../..//observability/log/ilogger) components to pass log messages
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
 - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscoveryy) services
 - **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
@@ -46,10 +46,10 @@ Creates a new instance of the message queue.
 #### NewRabbitMQMessageQueueFromConfig
 Creates a new instance of the message queue with configuration.
 
-> NewRabbitMQMessageQueueFromConfig(name string, config [*ConfigParams](../../../commons/config/config_params)) [*RabbitMQMessageQueue]()
+> NewRabbitMQMessageQueueFromConfig(name string, config [*ConfigParams](../../../components/config/config_params)) [*RabbitMQMessageQueue]()
 
 - **name**: string - (optional) queue name.
-- **config**: [*ConfigParams](../../../commons/config/config_params) - configuration parameters
+- **config**: [*ConfigParams](../../../components/config/config_params) - configuration parameters
 
 
 #### NewRabbitMQMessageQueue
