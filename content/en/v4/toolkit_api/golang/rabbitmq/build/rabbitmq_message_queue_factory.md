@@ -38,7 +38,7 @@ Sets references to dependent components.
 > (c [*RabbitMQMessageQueueFactory]()) SetReferences(ctx context.Context, references [IReferences](../../../commons/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
-- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
+- **references**: [IReferences](../../../commons/refer/ireferences) - references to locate the component's dependencies.
 
 
 #### CreateQueue
