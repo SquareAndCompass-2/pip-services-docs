@@ -17,12 +17,12 @@ The RabbitMQMessageQueue class allows you to create message queues that send and
 #### Configuration parameters
 
 - **connection(s)**:    
-    - **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)   
+    - **discovery_key**:               (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscoveryy)   
     - **host**:                        host name or IP address    
     - **port**:                        port number   
     - **uri**:                         resource URI or connection string with all parameters in it   
 - **credential(s)**:
-    - **store_key**:                   (optional) key to retrieve the credentials from [ICredentialStore](../../../components/auth/icredential_store)
+    - **store_key**:                   (optional) key to retrieve the credentials from [ICredentialStore](../../../config/auth/icredential_store)
     - **username**:                    username
     - **password**:                    user's password
 
@@ -30,8 +30,8 @@ The RabbitMQMessageQueue class allows you to create message queues that send and
 #### References
 - **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
 - **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../components/auth/icredential_store) to resolve credentials
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscoveryy) services
+- **\*:credential-store:\*:\*:1.0** - (optional) [ICredentialStore](../../../config/auth/icredential_store) to resolve credentials
 
 
 ### Constructors
