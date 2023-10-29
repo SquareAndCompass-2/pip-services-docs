@@ -15,7 +15,7 @@ description: >
 
 **Important points**    
     
-- The data items must implement the [IIdentifiable](../../../commons/data/iidentifiable) interface.
+- The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
 - The JSON table has only two fields: id and data.
 - In basic scenarios, child classes shall only override [GetPageByFilter](../sqlserver_persistence/#getpagebyfilter), [GetListByFilter](../sqlserver_persistence/#getlistbyfilter) or [DeleteByFilter](../sqlserver_persistence/#deletebyfilter) operations with a specific filter function.
 - All other operations can be used out of the box. 
