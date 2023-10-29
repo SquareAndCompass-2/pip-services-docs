@@ -48,7 +48,7 @@ Creates a new instance of this cache.
 
 #### connectionResolver
 Connection resolver
-> **connectionResolver**: [*ConnectionResolver](../../../connect/connection_resolver) 
+> **connectionResolver**: [*ConnectionResolver](../../../components/connect/connection_resolver) 
 
 #### credentialResolver
 Credential resolver
