@@ -121,18 +121,18 @@ or/and send to the dead letter queue.
 
 - Important: This method is not supported by MQTT.
 
-> (c [*MqttMessageQueue]()) Abandon(ctx context.Context, message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
+> (c [*MqttMessageQueue]()) Abandon(ctx [context.Context](../../../components/context/context), message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
 
-- **ctx**: context.Context - operaton context.
+- **ctx**: [context.Context](../../../components/context/context) - operaton context.
 - **message**: [*MessageEnvelope](../../../messaging/queues/message_envelope) - message to return.
 - **returns**: error - error or nil no errors occured.
 
 #### Clear
 Clears a component's state.
 
-> (c [*MqttMessageQueue]()) Clear(ctx context.Context, context [IContext](../../../components/context/icontext)) error
+> (c [*MqttMessageQueue]()) Clear(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext)) error
 
-- **ctx**: context.Context - operaton context.
+- **ctx**: [context.Context](../../../components/context/context) - operaton context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: error - error or nil if no errors occurred.
 
@@ -140,9 +140,9 @@ Clears a component's state.
 #### Close
 Closes a component and frees used resources.
 
-> (c [*MqttMessageQueue]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) (err error)
+> (c [*MqttMessageQueue]()) Close(ctx [context.Context](../../../components/context/context) context [IContext](../../../components/context/icontext)) (err error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: (err error) - error or nil if no errors occurred.
 
@@ -152,9 +152,9 @@ Permanently removes a message from the queue.
 This method is usually used to remove the message after successful processing.
 
 - Important: This method is not supported by MQTT.
-> (c [*MqttMessageQueue]()) Complete(ctx context.Context, message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
+> (c [*MqttMessageQueue]()) Complete(ctx [context.Context](../../../components/context/context), message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **message**: [*MessageEnvelope](../../../messaging/queues/message_envelope) - message to remove.
 - **returns**: error - error or nil if no errors occurred.
 
@@ -162,9 +162,9 @@ This method is usually used to remove the message after successful processing.
 #### Configure
 Configures a component by passing its configuration parameters.
 
-> (c [*MqttMessageQueue]()) Configure(ctx context.Context, config [*ConfigParams](../../../components/config/config_params))
+> (c [*MqttMessageQueue]()) Configure(ctx [context.Context](../../../components/context/context), config [*ConfigParams](../../../components/config/config_params))
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **config:**: [*ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
@@ -172,9 +172,10 @@ Configures a component by passing its configuration parameters.
 Ends listening for incoming messages.
 When this method is called, [Listen](#listen) unblocks the thread and execution continues.
 
-> (c [*MqttMessageQueue]()) EndListen(ctx context.Context, context [IContext](../../../components/context/icontext))
+> (c [*MqttMessageQueue]()) EndListen(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext))
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 
 
@@ -209,9 +210,9 @@ Listens for incoming messages and blocks the current thread until the queue is c
 
 See [IMessageReceiver](../../../messaging/queues/imessage_receiver)
 
-> (c [*MqttMessageQueue]()) Listen(ctx context.Context, context [IContext](../../../components/context/icontext), receiver [IMessageReceiver](../../../messaging/queues/imessage_receiver)) error
+> (c [*MqttMessageQueue]()) Listen(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext), receiver [IMessageReceiver](../../../messaging/queues/imessage_receiver)) error
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **receiver**: [IMessageReceiver](../../../messaging/queues/imessage_receiver) - receiver used to receive incoming messages.
 - **returns**: error - error or nil if no errors occurred.
@@ -222,9 +223,9 @@ Permanently removes a message from the queue and sends it to the dead letter que
 
 - Important: This method is not supported by MQTT.
 
-> (c [*MqttMessageQueue]()) MoveToDeadLetter(ctx context.Context, message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error 
+> (c [*MqttMessageQueue]()) MoveToDeadLetter(ctx [context.Context](../../../components/context/context), message [*MessageEnvelope](../../../messaging/queues/message_envelope)) error 
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **message**: [*MessageEnvelope](../../../messaging/queues/message_envelope) - message to be removed.
 - **returns**: error - error or nil if no errors occurred.
 
@@ -238,9 +239,9 @@ Checks if the message comes from the right topic. If this is the case, it deseri
 #### Open
 Opens the component.
 
-> (c [*MqttMessageQueue]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) (err error)
+> (c [*MqttMessageQueue]()) Open(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext)) (err error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: (err error) - error or nil if no errors occurred.
 
@@ -249,9 +250,9 @@ Opens the component.
 Peeks a single incoming message from the queue without removing it.
 If there are no messages available in the queue, it returns nil.
 
-> (c [*MqttMessageQueue]()) Peek(ctx context.Context, context [IContext](../../../components/context/icontext)) ([*MessageEnvelope](../../../messaging/queues/message_envelope), error)
+> (c [*MqttMessageQueue]()) Peek(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext)) ([*MessageEnvelope](../../../messaging/queues/message_envelope), error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **returns**: ([*MessageEnvelope](../../../messaging/queues/message_envelope), error) - peeked message.
 
@@ -261,9 +262,9 @@ If there are no messages available in the queue, it returns an empty list.
 
 - Important: This method is not supported by MQTT.
 
-> (c [*MqttMessageQueue]()) PeekBatch(ctx context.Context, context [IContext](../../../components/context/icontext), messageCount int64) ([[]*MessageEnvelope](../../../messaging/queues/message_envelope), error)
+> (c [*MqttMessageQueue]()) PeekBatch(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext), messageCount int64) ([[]*MessageEnvelope](../../../messaging/queues/message_envelope), error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **messageCount**: int64 - maximum number of messages to peek.
 - **returns**: ([[]*MessageEnvelope](../../../messaging/queues/message_envelope), error) - list with peeked messages.
@@ -278,9 +279,9 @@ Reads the current number of messages in the queue to be delivered.
 #### Receive
 Receives an incoming message and removes it from the queue.
 
-> (c [*MqttMessageQueue]()) Receive(ctx context.Context, context [IContext](../../../components/context/icontext), waitTimeout time.Duration) ([*MessageEnvelope](../../../messaging/queues/message_envelope), error)
+> (c [*MqttMessageQueue]()) Receive(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext), waitTimeout time.Duration) ([*MessageEnvelope](../../../messaging/queues/message_envelope), error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **waitTimeout**: time.Duration - timeout in milliseconds to wait for a message to come.
 - **returns**: ([*MessageEnvelope](../../../messaging/queues/message_envelope), error) - received message or nil if nothing was received.
@@ -291,9 +292,9 @@ This method is usually used to extend the message processing time.
 
 - Important: This method is not supported by MQTT.
 
-> (c [*MqttMessageQueue]()) RenewLock(ctx context.Context, message [*MessageEnvelope](../../../messaging/queues/message_envelope), lockTimeout time.Duration) (err error)
+> (c [*MqttMessageQueue]()) RenewLock(ctx [context.Context](../../../components/context/context), message [*MessageEnvelope](../../../messaging/queues/message_envelope), lockTimeout time.Duration) (err error)
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **message**: [*MessageEnvelope](../../../messaging/queues/message_envelope) - message to extend its lock.
 - **lockTimeout**: time.Duration - locking timeout in milliseconds.
 - **returns**: (err error) - error or nil if no errors occurred.
@@ -301,9 +302,9 @@ This method is usually used to extend the message processing time.
 #### Send
 Sends a message into the queue.
 
-> (c [*MqttMessageQueue]()) Send(ctx context.Context, context [IContext](../../../components/context/icontext), envelop [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
+> (c [*MqttMessageQueue]()) Send(ctx [context.Context](../../../components/context/context), context [IContext](../../../components/context/icontext), envelop [*MessageEnvelope](../../../messaging/queues/message_envelope)) error
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **message**: [*MessageEnvelope](../../../messaging/queues/message_envelope) - message envelop to be sent.
 - **returns**: error - error or nil if no errors occurred.
@@ -311,9 +312,9 @@ Sends a message into the queue.
 #### SetReferences
 Sets references to dependent components.
 
-> (c [*MqttMessageQueue]()) SetReferences(ctx context.Context, references [IReferences](../../../components/refer/ireferences))
+> (c [*MqttMessageQueue]()) SetReferences(ctx [context.Context](../../../components/context/context), references [IReferences](../../../components/refer/ireferences))
 
-- **ctx**: context.Context - operation context.
+- **ctx**: [context.Context](../../../components/context/context) - operation context.
 - **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
 
 
