@@ -7,7 +7,7 @@ description: >
     Swagger Controller.
 ---
 
-**Implements**: [RestService](../../../rpc/services/rest_service)
+**Implements**: [RestService](../../../http/controllers/rest_controller)
 
 ### Description
 
