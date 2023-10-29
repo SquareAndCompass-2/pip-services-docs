@@ -119,7 +119,7 @@ Closes a component and frees used resources.
 #### Configure
 Configures the component by passing its configuration parameters.
 
-> (c [*MqttConnection]()) Configure(ctx context.Context, config [*ConfigParams](../../../commons/config/config_params))
+> (c [*MqttConnection]()) Configure(ctx context.Context, config [*ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
 - **config**: [*ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
