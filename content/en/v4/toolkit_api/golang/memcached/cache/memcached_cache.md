@@ -17,7 +17,7 @@ The MemcachedCache class allows you to create distributed cache that stores valu
 #### Configuration parameters
 
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **host**: host name or IP address
     - **port**: port number
     - **uri**: resource URI or connection string with all parameters in it
