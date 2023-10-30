@@ -63,10 +63,10 @@ MongoDB credential resolver.
 #### Configure
 Configures the component by passing its configuration parameters.
 
-> (c [*MongoDbConnectionResolver]()) Configure(ctx context.Context,config [*cconf.ConfigParams](../../../commons/config/config_params))
+> (c [*MongoDbConnectionResolver]()) Configure(ctx context.Context,config [*cconf.ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*cconf.ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*cconf.ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### Resolve
@@ -81,8 +81,8 @@ Resolves a MongoDB connection URI from connection and credential parameters.
 #### SetReferences
 Sets references to dependent components.
 
-> (c [*MongoDbConnectionResolver]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../commons/refer/ireferences))
+> (c [*MongoDbConnectionResolver]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../components/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
-- **references**: [crefer.IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [crefer.IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
