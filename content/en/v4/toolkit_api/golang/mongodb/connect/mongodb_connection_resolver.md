@@ -49,7 +49,7 @@ NewMongoDbConnectionResolver creates new connection resolver
 
 #### ConnectionResolver
 MongoDB connection resolver.
-> **ConnectionResolver**: [ConnectionResolver](../../../components/connect/connection_resolver) 
+> **ConnectionResolver**: [ConnectionResolver](../../../config/connect/connection_resolver) 
 
 #### _credential_resolver
 MongoDB credential resolver.
