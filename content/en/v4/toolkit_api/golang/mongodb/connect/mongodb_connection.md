@@ -59,7 +59,7 @@ Creates a new instance of the connection component.
 
 #### Logger
 The logger.
-> **Logger**: [*CompositeLogger](../../../components/log/composite_logger)
+> **Logger**: [*CompositeLogger](../../../observability/log/composite_logger)
 
 #### ConnectionResolver
 The connection resolver.
