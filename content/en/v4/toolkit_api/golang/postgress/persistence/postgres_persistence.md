@@ -303,7 +303,7 @@ Gets a page of data items retrieved by a given filter and sorted according to so
 This method shall be called by a func **GetPageByFilter** method from a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> (c [*PostgresPersistence[T]]()) GetPageByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter string, paging [*cdata.PagingParams](../../../data/query/paging_params), sort string, sel string) (page [*cdata.DataPage[T]](../../../commons/data/data_page), err error)
+> (c [*PostgresPersistence[T]]()) GetPageByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter string, paging [*cdata.PagingParams](../../../data/query/paging_params), sort string, sel string) (page [*cdata.DataPage[T]](../../../data/query/data_page), err error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **filter**: string - (optional) filter for JSON objects
