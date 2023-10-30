@@ -18,7 +18,7 @@ The IdentifiableMySqlPersistence class allows you to create persistence componen
 Important points
 
 - The data items must implement the [IIdentifiable](../../../data/data/iidentifiable) interface.
-- In basic scenarios, child classes shall only override [GetPageByFilter](../mysql_persistence/#getpagebyfilter), [GetListByFilter](../memory_persistence/#getlistbyfilter) or [DeleteByFilter](../mysql_persistence/#deletebyfilter) operations with the specific filter function.
+- In basic scenarios, child classes shall only override [GetPageByFilter](../memory_persistence/#getpagebyfilter), [GetListByFilter](../memory_persistence/#getlistbyfilter) or [DeleteByFilter](../mysql_persistence/#deletebyfilter) operations with the specific filter function.
 - All other operations can be used out of the box. 
 - In complex scenarios child classes can implement additional operations by accessing the **this._collection** and **this._model** properties.
 
