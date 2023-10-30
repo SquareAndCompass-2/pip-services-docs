@@ -9,9 +9,9 @@ description: >
 
 ---
 
-**Extends:** [CachedCounters](../../../components/count/cached_counters)
+**Extends:** [CachedCounters](../../../observability/count/cached_counters)
 
-**Implements:** [IReferenceable](../../../commons/refer/ireferenceable), [IOpenable](../../../commons/run/iopenable)
+**Implements:** [IReferenceable](../../../components/refer/ireferenceable), [IOpenable](../../../components/run/iopenable)
 
 ### Description
 
@@ -19,13 +19,13 @@ The PrometheusCounters class allows you to create performance counters that send
 
 Important points
 
-- The component is normally used in passive mode conjunction with [PrometheusMetricsService](../../services/prometheus_metrics_service). Alternatively, when connection parameters are set, it can push metrics to Prometheus PushGateway.
+- The component is normally used in passive mode conjunction with [PrometheusMetricsController](../../controllers/prometheus_metrics_controller). Alternatively, when connection parameters are set, it can push metrics to Prometheus PushGateway.
 
 
 #### Configuration parameters
 
 - **connection(s)**:
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: connection protocol: http or https
     - **host**: host name or IP address
     - **port**: port number
@@ -38,9 +38,9 @@ Important points
 
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
-- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../components/count/icounters) components to pass collected measurements
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
+- **\*:counters:\*:\*:1.0** - (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements
 
 
 
