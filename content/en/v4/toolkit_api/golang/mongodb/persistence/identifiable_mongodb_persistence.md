@@ -22,7 +22,7 @@ Important points
 #### Configuration parameters
 
 - **connection(s)**:
-	- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../components/connect/idiscovery)
+	- **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
 	- **host**: host name or IP address
 	- **port**: port number (default: 27017)
 	- **uri**: resource URI or connection string with all parameters in it
@@ -47,7 +47,7 @@ Important points
 
 #### References
 - **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
-- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../components/connect/idiscovery) services
+- **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores used to resolve credentials
 
 
