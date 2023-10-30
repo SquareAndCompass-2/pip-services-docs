@@ -140,8 +140,8 @@ Opens the component.
 #### SetReferences
 Sets the references to the dependent components.
 
-> (c [*MongoDbConnection]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../commons/refer/ireferences))
+> (c [*MongoDbConnection]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../components/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
-- **references**: [crefer.IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [crefer.IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
