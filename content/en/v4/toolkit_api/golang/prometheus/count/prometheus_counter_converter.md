@@ -28,7 +28,7 @@ Converts the given counters to a string that is returned by Prometheus metrics s
 #### AtomicCountersToCounters
 Converts atomic counters to cached counters
 
-> AtomicCountersToCounters(atomicCounters [[]*ccount.AtomicCounter](../../../components/count/atomic_counter)) [[]ccount.Counter](../../../components/count/counter)
+> AtomicCountersToCounters(atomicCounters [[]*ccount.AtomicCounter](../../../components/count/atomic_counter)) [[]ccount.Counter](../../../observability/count/counter)
 
-- **atomicCounters**: [[]*ccount.AtomicCounter](../../../components/count/atomic_counter) - list with atomic counters.
-- **returns**: [[]ccount.Counter](../../../components/count/counter) - converted counters.
+- **atomicCounters**: [[]*ccount.AtomicCounter](../../../observability/count/atomic_counter) - list with atomic counters.
+- **returns**: [[]ccount.Counter](../../../observability/count/counter) - converted counters.
