@@ -45,7 +45,7 @@ Important points
 - **debug**: (optional) enable debug output (default: false).
 
 #### References
-- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../components/log/ilogger) components to pass log messages
+- **\*:logger:\*:\*:1.0** - (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages
 - **\*:discovery:\*:\*:1.0** - (optional) [IDiscovery](../../../config/connect/idiscovery) services
 - **\*:credential-store:\*:\*:1.0** - (optional) credential stores to resolve credentials
 
