@@ -131,10 +131,10 @@ Closes the component and frees used resources.
 #### Configure
 Configure method is configures component by passing configuration parameters.
 
-> (c [*MongoDbPersistence[T]]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../commons/config/config_params))
+> (c [*MongoDbPersistence[T]]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*cconf.ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*cconf.ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### ConvertFromPublic
