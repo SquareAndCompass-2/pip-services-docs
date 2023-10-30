@@ -67,7 +67,7 @@ The connection resolver.
 
 #### Options
 The configuration options.
-> **Options**: [*ConfigParams](../../../commons/config/config_params) 
+> **Options**: [*ConfigParams](../../../components/config/config_params) 
 
 #### Connection
 The MongoDB connection object.
@@ -97,10 +97,10 @@ Closes a component and frees used resources.
 #### Configure
 Configures a component by passing its configuration parameters.
 
-> (c [*MongoDbConnection]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../commons/config/config_params))
+> (c [*MongoDbConnection]()) Configure(ctx context.Context, config [*cconf.ConfigParams](../../../components/config/config_params))
 
 - **ctx**: context.Context - operation context.
-- **config**: [*cconf.ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
+- **config**: [*cconf.ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
 #### GetConnection
