@@ -68,7 +68,7 @@ Creates a new instance of the persistence component.
 
 #### DependencyResolver
 The dependency resolver.
-> **DependencyResolver**: [DependencyResolver](../../../commons/refer/dependency_resolver)
+> **DependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### Logger
 The logger.
