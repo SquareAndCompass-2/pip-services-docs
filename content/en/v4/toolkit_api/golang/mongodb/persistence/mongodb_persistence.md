@@ -72,7 +72,7 @@ The dependency resolver.
 
 #### Logger
 The logger.
-> **Logger**: [CompositeLogger](../../../components/log/composite_logger)
+> **Logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
 #### Connection
 The MongoDB connection component.
