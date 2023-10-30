@@ -180,7 +180,7 @@ Defines the database schema
 
 #### DeleteByFilter
 This method shall be called by a func **DeleteByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > (c [*MongoDbPersistence[T]]()) DeleteByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter any) error
 
@@ -220,7 +220,7 @@ Open method is opens the component.
 Gets a number of data items retrieved by a given filter.
 
 This method shall be called by a func **GetCountByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > (c [*MongoDbPersistence[T]]()) GetCountByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter any) (count int64, err error)
 
@@ -234,7 +234,7 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a list of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a func **GetListByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > (c [*MongoDbPersistence[T]]()) GetListByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter any, sort any, sel any) (items []T, err error)
 
@@ -250,7 +250,7 @@ receives [FilterParams](../../../commons/data/filter_params) and converts them i
 Gets a random item from items that match to a given filter.
 
 This method shall be called by a func [GetOneRandom](#getonerandom) method from the child class
-that receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+that receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > (c [*MongoDbPersistence[T]]()) GetOneRandom(ctx context.Context, context [IContext](../../../components/context/icontext), filter any) (item T, err error)
 
@@ -264,7 +264,7 @@ that receives [FilterParams](../../../commons/data/filter_params) and converts t
 Gets a page of data items retrieved by a given filter and sorted according to sort parameters.
 
 This method shall be called by a func **GetPageByFilter** method from the child class that
-receives [FilterParams](../../../commons/data/filter_params) and converts them into a filter function.
+receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
 > (c [*MongoDbPersistence[T]]()) GetPageByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter any, paging [*cdata.PagingParams](../../../commons/data/paging_params), sort any, sel any) (page [*cdata.DataPage[T]](../../../commons/data/data_page), err error)
 
