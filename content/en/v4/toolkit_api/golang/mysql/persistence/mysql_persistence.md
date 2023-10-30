@@ -293,7 +293,7 @@ Gets a page of data items retrieved by a given filter and sorted according to so
 This method shall be called by a public **GetPageByFilter** method from the a child class that
 receives [FilterParams](../../../data/query/filter_params) and converts them into a filter function.
 
-> (c [*MySqlPersistence[T]]()) GetPageByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter string, paging [PagingParams](../../../commons/data/paging_params), sort string, selection string) (page [DataPage[T]](../../../data/query/data_page), err error)
+> (c [*MySqlPersistence[T]]()) GetPageByFilter(ctx context.Context, context [IContext](../../../components/context/icontext), filter string, paging [PagingParams](../../../data/query/paging_params), sort string, selection string) (page [DataPage[T]](../../../data/query/data_page), err error)
 
 - **ctx**: context.Context - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
