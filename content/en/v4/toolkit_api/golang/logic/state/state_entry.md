@@ -9,12 +9,12 @@ description: >
 
 ### Description
 
-TODO: add description
+Data object to store state values with their keys used by [MemoryStateStore](../memory_state_store)
 
 ### Constructors
 Creates a new instance of the state entry and assigns its values.
 
-> `public` constructor(key: string, value: any)
+> NewStateEntry[T any](key string, value T) *StateEntry[T]
 
 - **key**: string - a unique key to locate the value.
 - **value**: any - a value to be stored.
@@ -23,10 +23,10 @@ Creates a new instance of the state entry and assigns its values.
 ### Instance methods
 
 
-#### getKey
+#### GetKey
 Gets the key to locate the state value.
 
-> `public` getKey(): string
+> (c *StateEntry[T]) GetKey() string
 
 - **return**: string - the value key.
 
@@ -34,15 +34,15 @@ Gets the key to locate the state value.
 #### getLastUpdateTime
 Gets the last update time.
 
-> `public` getLastUpdateTime(): number
+> (c *StateEntry[T]) GetLastUpdateTime() int64
 
-- **return**: number - the timestamp when the value ware stored.
+- **return**: int64 - the timestamp when the value ware stored.
 
 
-#### getValue
+#### GetValue
 Gets the sstate value.
 
-> `public` getValue(): any
+> (c *StateEntry[T]) GetValue() T 
 
 - **returns**: any - the value object.
 
@@ -50,6 +50,6 @@ Gets the sstate value.
 #### setValue
 Sets a new state value.
 
-> `public` setValue(value: any): void
+> (c *StateEntry[T]) SetValue(value T)
 
 - **value**: any - a new cached value.
