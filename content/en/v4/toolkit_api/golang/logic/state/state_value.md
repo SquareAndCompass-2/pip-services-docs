@@ -1,7 +1,7 @@
 ---
 type: docs
 title: "StateValue<T>"
-linkTitle: "StateEntry"
+linkTitle: "StateValue"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-logic-go"
 description: >
     A data object that holds a retrieved state value with its key.
@@ -15,12 +15,12 @@ This class provides a way to create a data object that holds a retrieved state v
 
 <span class="hide-title-link">
 
-#### key
+#### Key
 A unique state key
-> `public` **key**: string
+> string `json:"key" bson:"key"` 
 
-#### value
+#### Value
 A unique state key
-> `public` **value**: T
+> T      `json:"value" bson:"value"
 
 </span>
