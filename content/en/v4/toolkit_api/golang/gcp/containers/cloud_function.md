@@ -48,8 +48,8 @@ InheritCloudFunction creates new instance of CloudFunction
 
 > InheritCloudFunctionWithParams(overrides [ICloudFunctionOverrides](../icloud_function_overrides), name string, description string) [*CloudFunction]()
 
-- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/info/context_info))
-- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/info/context_info))
+- **name**: string - (optional) container's name (accessible via [ContextInfo](../../../components/context/context_info))
+- **description**: string - (optional) container's description (accessible via [ContextInfo](../../../components/context/context_info))
 
 ### Fields
 
