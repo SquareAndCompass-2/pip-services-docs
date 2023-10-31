@@ -144,10 +144,10 @@ Registers an action in this Google Function.
 
 Note: This method has been deprecated. Use CloudFunctionService instead.
 
-> (c [*CloudFunction]()) RegisterAction(cmd string, schema [*Schema](../../../commons/validate/schema), action http.HandlerFunc)
+> (c [*CloudFunction]()) RegisterAction(cmd string, schema [*Schema](../../../data/validate/schema), action http.HandlerFunc)
 
 - **cmd**: str - a action/command name.
-- **schema**: [*Schema](../../../node/data/validate/schema) - a validation schema to validate received parameters.
+- **schema**: [*Schema](../../../data/validate/schema) - a validation schema to validate received parameters.
 - **action**: http.HandlerFunc - an action function that is called when action is invoked.
 
 #### Register
