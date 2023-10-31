@@ -1,19 +1,20 @@
 ---
 type: docs
-title: "GcpConnectionParams"
-linkTitle: "GcpConnectionParams"
+title: "CloudFunctionController"
+linkTitle: "CloudFunctionController"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-gcp-go"
 description: >
-    Contains connection parameters to authenticate against Google
-    and connect to specific Google resources.
+    Abstract service that receives remove calls via the Google Function protocol.
 ---
 
+**Implements**: [ICloudFunctionController](../icloud_function_controller), [IOpenable](../../../components/run/iopenable), [IConfigurable](../../../components/config/iconfigurable), [IReferenceable](../../../components/refer/ireferenceable)
+
 ### Description
-The CloudFunctionController class allows you to create a controller that receives remove calls via the Google Function protocol.
+The CloudFunctionController class allows you to create a service that receives remove calls via the Google Function protocol.
 
 **Important points**
 
-- This controller is intended to work inside an CloudFunction container that exposes registered actions externally.
+- This service is intended to work inside an CloudFunction container that exposes registered actions externally.
 
 #### Configuration parameters
  
@@ -22,254 +23,226 @@ The CloudFunctionController class allows you to create a controller that receive
 
 
 #### References
-- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../node/observability/log/ilogger) components to pass log messages.
+- **\*:logger:\*:\*:1.0**: (optional) [ILogger](../../../observability/log/ilogger) components to pass log messages.
 - **\*:counters:\*:\*:1.0**: (optional) [ICounters](../../../observability/count/icounters) components to pass collected measurements.
 
 ### Constructors
-
-#### NewCloudFunctionService
 Creates an instance of this service.
 
-> NewCloudFunctionService(name string) [*CloudFunctionService]()
+> `public` constructor(name?: string)
 
-- **name**: string - name of the service used to generate an action cmd.
-
-#### InheritCloudFunctionService
-
-> InheritCloudFunctionService(overrides [ICloudFunctionServiceOverrides](../../containers/icloud_function_overrides), name string) 
-[*CloudFunctionService]()
-
-- **overrides**: [ICloudFunctionServiceOverrides](../../containers/icloud_function_overrides) - instance thath overrides methods. 
 - **name**: string - name of the service used to generate an action cmd.
 
 ### Fields
 
 <span class="hide-title-link">
 
-#### Counters
+#### _counters
 Performance counters.
-> **Counters**: [*CompositeCounters](../../../observability/count/composite_counters)
+> `protected` **_counters**: [CompositeCounters](../../../observability/count/composite_counters)
 
-#### DependencyResolver
+#### _dependencyResolver
 Dependency resolver.
-> **DependencyResolver**: [*DependencyResolver](../../../components/refer/dependency_resolver)
+> `protected` **_dependencyResolver**: [DependencyResolver](../../../components/refer/dependency_resolver)
 
-#### Logger
+#### _logger
 Logger.
-> **Logger**: [*CompositeLogger](../../../observability/log/composite_logger)
+> `protected` **_logger**: [CompositeLogger](../../../observability/log/composite_logger)
 
-#### Tracer
+#### _tracer
 Tracer.
-> **Tracer**: [*CompositeTracer](../../../observability/trace/composite_tracer)
+> `protected` **_tracer**: [CompositeTracer](../../../observabilitys/trace/composite_tracer)
 
 </span>
 
 ### Instance methods
 
-#### ApplyInterceptors
+#### applyInterceptors
 Applies interceptors to the action.
 
-> (c [*CloudFunctionService]()) ApplyInterceptors(action http.HandlerFunc) http.HandlerFunc
+> `protected` applyInterceptors(action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>
 
-- **action**: http.HandlerFunc - action
-- **returns**: http.HandlerFunc - returned result
+- **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action
+- **returns**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - returned result
 
-#### ApplyValidation
+#### applyValidation
 Performs a validation.
 
-> (c [*CloudFunctionService]()) ApplyValidation(schema *cvalid.Schema, action http.HandlerFunc) http.HandlerFunc
+> `protected` applyValidation(schema: [Schema](../../../data/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>
 
-- **schema**: [*Schema](../../../data/validate/schema) - schema used in the validation
-- **action**: http.HandlerFunc - action
-- **returns**: http.HandlerFunc - returned result
+- **schema**: [Schema](../../../data/validate/schema) - schema used in the validation
+- **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action
+- **returns**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - returned result
 
 
-#### Close
+#### close
 Closes a component and frees used resources.
 
-> (c [*CloudFunctionService]()) Close(ctx context.Context, context [IContext](../../../components/context/icontext)) error
+> `public` close(correlationId: string): Promise\<void\> 
 
-- **ctx**: context.Context - operation context.
-- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
-- **returns**: error - close error.
+- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 
 
-#### Configure
+#### configure
 Configures a component by passing its configuration parameters.
 
-> (c [*CloudFunctionService]()) Configure(ctx context.Context, config [*ConfigParams](../../../components/config/config_params/))
+> `public` configure(config: [ConfigParams](../../..//components/config/config_params)): void
 
-- **ctx**: context.Context - operation context.
-- **config**: [*ConfigParams](../../../components/config/config_params/) - configuration parameters to be set.
+- **config**: [ConfigParams](../../..//components/config/config_params) - configuration parameters to be set.
 
-#### GenerateActionCmd
+#### generateActionCmd
 Adds '.cmd' to a command name
-> (c [*CloudFunctionService]()) GenerateActionCmd(name string) string
+> `protected` generateActionCmd(name: string): string
 
 - **name**: string - command name
 - **returns**: string - command name with '.cmd' added at its end.
 
-#### GetActions
+#### getActions
 Get all actions supported by the service.
 
-> (c [*CloudFunctionService]()) GetActions() [[]*CloudFunctionAction](../cloud_function_action)
+> `public` getActions(): [CloudFunctionAction[]](../cloud_function_action)
 
-- **returns**: [[]*CloudFunctionAction](../cloud_function_action) - array with supported actions.
+- **returns**: [CloudFunctionAction[]](../cloud_function_action) - array with supported actions.
 
 
-#### GetCommand
+#### getCommand
 Returns command from Google Function request.
 
 This method can be overloaded in child classes
 
-> (c [*CloudFunctionService]()) GetCommand(r *http.Request) (string, error)
+> `protected` getCommand(req: any): string
 
-- **r**: *http.Request - the function request
-- **returns**: (string, error) - returned command from request.
+- **req**: any - the function request
+- **returns**: string - returned command from request.
 
-#### GetTraceId
-Returns traceId from Google Function request.
+#### getCorrelationId
+Returns correlationId from Google Function request.
 
 This method can be overloaded in child classes
 
-> (c [*CloudFunctionService]()) GetTraceId(r *http.Request) string
+> `protected` getCorrelationId(req: any): string
 
-- **r**: *http.Request - the function request
-- **returns**: string - returned traceId from request.
+- **req**: any - the function request
+- **returns**: string - returned correlationId from request.
 
 
-#### Instrument
+#### instrument
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> (c [*CloudFunctionService]()) Instrument(ctx context.Context, context [IContext](../../../components/context/icontext), name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
+> `protected` instrument(correlationId: string, name: string): [InstrumentTiming](../../../rpc/trace/instrument_timing)
 
-- **ctx**: context.Context - operation context.
-- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
+- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 - **name**: string - method's name.
-- **returns**: [*InstrumentTiming](../../../rpc/trace/instrument_timing) - Timing object to end the time measurement.
+- **returns**: [InstrumentTiming](../../../rpc/trace/instrument_timing) - Timing object to end the time measurement.
 
-#### IsOpen
+#### isOpen
 Checks if the component is open.
 
-> IsOpen() bool
+> `public` isOpen(): boolean
 
-- **returns**: bool - true if the component is open and false otherwise.
+- **returns**: boolean - true if the component is open and false otherwise.
 
 
-#### Open
+#### open
 Opens the component.
 
-> (c [*CloudFunctionService]()) Open(ctx context.Context, context [IContext](../../../components/context/icontext)) error
+> `public` open(correlationId: string): Promise\<void\>
 
-- **ctx**: context.Context - operation context.
-- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
-- **retiurns**: error - open error.
+- **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 
-#### Register
+#### registerAction
+Registers an action in Google Function function.
+
+> `protected` registerAction(name: string, schema: [Schema](../../../data/validate/schema), action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): void
+
+- **name**: string - action name
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
+- **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action function that is called when the operation is invoked.
+
+#### registerActionWithAuth
+Registers an action with authorization.
+
+> `protected` registerActionWithAuth(name: string, schema: Schema, authorize: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\>, action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>): void
+
+- **name**: string - action's name
+- **schema**: [Schema](../../../data/validate/schema) - validation schema used to validate received parameters.
+- **authorize**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\> - authorization interceptor
+- **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\> - action function that is called when the operation is invoked.
+
+
+#### registerInterceptor
+Registers a middleware for actions in Google Function service.
+
+> `protected` registerInterceptor(action: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\>): void
+
+- **action**: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res), next: (req: [Request](https://expressjs.com/ru/api.html#req), res: [Response](https://expressjs.com/ru/api.html#res)) => Promise\<any\>) => Promise\<any\> - action function that is called when middleware is invoked.
+
+
+#### setReferences
+Sets references to dependent components.
+
+> `public` setReferences(references: [IReferences](../../../components/refer/ireferences)): void
+
+- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
+
+
+
+### Abstract methods
+
+#### register
 Registers all service routes in an HTTP endpoint.
 
 This method is called by the service and must be overridden
 in child classes.
 
-> Register()
-
-#### RegisterAction
-Registers an action in Google Function function.
-
-> (c [*CloudFunctionService]()) RegisterAction(name string, schema [*Schema](../../../node/data/validate/schema), action http.HandlerFunc)
-
-- **name**: string - action name
-- **schema**: [*Schema](../../../commons/validate/schema) - validation schema used to validate received parameters.
-- **action**: http.HandlerFunc - action function that is called when the operation is invoked.
-
-#### RegisterActionWithAuth
-Registers an action with authorization.
-
-> (c [*CloudFunctionService]()) RegisterActionWithAuth(name string, schema [*Schema](../../../node/data/validate/schema), authorize func(w http.ResponseWriter, r *http.Request, next http.HandlerFunc), action http.HandlerFunc)
-
-- **name**: string - action's name
-- **schema**: [*Schema](../../../node/data/validate/schema) - validation schema used to validate received parameters.
-- **authorize**: func(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) - authorization interceptor
-- **action**: http.HandlerFunc - action function that is called when the operation is invoked.
-
-
-#### RegisterInterceptor
-Registers a middleware for actions in Google Function service.
-
-> (c [*CloudFunctionService]()) RegisterInterceptor(cmd string, action func(w http.ResponseWriter, r *http.Request, next http.HandlerFunc))
-
-- **cmd**: command or regex for intercept.
-- **action**: func(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) - action function that is called when middleware is invoked.
-
-
-#### SetReferences
-Sets references to dependent components.
-
-> (c [*CloudFunctionService]()) SetReferences(ctx context.Context, references [IReferences](../../../components/refer/ireferences))
-
-- **ctx**: context.Context - operation context.
-- **references**: [IReferences](../../../components/refer/ireferences) - references to locate the component's dependencies.
-
+> `protected abstract` register(): void
 
 ### Examples
 
-```go
-type MyCloudFunctionService struct {F
-	*services.CloudFunctionService
-	controller IMyController
+```typescript
+class MyCloudFunctionController extends CloudFunctionController {
+   private _controller: IMyController;
+
+   ...
+
+   public constructor() {
+      base('v1.myservice');
+      this._dependencyResolver.put(
+          "controller",
+          new Descriptor("mygroup","controller","*","*","1.0")
+      );
+   }
+
+   public setReferences(references: IReferences): void {
+      base.setReferences(references);
+      this._controller = this._dependencyResolver.getRequired<IMyController>("controller");
+   }
+
+   public register(): void {
+       registerAction("get_mydata", null, async (req, res) => {
+           let params = req.body;
+           let traceId = params.trace_id;
+           let id = params.id;
+           const result = await this._controller.getMyData(traceId, id);
+           
+           res.send(result);
+       });
+       ...
+   }
 }
 
-func NewMyCloudFunctionService() *MyCloudFunctionService {
-	c := MyCloudFunctionService{}
+let service = new MyCloudFunctionController();
 
-	c.CloudFunctionService = services.InheritCloudFunctionService(&c, "v1.myservice")
-	c.DependencyResolver.Put(context.Background(), "controller", refer.NewDescriptor("mygroup", "controller", "default", "*", "1.0"))
+service.configure(ConfigParams.fromTuples(
+    "connection.protocol", "http",
+    "connection.host", "localhost",
+    "connection.port", 8080
+));
 
-	return &c
-}
+service.setReferences(References.fromTuples(
+   new Descriptor("mygroup","controller","default","default","1.0"), controller
+));
 
-func (c *MyCloudFunctionService) SetReferences(ctx context.Context, references refer.IReferences) {
-	c.CloudFunctionService.SetReferences(ctx, references)
-	depRes, depErr := c.DependencyResolver.GetOneRequired("controller")
-
-	if depErr == nil && depRes != nil {
-		c.controller = depRes.(IMyController)
-	}
-}
-
-func (c *MyCloudFunctionService) Register() {
-	c.RegisterAction(
-		"get_mydata",
-		nil,
-		func(w http.ResponseWriter, r *http.Request) {
-			var body map[string]any
-
-			err := CloudFunctionRequestHelper.DecodeBody(r, &body)
-			defer r.Body.Close()
-
-			result, err := c.controller.DeleteById(
-				r.Context(),
-				c.GetTraceId(r),
-				body,
-			)
-			HttpResponseSender.SendDeletedResult(w, r, result, err)
-		},
-	)
-}
-
-...
-
-service := NewMyCloudFunctionService()
-service.Configure(ctx, config.NewConfigParamsFromTuples(
-	"connection.protocol", "http",
-	"connection.host", "localhost",
-	"connection.port", 8080,
-))
-
-service.SetReferences(ctx, refer.NewReferencesFromTuples(
-	refer.NewDescriptor("mygroup", "controller", "default", "default", "1.0"), controller,
-))
-service.Open(ctx, "123")
-fmt.Println("The Google Function service is running")
+service.open("123_service");
 ```
