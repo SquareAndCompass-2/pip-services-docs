@@ -21,64 +21,63 @@ description: >
 
 ### Instance methods
 
-#### configure
+#### Configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../commons/config/config_params)): void
+> (c *MemoryStateStore[T]) Configure(ctx [context.Context](../../../commons/config/config_params), config *cconf.ConfigParams)
 
 - **config**: [ConfigParams](../../../commons/config/config_params) - configuration parameters to be set.
 
 
-#### delete
+#### Delete
 Deletes a state from the store by its key.
 
-> `public` delete\<T\>(context: [IContext](../../../components/context/icontext), key: string): Promise\<T\>
+> (c *MemoryStateStore[T]) Delete(ctx [context.Context](../../../components/context/icontext), key string) T
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
-- **return**: Promise\<T\> - removed item
+- **return**: any - removed item
 
 
-#### load
+#### Load
 Loads state from the store using its key.
 If value is missing in the store it returns null.
 
-> `public` load\<T\>(context: [IContext](../../../components/context/icontext), key: string): Promise\<T\>
+> (c *MemoryStateStore[T]) Load(ctx [context.Context](../../../components/context/icontext), key string) T
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique state key.
-- **return**: Promise\<T\> - the state value or `null` if value wasn't found.
+- **return**: any - the state value or `null` if value wasn't found.
 
 
-#### loadBulk
+#### LoadBulk
 Loads an array of states from the store using their keys.
 
-> `public` loadBulk\<T\>(context: [IContext](../../../components/context/icontext), keys: string[]): Promise<[StateValue](../state_value)\<T\>[]>
+> (c *MemoryStateStore[T]) LoadBulk(ctx [context.Context](../../../components/context/icontext), keys []string) []StateValue[T]
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **keys**: string[] - unique state keys.
-- **returns**: Promise<[StateValue](../state_value)\<T\>[]> - an array with state values and their corresponding keys.
+- **returns**: any> - an array with state values and their corresponding keys.
 
 
-#### save
+#### Save
 Saves state into the store.
 
-> `public` save\<T\>(context: [IContext](../../../components/context/icontext), key: string, value: any): Promise\<T\>
+> (c *MemoryStateStore[T]) Save(ctx [context.Context](../../../components/context/icontext), key string, value T) T
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique state key.
 - **value**: any - a state value.
-- **returns**: Promise\<T\> - execution duration in milliseconds.
+- **returns**: any - execution duration in milliseconds.
 
 
 ### Examples
 
-```typescript
-let store = new MemoryStateStore();
-
-let value = await store.load(new Context(), "key1");
-...
-await store.save(new Context(), "key1", "ABC");
+```go
+		store := NewMemoryStateStore[MyType]();
+		value := store.Load(context.Background(), "123", "key1");
+		...
+		store.Save(context.Background(), "123", "key1", MyType{});
 ```
 
 ### See also
