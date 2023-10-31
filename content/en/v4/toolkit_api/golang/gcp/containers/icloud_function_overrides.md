@@ -2,7 +2,7 @@
 type: docs
 title: "ICloudFunctionOverrides"
 linkTitle: "ICloudFunctionOverrides"
-gitUrl: "https://github.com/pip-services3-gox/pip-services3-rpc-gox"
+gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-gcp-go"
 description: >
     Interface to perform on-demand registrations.
 ---
