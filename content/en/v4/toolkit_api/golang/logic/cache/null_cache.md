@@ -20,36 +20,36 @@ Important points
 
 ### Instance methods
 
-#### remove
+#### Remove
 Removes a value from the cache by its key.
 
-> `public` remove(context: [IContext](../../../components/context/icontext), key: string): Promise\<void\>
+> (c *NullCache[T]) Remove(ctx [context.Context](../../../components/context/icontext), key string) error
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 
 
-#### retrieve
+#### Retrieve
 Retrieves cached value from the cache using its key.
 If value is missing in the cache or expired, it returns null.
 
-> `public` retrieve(context: [IContext](../../../components/context/icontext), key: string): Promise\<any\>
+> (c *NullCache[T]) Retrieve(ctx [context.Context](../../../components/context/icontext), key string) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
-- **returns**: Promise\<any\> - a cached value or null, if value wasn't found or timeout expired.
+- **returns**: any - a cached value or null, if value wasn't found or timeout expired.
 
 
-#### store
+#### Store
 Stores value in the cache with expiration time.
 
-> `public` store(context: [IContext](../../../components/context/icontext), key: string, value: any, timeout: number): Promise\<any\>
+> (c *NullCache[T]) Store(ctx [context.Context](../../../components/context/icontext), key string, value T, timeout int64) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 - **value**: any - a value to store.
-- **timeout**: number - expiration timeout in milliseconds.
-- **returns**: Promise\<any\> - a cached value stored in the cache.
+- **timeout**: int64 - expiration timeout in milliseconds.
+- **returns**: any - a cached value stored in the cache.
 
 
 ### See also
