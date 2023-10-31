@@ -26,38 +26,35 @@ Important points
 
 ### Instance methods
 
-#### releaseLock
+#### ReleaseLock
 Releases prevously acquired lock by its key.
 
-> `public` releaseLock(context: [IContext](../../../components/context/icontext), key: string)
+> (c *MemoryLock) ReleaseLock(ctx [context.Context](../../../components/context/icontext), key string) error
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique lock key to release.
 
 
-#### tryAcquireLock
+#### TryAcquireLock
 Makes a single attempt to acquire a lock by its key.
 It returns immediately a positive or negative result.
 
-> `public` tryAcquireLock(context: [IContext](../../../components/context/icontext), key: string, ttl: number): bool
+> func (c *MemoryLock) TryAcquireLock(ctx [context.Context](../../../components/context/icontext), key string, ttl int64) (bool, error) 
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique lock key to acquire.
-- **ttl**: number - a lock timeout (time to live) in milliseconds.
+- **ttl**: int64 - a lock timeout (time to live) in milliseconds.
 - **returns**: bool - lock result
 
 ### Examples
 
-```typescript
-let lock = new MemoryLock();
-   
-await lock.acquire(new Context(), "key1");
-try {
-   // Processing...
-} finally {
-   await lock.releaseLock(new Context(), "key1");
-}
-// Continue...
+```go
+		lock := NewMemoryLock()
+		err = lock.AcquireLock(context.Background(), "123", "key1")
+		if err == nil {
+			 _ = lock.ReleaseLock(context.Background(), "123", "key1")
+			// Processing...
+		}
 
 ```
 
