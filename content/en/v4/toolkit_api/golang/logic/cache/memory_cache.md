@@ -26,54 +26,50 @@ Important points
 
 ### Instance methods
 
-#### configure
+#### Configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
+> (c *MemoryCache[T]) Configure(ctx [context.Context](../../../components/context/icontext), cfg *config.ConfigParams)
 
 - **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 
-#### remove
+#### Remove
 Removes a value from the cache by its key.
 
-> `public` remove(context: [IContext](../../../components/context/icontext), key: string): Promise\<void\>
+> (c *MemoryCache[T]) Remove(ctx [context.Context](../../../components/context/icontext), key string) error
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 
 
-#### retrieve
+#### Retrieve
 Retrieves cached value from the cache using its key.
 If value is missing in the cache or expired it returns null.
 
-> `public` retrieve(context: [IContext](../../../components/context/icontext), key: string): Promise\<any\>
+> (c *MemoryCache[T]) Retrieve(ctx [context.Context](../../../components/context/icontext), key string) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 - **returns**: any - a cached value or null if value wasn't found or timeout expired.
 
 
-#### store
+#### Store
 Stores value in the cache with expiration time.
 
-> `public` store(context: [IContext](../../../components/context/icontext), key: string, value: any, timeout: number): Promise\<any\>
+> (c *MemoryCache[T]) Store(ctx [context.Context](../../../components/context/icontext), key string, value T, timeout int64) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 - **value**: any - a value to store.
-- **timeout**: number - expiration timeout in milliseconds.
-- **returns**: Promise\<any\> - a cached value stored in the cache.
+- **timeout**: int64 - expiration timeout in milliseconds.
+- **returns**: any - a cached value stored in the cache.
 
 ### Examples
 
-```typescript
-let cache = new MemoryCache();
-   
-await cache.store(new Context(), "key1", "ABC");
-...
-let value = await cache.retrieve(new Context(), "key1");
-// Result: "ABC"
+```go
+cache := NewMemoryCache[string]();
+res, err := cache.Store(contex.Background(), "key1", "ABC", 10000);
 ```
 
 ### See also
