@@ -43,9 +43,6 @@ If credentials are configured to be retrieved from [ICredentialStore](icredentia
 it automatically locates [ICredentialStore](icredential_store) in component references
 and retrieves credentials from there using store_key parameter.
 
-#### [DefaultCredentialStoreFactory](default_credential_store_factory)
-Creates [ICredentialStore](icredential_store) components based on their descriptors.
-
 #### [MemoryCredentialStore](memory_credential_store)
 Credential store that keeps credentials in memory.
 
