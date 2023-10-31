@@ -106,7 +106,7 @@ to invocation parameter map.
 #### AddPagingParams
 AddPagingParams method are adds paging parameters (skip, take, total) to invocation parameter map.
 
-> (c [*CloudFunctionClient]()) AddPagingParams(params [*StringValueMap](../../../commons/data/string_value_map), paging [*PagingParams](../../../commons/data/paging_params)) [*StringValueMap](../../../commons/data/string_value_map)
+> (c [*CloudFunctionClient]()) AddPagingParams(params [*StringValueMap](../../../commons/data/string_value_map), paging [*PagingParams](../../../data/query/paging_params)) [*StringValueMap](../../../commons/data/string_value_map)
 
 - **params**: [*StringValueMap](../../../commons/data/string_value_map) - invocation parameters.
 - **paging**: [*PagingParams](../../../data/query/paging_params) - (optional) paging parameters
