@@ -123,7 +123,7 @@ Return plugin function
 Adds instrumentation to log calls and measures call time.
 It returns a Timing object that is used to end the time measurement.
 
-> (c [*CloudFunction]()) Instrument(ctx context.Context, context [IContext](../../../components/context/icontext), name string) [*InstrumentTiming](../../../rpc/services/instrument_timing)
+> (c [*CloudFunction]()) Instrument(ctx context.Context, context [IContext](../../../components/context/icontext), name string) [*InstrumentTiming](../../../rpc/trace/instrument_timing)
 
 - **ctx**: context.Context - operation context.
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
