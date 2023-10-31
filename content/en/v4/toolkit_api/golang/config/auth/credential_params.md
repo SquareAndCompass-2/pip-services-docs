@@ -8,7 +8,7 @@ description: >
     
 ---
 
-**Implements**: [ConfigParams](../../../commons/config/config_params)
+**Implements**: [ConfigParams](../../../components/config/config_params)
 
 ### Description
 
