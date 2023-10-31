@@ -15,33 +15,39 @@ The interface serves as a foundational structure and set of methods specifically
 
 ### Instance methods
 
-#### retrieve
-Adds a listener that will be notified when configuration is changed
+#### Retrieve
+Retrieve cached value from the cache using its key. If value is missing in the cache or expired it returns nil.
 
-> addChangeListener(context: [IContext](../../../components/context/icontext), key: string): Promise\<any\>
+> Retrieve(ctx [context.Context](../../../components/context/icontext), key string) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
-- **returns**: Promise\<any\> - the cached value or <code>null</code> if value wasn't found.
+- **returns**: any - the cached value or error if value wasn't found.
 
 
-#### store
+#### Store
 Stores value in the cache with expiration time.
 
-> store(context: [IContext](../../../components/context/icontext), key: string, value: any, timeout: number): Promise\<any\>
+> Store(ctx [context.Context](../../../components/context/icontext), key string, value T, timeout int64) (T, error)
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key.
 - **value**: any - a value to store.
-- **timeout**: number - expiration timeout in milliseconds.
-- **returns**: Promise\<any\> - The value that was stored in the cache.
+- **timeout**: int64 - expiration timeout in milliseconds.
+- **returns**: any - The value that was stored in the cache.
 
-#### remove
-Reads configuration and parameterizes it with given values.
+#### Remove
+Removes a value from the cache by its key.
 
-> remove(context: [IContext](../../../components/context/icontext), key: string): Promise\<void\>
+> Remove(ctx [context.Context](../../../components/context/icontext), key string) error
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique value key. 
 
+#### Contains
+Checks if a value is stored.
 
+> Contains(ctx [context.Context](../../../components/context/icontext), key string) bool
+
+- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
+- **key**: string - a unique value key. 
