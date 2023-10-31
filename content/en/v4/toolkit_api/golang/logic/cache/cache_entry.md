@@ -15,48 +15,48 @@ TODO: add description
 ### Constructors
 Creates a new instance of the cache entry and assigns its values.
 
-> `public` constructor(key: string, value: any, timeout: number)
+> NewCacheEntry[T any](key string, value T, timeout int64) *CacheEntry[T]
 
 - **key**: string - a unique key to locate the value.
-- **value**: any - a value to be stored.
-- **timeout**: number - expiration timeout in milliseconds.
+- **value**: T - a value to be stored.
+- **timeout**: int64 - expiration timeout in milliseconds.
 
 ### Instance methods
 
-#### getKey
+#### Key
 Gets the key to locate the cached value.
 
-> `public` getKey(): string
+> (c *CacheEntry[T]) Key() string
 
 - **returns**: string - the value key.
 
 
-#### getValue
+#### Value
 Gets the cached value.
 
-> `public` getValue(): string
+> func (c *CacheEntry[T]) Value() T
 
-- **returns**: string - the value object.
+- **returns**: any - the value object.
 
-#### getExpiration
+#### Expiration
 Gets the expiration timeout.
 
-> `public` getExpiration(): number
+> func (c *CacheEntry[T]) Expiration() time.Time
 
-- **returns**: number - the expiration timeout in milliseconds.
+- **returns**: time -Time the expiration timeout in milliseconds.
 
 #### setValue
 Sets a new value and extends its expiration.
 
-> `public` setValue(value: any, timeout: number): void
+> (c *CacheEntry[T]) SetValue(value T, timeout int64)
 
-- **value**: any - a new cached value.
-- **timeout**: number - a expiration timeout in milliseconds.
+- **value**: T - a new cached value.
+- **timeout**: int64 - a expiration timeout in milliseconds.
 
 #### isExpired
 Checks if this value already expired.
 
-> `public` isExpired(): boolean
+> func (c *CacheEntry[T]) IsExpired() bool
 
 - **returns**: boolean - true if the value already expires and false otherwise.
 
