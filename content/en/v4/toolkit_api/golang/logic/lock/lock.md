@@ -20,10 +20,10 @@ The Lock class represents an abstract lock that implements the defaul lock acqui
 
 ### Instance methods
 
-#### acquireLock
+#### AcquireLock
 Makes multiple attempts to acquire a lock by its key within a given time interval.
 
-> `public` acquireLock(context: [IContext](../../../components/context/icontext), key: string, ttl: number, timeout: number): Promise\<void\>
+> func (c *Lock) AcquireLock(ctx [context.Context](../../../components/context/icontext), key string, ttl int64, timeout int64) error
 
 - **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
 - **key**: string - a unique lock key to acquire.
@@ -34,31 +34,15 @@ Makes multiple attempts to acquire a lock by its key within a given time interva
 #### configure
 Configures component by passing configuration parameters.
 
-> `public` configure(config: [ConfigParams](../../../components/config/config_params)): void
+> func (c *Lock) Configure(ctx [context.Context](../../../components/context/icontext), config *config.ConfigParams)
 
 - **config**: [ConfigParams](../../../components/config/config_params) - configuration parameters to be set.
 
 ### Abstract methods
 
-#### releaseLock
-Releases a prevously acquired lock by its key.
-
-> `public abstract` releaseLock(context: [IContext](../../../components/context/icontext), key: string): Promise\<void\>
-
-- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
-- **key**: string - a unique lock key to release.
-
-
-#### tryAcquireLock
-Makes a single attempt to acquire a lock by its key.
-It returns immediately a positive or negative result.
-
-> `public abstract` tryAcquireLock(context: [IContext](../../../components/context/icontext), key: string, ttl: number): Promise\<boolean\>
-
-- **context**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through call chain.
-- **key**: string - a unique lock key to acquire.
-- **ttl**: number - a lock timeout (time to live) in milliseconds.
-- **returns**: bool - lock result
+#### InheritLock
+inherit lock from ILockOverrides
+> func InheritLock(overrides ILockOverrides) *Lock
 
 
 ### See also
