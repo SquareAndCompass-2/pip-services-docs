@@ -16,7 +16,7 @@ description: >
 The module contains the following packages:
 
 - [**Build**](build) - factory components
-- [**Cache**](cahce) - distributed cache
+- [**Cache**](cache) - distributed cache
 - [**Lock**](lock) -  distributed lock components
 - [**State**](state) -  distributed state management components
 
