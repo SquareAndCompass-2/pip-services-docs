@@ -16,7 +16,7 @@ Generates business logic components by implementing their corresponding descript
 ### Constructors
 Create a new instance of the factory.
 
-> `public` constructor()
+> func NewDefaultLogicFactory() *build.Factory
 
 
 ### See also
