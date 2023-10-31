@@ -50,7 +50,7 @@ Creates a new CredentialParams object and fills it with values.
 #### NewCredentialParamsFromValue
 Method that creates a ConfigParams object based on the values that are stored in the 'value' object's properties.
 
-> NewCredentialParamsFromValue(value interface{}) *CredentialParams
+> NewCredentialParamsFromValue(value interface{}) [*CredentialParams]()
 
 - **value**: interface{} - configuration parameters in the form of an object with properties.
 
