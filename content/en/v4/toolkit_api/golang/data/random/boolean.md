@@ -9,7 +9,7 @@ description: >
 
 ### Description
 
-The RandomBoolean class allows you to generate random boolean values.
+The Boolean class allows you to generate random boolean values.
 
 ### Static methods
 
@@ -33,8 +33,8 @@ Generates a random boolean value.
 ### Examples
 
 ```python
-value1 = RandomBoolean.next_boolean()   # Possible result: True
-value2 = RandomBoolean.chance(1,3)      # Possible result: False
+value1 = Boolean.next_boolean()   # Possible result: True
+value2 = Boolean.chance(1,3)      # Possible result: False
 
 ```
 
