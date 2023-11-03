@@ -9,7 +9,7 @@ description: >
 
 ### Description
 
-The RandomArray class can be used as a random generator for array objects.
+The Array class can be used as a random generator for array objects.
 
 ### Static methods
 
@@ -24,7 +24,7 @@ Picks a random element from specified array.
 ### Examples
 
 ```python
-value1 = RandomArray.pick([1, 2, 3, 4]) # Possible result: 3
+value1 = Array.pick([1, 2, 3, 4]) # Possible result: 3
 
 ```
 
