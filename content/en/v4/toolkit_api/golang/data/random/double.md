@@ -9,7 +9,7 @@ description: >
 
 ### Description
 
-The RandomDouble class allows you to generate random double values.
+The Double class allows you to generate random double values.
 
 ### Static methods
 
@@ -34,6 +34,6 @@ Updates (drifts) a double value within a specified range defined
 ### Examples
 
 ```python
-value1 = RandomDouble.next_double(5, 10)     # Possible result: 8.276012024925908
-value2 = RandomDouble.next_double(10)        # Possible result: 4.558593480049594
+value1 = Double.next_double(5, 10)     # Possible result: 8.276012024925908
+value2 = Double.next_double(10)        # Possible result: 4.558593480049594
 ```
