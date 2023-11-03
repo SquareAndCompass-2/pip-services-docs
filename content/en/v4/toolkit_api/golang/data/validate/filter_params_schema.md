@@ -4,12 +4,12 @@ title: "FilterParamsSchema"
 linkTitle: "FilterParamsSchema"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-data-go"
 description: >
-    Schema to validate [FilterParams](../../data/filter_params).
+    Schema to validate [FilterParams](../../query/filter_params).
 ---
 
 ### Description
 
-The FilterParamsSchema class allows you to create a schema to validate [FilterParams](../../data/filter_params).
+The FilterParamsSchema class allows you to create a schema to validate [FilterParams](../../query/filter_params).
 
 ### Constructors
 
@@ -21,5 +21,5 @@ Creates a new instance of a validation schema.
 
 
 ### See also
-- #### [FilterParams](../../data/filter_params)
+- #### [FilterParams](../../query/filter_params)
 
