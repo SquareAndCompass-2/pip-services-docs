@@ -19,7 +19,7 @@ Access is granted only for the session owner.
 > Owner(idParam string) func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc)
 
 - **idParam**: string - id of the current owner.
-- **returns**: (c *OwnerAuthorizer) - returns owner handler.
+- **returns**: (c [*OwnerAuthorizer]()) - returns owner handler.
 
 #### ownerOrAdmin
 Access is granted only to authorized users.   
