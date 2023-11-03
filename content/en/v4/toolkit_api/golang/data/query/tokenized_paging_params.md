@@ -33,17 +33,17 @@ Creates a new instance and sets its values.
 
 <span class="hide-title-link">
 
-#### token
+#### Token
 Start token
-> `public` **token**: string
+> string `json:"token"`
 
-#### take
+#### Take
 Number of items to return.
-> `public` **take**: number
+> int64  `json:"take"`
 
-#### total
+#### Total
 Flag used to define whether the total number of items must be returned or not.
-> `public` **total**: boolean
+> bool   `json:"total"`
 
 </span>
 
@@ -53,44 +53,42 @@ Flag used to define whether the total number of items must be returned or not.
 #### getTake
 Gets the number of items to return in a page.
 
-> `public` getTake(maxTake: number): number
+> func (c *TokenizedPagingParams) GetTake(maxTake int64) int64
 
 - **maxTake**: number - maximum number of items to return.
 - **returns**: number - number of items to return.
 
 ### Static methods
 
-#### fromMap
+#### NewTokenizedPagingParamsFromMap
 Creates a new TokenizedPagingParams object and sets its parameters from the specified map.
 
-> `public static` fromMap(map: [AnyValueMap](../any_value_map)): [TokenizedPagingParams]()
+> NewTokenizedPagingParamsFromMap(value *data.AnyValueMap) *TokenizedPagingParams
 
 - **map**: [AnyValueMap](../any_value_map) - AnyValueMap or StringValueMap object used to initialize this TokenizedPagingParams object.
 - **returns**: [TokenizedPagingParams]() - newly created TokenizedPagingParams object.
 
 
-#### fromTuples
+#### NewTokenizedPagingParamsFromTuples
 Creates a new TokenizedPagingParams object from a list of key-value pairs called tuples.
 
-> `public static` fromTuples(...tuples: any[]): [TokenizedPagingParams]()
+> NewTokenizedPagingParamsFromTuples(tuples ...any) *TokenizedPagingParams
 
 - **tuples**: any[] - list of values where odd elements are keys and the following even elements are values
 - **returns**: [TokenizedPagingParams]() - newly created TokenizedPagingParams object.
 
 
-#### fromValue
+#### NewTokenizedPagingParamsFromValue
 Converts a specified value into a TokenizedPagingParams object.
 
-> `public static` fromValue(value: any): [TokenizedPagingParams]()
+> NewTokenizedPagingParamsFromValue(value any) *TokenizedPagingParams
 
 - **value**: any - value to be converted
 - **returns**: [TokenizedPagingParams]() - newly created TokenizedPagingParams object.
 
 ### Examples
 
-```typescript
-let filter = FilterParams.fromTuples("type", "Type1");
-let paging = new TokenizedPagingParams(null, 100);
-     
-let page = await myDataClient.getDataByFilter(filter, paging);
+```go
+filter := NewFilterParamsFromTuples("type", "Type1");
+paging := NewTokenizedPagingParams("", 100);
 ```
