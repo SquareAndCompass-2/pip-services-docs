@@ -9,13 +9,13 @@ description: >
 
 ### Description
 
-The PagingParamsSchema class allows you to create a schema to validate [PagingParams](../../data/paging_params).
+The PagingParamsSchema class allows you to create a schema to validate [PagingParams](../../query/paging_params).
 
 ### Constructors
 
 #### NewPagingParamsSchema
-> NewPagingParamsSchema() [*ObjectSchema]()
+> NewPagingParamsSchema() [*ObjectSchema](object_schema)
 
 ### See also
-- #### [PagingParams](../../data/paging_params)
+- #### [PagingParams](../../query/paging_params)
 
