@@ -49,9 +49,9 @@ Important points
 #### InheritCommandableHttpController
 Creates a new instance of the controller.
 
-> InheritCommandableHttpController(overrides [IRegisterable](iregisterable), baseRoute string) [*CommandableHttpController]()
+> InheritCommandableHttpController(overrides [IRegisterable](../iregisterable), baseRoute string) [*CommandableHttpController]()
 
-- **overrides**: [IRegisterable](iregisterable) - references to child class that overrides virtual methods.
+- **overrides**: [IRegisterable](../iregisterable) - references to child class that overrides virtual methods.
 - **baseRoute**: string - a controller base route.
 
 
