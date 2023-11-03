@@ -31,7 +31,7 @@ Obtains information about running services
 
 #### [CommandableHttpController](commandable_http_controller)
 Abstract service that receives remote calls via HTTP protocol
-to operations automatically generated for commands defined in [ICommandable](../../commons/commands/icommandable).
+to operations automatically generated for commands defined in [ICommandable](../../../rpc/commands/icommandable).
 Each command is exposed as a POST operation that receives all parameters in body object.
 
 Commandable services require only three lines of code to implement a robust external
