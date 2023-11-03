@@ -23,5 +23,4 @@ Create a new instance of the factory.
 - #### [Factory](../../../components/build/factory)
 - #### [HttpEndpoint](../../controllers/http_endpoint)
 - #### [HeartbeatRestController](../../controllers/heartbeat_rest_controller)
-- #### [StatusRestController](../../controllers/status_rest_controller)
 
