@@ -9,7 +9,7 @@ description: >
     
 ---
 
-**Extends:** [BadRequestError](../../../commons/errors/bad_request_exception)
+**Extends:** [BadRequestError](../../../commons/errors/bad_request_error)
 
 ### Description
 
