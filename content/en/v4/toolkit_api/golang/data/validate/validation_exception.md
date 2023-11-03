@@ -63,6 +63,6 @@ If validation results have no errors, then no exception is thrown.
 
 
 ### See also
-- #### [BadRequestError](../../../commons/errors/bad_request_exception)
+- #### [BadRequestError](../../../commons/errors/bad_request_error)
 - #### [ValidationResult](../validation_result)
 
