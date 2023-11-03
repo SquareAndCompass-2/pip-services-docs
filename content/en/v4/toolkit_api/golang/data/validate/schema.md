@@ -137,12 +137,12 @@ See [ValidationResult](../validation_result)
 #### ValidateAndReturnError
 Validates the given value and returns a [ValidationException](../validation_exception) if errors were found.
 
-> (c [*Schema]()) ValidateAndReturnError(correlationId string, value any, strict bool) [*errors.ApplicationError](../../errors/application_error)
+> (c [*Schema]()) ValidateAndReturnError(correlationId string, value any, strict bool) [*errors.ApplicationError](../../../commons/errors/application_error)
 
 - **correlationId**: string - (optional) transaction id used to trace execution through the call chain.
 - **value**: any -  value to be validated.
 - **strict**: bool - true to treat warnings as errors.
-- **returns**: [*errors.ApplicationError](../../errors/application_error) - validation exception.
+- **returns**: [*errors.ApplicationError](../../../commons/errors/application_error) - validation exception.
 
 #### ValidateAndThrowError
 Validates the given value and throws a [ValidationException](../validation_exception) if errors were found.  
