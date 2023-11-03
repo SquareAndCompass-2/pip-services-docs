@@ -1,7 +1,7 @@
 ---
 type: docs
-title: "RandomArray"
-linkTitle: "RandomArray"
+title: "Array"
+linkTitle: "Array"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-data-go/random"
 description: >
     Random generator for array objects.
