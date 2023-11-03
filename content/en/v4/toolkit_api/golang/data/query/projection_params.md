@@ -51,7 +51,7 @@ Parses a comma-separated list of projection fields.
 
 #### NewProjectionParamsFromValue
 Converts specified value into ProjectionParams.  
-See [AnyValueArray.NewAnyValueArrayFromValue](../any_value_array/#newanyvaluearrayfromvalue)
+See [AnyValueArray.NewAnyValueArrayFromValue](../../../commons/data/any_value_array/#newanyvaluearrayfromvalue)
 
 > NewProjectionParamsFromValue(value interface{}) [*ProjectionParams]()
 
