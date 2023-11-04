@@ -14,7 +14,7 @@ description: >
 
 The DefaultContainerFactory class allows you to create factories used to create default container components by their descriptors. The factories included are:
 
-1. [DefaultInfoFactory](../../../components/context/default_info_factory)
+1. [DefaultInfoFactory](../../../context/default_info_factory)
 2. [DefaultCredentialStoreFactory](../../../config/auth/default_credential_store_factory)
 3. [DefaultDiscoveryFactory](../../../config/connect/default_discovery_factory)
 4. [DefaultTestFactory](../../../container/test/default_test_factory)
