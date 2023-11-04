@@ -55,7 +55,7 @@ The GRPC endpoint that exposes this controller.
 
 #### DependencyResolver
 The dependency resolver.
-> **DependencyResolver**: [*DependencyResolver](../../../refer/dependency_resolver)
+> **DependencyResolver**: [*DependencyResolver](../../../components/refer/dependency_resolver)
 
 #### Logger
 The logger.
@@ -63,7 +63,7 @@ The logger.
 
 #### Counters
 The Counters counters.
-> **Counters**: [*CompositeCounters](../../../components/count/composite_counters)
+> **Counters**: [*CompositeCounters](../../../observability/count/composite_counters)
 
 #### Tracer
 The tracer.
