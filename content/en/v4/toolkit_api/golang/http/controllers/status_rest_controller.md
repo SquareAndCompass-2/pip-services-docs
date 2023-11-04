@@ -4,18 +4,18 @@ title: "StatusRestController"
 linkTitle: "StatusRestController"
 gitUrl: "https://github.com/pip-services4/pip-services4-go/tree/main/pip-services4-http-go"
 description: >
-    Service that returns microservice status information via HTTP/REST protocol.
+    Controller that returns microservice status information via HTTP/REST protocol.
 ---
 
-**Implements:** [RestService](../rest_service)
+**Implements:** [RestController](../rest_controller)
 
 
 ### Description
 
-The StatusRestService class allows you to create a service that returns microservice status information via the HTTP/REST protocol.
+The StatusRestController class allows you to create a controller that returns microservice status information via the HTTP/REST protocol.
 
 ```
-The service responds on /status route (can be changed) with a JSON object:
+The controller responds on /status route (can be changed) with a JSON object:
 {
     - "id":            unique container id (usually hostname)
     - "name":          container name (from ContextInfo)
@@ -37,7 +37,7 @@ The service responds on /status route (can be changed) with a JSON object:
     - **endpoint**: override for HTTP Endpoint dependency
     - **controller**: override for Controller dependency
 - **connection(s)**:           
-    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscoveryy)
+    - **discovery_key**: (optional) key to retrieve the connection from [IDiscovery](../../../config/connect/idiscovery)
     - **protocol**: connection protocol (http or https)
     - **host**: host name or IP address
     - **port**: port number
