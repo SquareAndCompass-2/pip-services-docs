@@ -100,7 +100,7 @@ See [See interceptor](https://github.com/grpc/grpc-go/tree/master/examples/featu
 #### AddFilterParams
 AddFilterParams method are adds filter parameters (with the same name as they defined)
 
-> (c [*GrpcClient]()) AddFilterParams(params [*cdata.StringValueMap](../../../commons/data/string_value_map), filter [*cdata.FilterParams](../../../commons/data/filter_params)) [*cdata.StringValueMap](../../../commons/data/string_value_map)
+> (c [*GrpcClient]()) AddFilterParams(params [*cdata.StringValueMap](../../../commons/data/string_value_map), filter [*cdata.FilterParams](../../../data/query/filter_params)) [*cdata.StringValueMap](../../../commons/data/string_value_map)
 
 - **params**: [*cdata.StringValueMap](../../../commons/data/string_value_map) - invocation parameters.
 - **filter**: [*cdata.FilterParams](../../../data/query/filter_params) - (optional) filter parameters.
