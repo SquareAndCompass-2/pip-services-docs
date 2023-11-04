@@ -7,7 +7,7 @@ description: >
     Container configuration defined as a list of component configurations.
 ---
 
-**Implements:** [][ComponentConfig](../component_config)
+**Implements:** [ComponentConfig](../component_config)
 
 ### Description
 
