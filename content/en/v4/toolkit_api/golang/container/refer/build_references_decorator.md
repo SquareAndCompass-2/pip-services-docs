@@ -65,7 +65,7 @@ from the components registered in the references.
 
 #### Find
 Gets all component references that match the specified locator.
-Throws a [ReferenceError](../../../commons/refer/reference_error) when required is set to True but no references were found.
+Throws a [ReferenceError](../../../components/refer/reference_error) when required is set to True but no references were found.
 
 > (c [*BuildReferencesDecorator]()) Find(locator any, required bool) ([]any, error)
 - **locator**: any - locator to find a reference by.
