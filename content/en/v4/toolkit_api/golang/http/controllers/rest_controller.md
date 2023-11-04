@@ -185,22 +185,22 @@ Registers the open api spec from a file.
 #### RegisterRoute
 Registers a route in HTTP endpoint.
 
-> (c [*RestController]()) RegisterRoute(method string, route string, schema [*cvalid.Schema](../../../commons/validate/schema), action func(res http.ResponseWriter, req *http.Request))
+> (c [*RestController]()) RegisterRoute(method string, route string, schema [*cvalid.Schema](../../../data/validate/schema), action func(res http.ResponseWriter, req *http.Request))
 
 - **method**: string - HTTP method: "get", "head", "post", "put", "delete"
 - **route**: string - command route. The base route will be added to this route
-- **schema**: [*cvalid.Schema](../../../commons/validate/schema) - validation schema to validate received parameters.
+- **schema**: [*cvalid.Schema](../../../data/validate/schema) - validation schema to validate received parameters.
 - **action**: func(res http.ResponseWriter, req *http.Request) - action function that is called when an operation is invoked.
 
 
 #### RegisterRouteWithAuth
 Registers a route with authorization in HTTP endpoint.
 
-> (c [*RestController]()) RegisterRouteWithAuth(method string, route string, schema [*cvalid.Schema](../../../commons/validate/schema), authorize func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc), action func(res http.ResponseWriter, req *http.Request))
+> (c [*RestController]()) RegisterRouteWithAuth(method string, route string, schema [*cvalid.Schema](../../../data/validate/schema), authorize func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc), action func(res http.ResponseWriter, req *http.Request))
 
 - **method**: string - HTTP method: "get", "head", "post", "put", "delete"
 - **route**: string - command route. The base route will be added to this route
-- **schema**: [*cvalid.Schema](../../../commons/validate/schema) - validation schema to validate received parameters.
+- **schema**: [*cvalid.Schema](../../../data/validate/schema) - validation schema to validate received parameters.
 - **authorize**: func(res http.ResponseWriter, req *http.Request, next http.HandlerFunc) - authorization interceptor
 - **action**: func(res http.ResponseWriter, req *http.Request) - action function that is called when an operation is invoked.
 
