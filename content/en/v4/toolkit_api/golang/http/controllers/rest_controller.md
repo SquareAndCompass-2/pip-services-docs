@@ -271,10 +271,10 @@ If the object is not nil it returns 200 status code. For nil results, it returns
 #### SetReferences
 Sets references to dependent components.
 
-> (c [*RestController]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../commons/refer/ireferences))
+> (c [*RestController]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../components/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
-- **references**: [crefer.IReferences](../../../commons/refer/ireferences) - references to locate the component dependencies.
+- **references**: [crefer.IReferences](../../../components/refer/ireferences) - references to locate the component dependencies.
 
 
 #### UnsetReferences
