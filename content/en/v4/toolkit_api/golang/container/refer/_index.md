@@ -14,12 +14,12 @@ description: >
     
     - Lifecycle:    
      
-       - Once the objects of a container are configured, if they implement the [IReferenceable](../../commons/refer/ireferenceable) interface, they are passed a set of references for recreating links between objects in the container. If the objects implement the [IOpenable interface](../../commons/run/iopenable), the *Open()* method is called and they 
+       - Once the objects of a container are configured, if they implement the [IReferenceable](../../components/refer/ireferenceable) interface, they are passed a set of references for recreating links between objects in the container. If the objects implement the [IOpenable interface](../../components/run/iopenable), the *Open()* method is called and they 
     start to work. 
     
        - Then, connections to various services are made, the objects start, the container starts running, and the objects carry out their tasks. 
     
-       - When the container starts to close, the objects that implement the [IClosable](../../commons/run/iclosable) interface are closed via their *Close()* method (which should make them stop working and disconnect from other services). Following this, the objects that implement the [IUnreferenceable](../../commons/refer/iunreferenceable) interface delete the various links between objects, and the container destroys all objects and turns off. 
+       - When the container starts to close, the objects that implement the [IClosable](../../components/run/iclosable) interface are closed via their *Close()* method (which should make them stop working and disconnect from other services). Following this, the objects that implement the [IUnreferenceable](../../components/refer/iunreferenceable) interface delete the various links between objects, and the container destroys all objects and turns off. 
     
     - [Build](build_references_decorator), [Link](link_references_decorator), and [Run](run_references_decorator) - ReferenceDecorators are used during the corresponding  building, linking, and running stages and are united in [ManagedReferences](managed_references), which are extended by [ContainerReferences](container_references).
 ---
