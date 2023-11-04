@@ -117,7 +117,7 @@ Registers a controller with related implementation
 Sets references to this endpoint's logger, counters, and connection resolver.
 
 > (c [*GrpcEndpoint]()) SetReferences(references [cref.IReferences](../../../components/refer/ireferences))
-- **references**: [cref.IReferences](../../../commons/refer/ireferencescomponents/refer/ireferences) - an IReferences object, containing references to a logger, counters, and a connection resolver.
+- **references**: [cref.IReferences](../../../components/refer/ireferences) - an IReferences object, containing references to a logger, counters, and a connection resolver.
 
 #### Unregister
 Unregisters a registerable object, so that it is no longer used in dynamic 
