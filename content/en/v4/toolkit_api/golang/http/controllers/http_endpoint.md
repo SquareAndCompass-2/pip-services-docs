@@ -131,7 +131,7 @@ by the given method and route.
 #### SetReferences
 Sets references to this endpoint's logger, counters, and connection resolver.
 
-> (c [*HttpEndpoint]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../components/refer/ireferencess))
+> (c [*HttpEndpoint]()) SetReferences(ctx context.Context, references [crefer.IReferences](../../../components/refer/ireferences))
 
 - **ctx**: context.Context - operation context.
 - **references**: [crefer.IReferences](../../../components/refer/ireferences) - IReferences object, containing references to a logger, counters, and a connection resolver.
