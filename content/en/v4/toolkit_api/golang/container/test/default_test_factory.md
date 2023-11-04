@@ -7,7 +7,7 @@ description: >
     A factory for shutdowns.
 ---
 
-**Extends:** [Factory](../../build/factory)
+**Extends:** [Factory](../../../components/build/factory)
 
 ### Description
 
@@ -20,6 +20,6 @@ Create a new instance of the factory.
 
 
 ### See also
-- #### [Factory](../../build/factory)
+- #### [Factory](../../../components/build/factory)
 - #### [Shutdown](../shutdown)
 
