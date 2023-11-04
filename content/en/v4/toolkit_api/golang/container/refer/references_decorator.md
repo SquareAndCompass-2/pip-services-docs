@@ -31,11 +31,11 @@ Creates a new instance of the decorator.
 
 #### NextReferences
 Next references or decorator in the chain.
-> **NextReferences**: [IReferences](../../../commons/refer/ireferences)
+> **NextReferences**: [IReferences](../../../components/refer/ireferences/)
 
 #### TopReferences
 Decorator at the top of the chain.
-> **TopReferences**: [IReferences](../../../commons/refer/ireferences)
+> **TopReferences**: [IReferences](../../../components/refer/ireferences/)
 
 </span>
 
