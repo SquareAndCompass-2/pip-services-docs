@@ -128,7 +128,7 @@ It returns a Timing object that is used to end the time measurement.
 
 - **contextId**: [IContext](../../../components/context/icontext) - (optional) a context to trace execution through a call chain.
 - **name**: string - method name.
-- **returns**: [*InstrumentTiming](../instrument_timing) - instrument Timing object to end the time measurement.
+- **returns**: [*InstrumentTiming](../../../rpc/trace/instrument_timing) - instrument Timing object to end the time measurement.
 
 #### GetTraceId
 GetTraceId method returns TraceId from request
